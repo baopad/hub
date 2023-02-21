@@ -1,0 +1,118 @@
+####################################
+# Creator:baopad
+# client:Clash
+# Mail:info@paotung.org
+####################################
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: :9090
+proxies:
+  - name: Cloudcone L.A. Snap-CF
+    type: vmess
+    server: ccdn.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+  - name: Cloudcone L.A. Snap-1
+    type: vmess
+    server: cone.paotung.org
+    port: "1000"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+  - name: Cloudcone L.A. Snap-2
+    type: vmess
+    server: cone.paotung.org
+    port: "2000"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+  - name: Racknerd Seattle Snap-CF
+    type: vmess
+    server: ncdn.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+  - name: Racknerd Seattle Snap-1
+    type: vmess
+    server: nerd.paotung.org
+    port: "1000"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /cone
+  - name: Racknerd Seattle Snap-2
+    type: vmess
+    server: nerd.paotung.org
+    port: "8000"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /cone
+proxy-groups:
+  - name: Global
+    proxies:
+      - ⚖️ Loadbalanc
+      - ♻️ Automatic
+      - 🔰 Manual
+    type: select
+  - name: ♻️ Automatic
+    proxies:
+      - Cloudcone L.A. Snap-CF
+      - Cloudcone L.A. Snap-1
+      - Cloudcone L.A. Snap-2
+      - Racknerd Seattle Snap-CF
+      - Racknerd Seattle Snap-1
+      - Racknerd Seattle Snap-2
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: "600"
+  - name: ⚖️ Loadbalanc
+    proxies:
+      - Cloudcone L.A. Snap-CF
+      - Cloudcone L.A. Snap-1
+      - Cloudcone L.A. Snap-2
+      - Racknerd Seattle Snap-CF
+      - Racknerd Seattle Snap-1
+      - Racknerd Seattle Snap-2
+    type: load-balance
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+  - name: 🔰 Manual
+    proxies:
+      - Cloudcone L.A. Snap-CF
+      - Cloudcone L.A. Snap-1
+      - Cloudcone L.A. Snap-2
+      - Racknerd Seattle Snap-CF
+      - Racknerd Seattle Snap-1
+      - Racknerd Seattle Snap-2
+    type: select
+rules:
+  - MATCH,Global
