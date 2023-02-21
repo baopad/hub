@@ -49,7 +49,7 @@ cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF
     #ProxyPass "/" "https://rays.paotung.org/"
     #ProxyPassReverse "/" "https://rays.paotung.org/"
     RewriteEngine On
-    RewriteCond %{HTTP_HOST} ^rcdn\..+$ [NC]
+    RewriteCond %{HTTP_HOST} !^rcdn\..+$ [NC]
     RewriteRule ^ https://rays.paotung.org%{REQUEST_URI}
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/ray.paotung.org/fullchain.pem"
