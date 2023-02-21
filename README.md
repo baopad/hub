@@ -2,7 +2,7 @@
 "A:  ray.paotung.org    	66.152.171.78    "<br>
 "CNAME:  rcdn.paotung.org    	ray.paotung.org"<br>
 "CNAME:  rays.paotung.org    	baopad.github.io"
-# rays
+# Install Apache
 apt install apache2<br>
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf<br>
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf<br>
