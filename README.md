@@ -6,7 +6,10 @@
 apt install apache2<br>
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf<br>
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf<br>
-echo "ServerSignature Off" >> /etc/apache2/apache2.conf
+echo "ServerSignature Off" >> /etc/apache2/apache2.conf<br>
+a2enmod proxy proxy_wstunnel ssl rewrite headers proxy_http proxy_http2
+systemctl restart apache2
+mkdir -p /var/www/ray.paotung.org
 
 # rays
 Personal GoogleDrive/SVN directory.
