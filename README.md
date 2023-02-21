@@ -33,26 +33,26 @@ cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF<br>
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]<br>
 </VirtualHost><br>
 <VirtualHost *:443><br>
-    ServerAdmin info@paotung.org
-    ServerName ray.paotung.org
-    ServerAlias rcdn.paotung.org
-    DocumentRoot "/var/www/ray.paotung.org"
-    <Directory /var/www/>
-        Options -Indexes +FollowSymLinks
-        AllowOverride None
-        Require all granted
-    </Directory>
-    ErrorDocument 403 "/error/403.html"
-    ErrorDocument 404 "/error/404.html"
-    SSLProxyEngine On
-    ProxyPass "/" "https://rays.paotung.org/"
-    ProxyPassReverse "/" "https://rays.paotung.org/"
-    SSLEngine On
-    SSLCertificateFile "/etc/letsencrypt/live/ray.paotung.org/fullchain.pem"
-    SSLCertificateKeyFile "/etc/letsencrypt/live/ray.paotung.org/privkey.pem"
-    Include "/etc/letsencrypt/options-ssl-apache.conf"
-</VirtualHost>
-EOF
-a2ensite ray.paotung.org.conf
-apache2ctl configtest
+    ServerAdmin info@paotung.org<br>
+    ServerName ray.paotung.org<br>
+    ServerAlias rcdn.paotung.org<br>
+    DocumentRoot "/var/www/ray.paotung.org"<br>
+    <Directory /var/www/><br>
+        Options -Indexes +FollowSymLinks<br>
+        AllowOverride None<br>
+        Require all granted<br>
+    </Directory><br>
+    ErrorDocument 403 "/error/403.html"<br>
+    ErrorDocument 404 "/error/404.html"<br>
+    SSLProxyEngine On<br>
+    ProxyPass "/" "https://rays.paotung.org/"<br>
+    ProxyPassReverse "/" "https://rays.paotung.org/"<br>
+    SSLEngine On<br>
+    SSLCertificateFile "/etc/letsencrypt/live/ray.paotung.org/fullchain.pem"<br>
+    SSLCertificateKeyFile "/etc/letsencrypt/live/ray.paotung.org/privkey.pem"<br>
+    Include "/etc/letsencrypt/options-ssl-apache.conf"<br>
+</VirtualHost><br>
+EOF<br>
+a2ensite ray.paotung.org.conf<br>
+apache2ctl configtest<br>
 
