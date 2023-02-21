@@ -46,11 +46,11 @@ cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF
     ErrorDocument 403 "/error/403.html"
     ErrorDocument 404 "/error/404.html"
     SSLProxyEngine On
-    ProxyPass "/" "https://rays.paotung.org/"
-    ProxyPassReverse "/" "https://rays.paotung.org/"
+    #ProxyPass "/" "https://rays.paotung.org/"
+    #ProxyPassReverse "/" "https://rays.paotung.org/"
     RewriteEngine On
     RewriteCond %{HTTP_HOST} ^rcdn\..+$ [NC]
-    RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI}
+    RewriteRule ^ https://rays.paotung.org%{REQUEST_URI}
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/ray.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/ray.paotung.org/privkey.pem"
