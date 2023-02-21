@@ -54,6 +54,7 @@ cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF
 EOF
 a2ensite ray.paotung.org.conf
 apache2ctl configtest
+systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
 systemctl reload apache2
