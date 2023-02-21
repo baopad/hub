@@ -10,30 +10,29 @@ echo "ServerSignature Off" >> /etc/apache2/apache2.conf<br>
 a2enmod proxy proxy_wstunnel ssl rewrite headers proxy_http proxy_http2<br>
 systemctl restart apache2
 # Install Snapd
-apt install snapd
-snap install core
-snap refresh core
-snap install --classic certbot
-ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d ray.paotung.org -d rcdn.paotung.org
+apt install snapd<br>
+snap install core<br>
+snap refresh core<br>
+snap install --classic certbot<br>
+ln -s /snap/bin/certbot /usr/bin/certbot<br>
+certbot certonly --apache -d ray.paotung.org -d rcdn.paotung.org<br>
 certbot renew --dry-run
 
 # Apache&Snapd configuration
-certbot certonly --apache -d ray.paotung.org -d rcdn.paotung.org
-certbot renew --dry-run
-mkdir -p /var/www/ray.paotung.org
-cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF
-<VirtualHost *:80>
-    ServerAdmin info@paotung.org
-    ServerName ray.paotung.org
-    ServerAlias rcdn.paotung.org
-    DocumentRoot "/var/www/ray.paotung.org"
-    RewriteEngine On
-    RewriteCond %{HTTPS} off
-    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</VirtualHost>
-Listen 58
-<VirtualHost *:443 *:58>
+certbot certonly --apache -d ray.paotung.org -d rcdn.paotung.org<br>
+certbot renew --dry-run<br>
+mkdir -p /var/www/ray.paotung.org<br>
+cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF<br>
+<VirtualHost *:80><br>
+    ServerAdmin info@paotung.org<br>
+    ServerName ray.paotung.org<br>
+    ServerAlias rcdn.paotung.org<br>
+    DocumentRoot "/var/www/ray.paotung.org"<br>
+    RewriteEngine On<br>
+    RewriteCond %{HTTPS} off<br>
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]<br>
+</VirtualHost><br>
+<VirtualHost *:443><br>
     ServerAdmin info@paotung.org
     ServerName ray.paotung.org
     ServerAlias rcdn.paotung.org
