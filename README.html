@@ -36,7 +36,7 @@ cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName ray.paotung.org
-    #ServerAlias rcdn.paotung.org
+    ServerAlias rcdn.paotung.org
     DocumentRoot "/var/www/ray.paotung.org"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
