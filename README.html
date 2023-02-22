@@ -85,6 +85,7 @@ systemctl status apache2
 ------------------------
 a2dissite ray.paotung.org.conf
 rm /etc/apache2/sites-available/ray.paotung.org.conf
+rm -r /var/www/ray.paotung.org
 systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
