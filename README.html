@@ -82,6 +82,15 @@ systemctl start apache2
 systemctl reload apache2
 systemctl status apache2
 
+------------------------
+a2dissite ray.paotung.org.conf
+rm /etc/apache2/sites-available/ray.paotung.org.conf
+systemctl reload apache2
+systemctl stop apache2
+systemctl start apache2
+certbot delete
+-----------------------
+
 4.File download
 cd /var/www/ray.paotung.org
 wget -cP /var/www/ray.paotung.org https://github.com/baopad/rays/archive/refs/heads/main.zip
