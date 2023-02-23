@@ -1,0 +1,139 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: :9090
+proxies:
+  - name: Cloudcone L.A.
+    type: vmess
+    server: cone.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: cone.paotung.org
+  - name: Cloudcone (nerd)
+    type: vmess
+    server: cone.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /nerd
+      headers:
+        Host: cone.paotung.org
+  - name: Cloudcone (CF)
+    type: vmess
+    server: ccdn.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: ccdn.paotung.org
+    _index: 2
+  - name: Racknerd Seattle
+    type: vmess
+    server: nerd.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: nerd.paotung.org
+  - name: Racknerd (cone)
+    type: vmess
+    server: nerd.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /cone
+      headers:
+        Host: nerd.paotung.org
+  - name: Racknerd (CF)
+    type: vmess
+    server: ncdn.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: ncdn.paotung.org
+  - name: Oracle Tokyo
+    type: vmess
+    server: lay.donpau.com
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: lay.donpau.com
+  - name: Oracle (cone)
+    type: vmess
+    server: lay.donpau.com
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /cone
+      headers:
+        Host: lay.donpau.com
+  - name: Oracle (nerd)
+    type: vmess
+    server: lay.donpau.com
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /nerd
+      headers:
+        Host: lay.donpau.com
+proxy-groups:
+  - name: ♻️ Direct selection
+    proxies:
+      - Cloudcone L.A.
+      - Cloudcone (nerd)
+      - Cloudcone (CF)
+      - Oracle Tokyo
+      - Oracle (cone)
+      - Racknerd Seattle
+      - Racknerd (cone)
+      - Racknerd (CF)
+      - Oracle (nerd)
+    type: select
+rules: null
