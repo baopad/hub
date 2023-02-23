@@ -23,20 +23,7 @@ proxies:
       path: /
       headers:
         Host: cone.paotung.org
-  - name: Cloudcone (nerd)
-    type: vmess
-    server: cone.paotung.org
-    port: "443"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: /nerd
-      headers:
-        Host: cone.paotung.org
-  - name: Cloudcone (CF)
+  - name: Cloudcone CF
     type: vmess
     server: ccdn.paotung.org
     port: "443"
@@ -49,7 +36,6 @@ proxies:
       path: /
       headers:
         Host: ccdn.paotung.org
-    _index: 2
   - name: Racknerd Seattle
     type: vmess
     server: nerd.paotung.org
@@ -63,32 +49,7 @@ proxies:
       path: /
       headers:
         Host: nerd.paotung.org
-  - name: Racknerd (cone)
-    type: vmess
-    server: nerd.paotung.org
-    port: "443"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: /cone
-      headers:
-        Host: nerd.paotung.org
-  - name: Racknerd (CF)
-    type: vmess
-    server: ncdn.paotung.org
-    port: "443"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: /
-      headers:
-        Host: ncdn.paotung.org
+    _index: 2
   - name: Oracle Tokyo
     type: vmess
     server: lay.donpau.com
@@ -102,7 +63,8 @@ proxies:
       path: /
       headers:
         Host: lay.donpau.com
-  - name: Oracle (cone)
+    _index: 3
+  - name: Oracle CC
     type: vmess
     server: lay.donpau.com
     port: "443"
@@ -115,7 +77,8 @@ proxies:
       path: /cone
       headers:
         Host: lay.donpau.com
-  - name: Oracle (nerd)
+    _index: 4
+  - name: Oracle RN
     type: vmess
     server: lay.donpau.com
     port: "443"
@@ -128,17 +91,15 @@ proxies:
       path: /nerd
       headers:
         Host: lay.donpau.com
+    _index: 5
 proxy-groups:
   - name: ♻️ Direct selection
     proxies:
       - Cloudcone L.A.
-      - Cloudcone (nerd)
-      - Cloudcone (CF)
+      - Cloudcone CF
       - Oracle Tokyo
-      - Oracle (cone)
+      - Oracle CC
       - Racknerd Seattle
-      - Racknerd (cone)
-      - Racknerd (CF)
-      - Oracle (nerd)
+      - Oracle RN
     type: select
 rules: null
