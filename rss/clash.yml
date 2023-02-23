@@ -10,6 +10,30 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
+  - name: www.paotung.org:443
+    type: vmess
+    server: www.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: www.paotung.org
+  - name: www.paotung.org:8
+    type: vmess
+    server: cone.paotung.org
+    port: "8"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /
   - name: Cloudcone L.A.
     type: vmess
     server: cone.paotung.org
@@ -23,7 +47,7 @@ proxies:
       path: /
       headers:
         Host: cone.paotung.org
-  - name: Cloudcone CF
+  - name: Cloudcone CDN
     type: vmess
     server: ccdn.paotung.org
     port: "443"
@@ -49,7 +73,32 @@ proxies:
       path: /
       headers:
         Host: nerd.paotung.org
-    _index: 2
+  - name: Racknerd Cone
+    type: vmess
+    server: nerd.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /cone
+      headers:
+        Host: nerd.paotung.org
+  - name: Racknerd CDN
+    type: vmess
+    server: ncdn.paotung.org
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /cone
+      headers:
+        Host: ncdn.paotung.org
   - name: Oracle Tokyo
     type: vmess
     server: lay.donpau.com
@@ -63,8 +112,7 @@ proxies:
       path: /
       headers:
         Host: lay.donpau.com
-    _index: 3
-  - name: Oracle CC
+  - name: Oracle Cone
     type: vmess
     server: lay.donpau.com
     port: "443"
@@ -77,8 +125,7 @@ proxies:
       path: /cone
       headers:
         Host: lay.donpau.com
-    _index: 4
-  - name: Oracle RN
+  - name: Oracle Nerd
     type: vmess
     server: lay.donpau.com
     port: "443"
@@ -91,15 +138,5 @@ proxies:
       path: /nerd
       headers:
         Host: lay.donpau.com
-    _index: 5
-proxy-groups:
-  - name: ♻️ Direct selection
-    proxies:
-      - Cloudcone L.A.
-      - Cloudcone CF
-      - Oracle Tokyo
-      - Oracle CC
-      - Racknerd Seattle
-      - Oracle RN
-    type: select
+proxy-groups: []
 rules: null
