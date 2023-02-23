@@ -79,7 +79,7 @@ proxies:
 proxy-groups:
   - name: Global
     proxies:
-      - ⚖️ Loadbalanc
+      - ⚖️ Balance
       - ♻️ Automatic
       - 🔰 Manual
     type: select
@@ -94,7 +94,7 @@ proxy-groups:
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: "600"
-  - name: ⚖️ Loadbalanc
+  - name: ⚖️ Balance
     proxies:
       - Cloudcone L.A. Snap-CF
       - Cloudcone L.A. Snap-1
