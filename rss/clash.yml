@@ -25,7 +25,7 @@ proxies:
         Host: www.paotung.org
   - name: www.paotung.org:8
     type: vmess
-    server: cone.paotung.org
+    server: paotung.org
     port: "8"
     uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
     alterId: 0
