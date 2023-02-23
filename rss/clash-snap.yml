@@ -65,17 +65,17 @@ proxies:
     network: ws
     ws-opts:
       path: /cone
-  - name: Racknerd Seattle Snap-2
+  - name: paotung.org:n
     type: vmess
-    server: nerd.paotung.org
-    port: "8000"
+    server: paotung.org
+    port: "8"
     uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
     alterId: 0
     cipher: auto
     tls: true
     network: ws
     ws-opts:
-      path: /cone
+      path: ""
 proxy-groups:
   - name: Global
     proxies:
@@ -90,7 +90,7 @@ proxy-groups:
       - Cloudcone L.A. Snap-2
       - Racknerd Seattle Snap-CF
       - Racknerd Seattle Snap-1
-      - Racknerd Seattle Snap-2
+      - paotung.org:n
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: "600"
@@ -101,7 +101,7 @@ proxy-groups:
       - Cloudcone L.A. Snap-2
       - Racknerd Seattle Snap-CF
       - Racknerd Seattle Snap-1
-      - Racknerd Seattle Snap-2
+      - paotung.org:n
     type: load-balance
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -112,7 +112,7 @@ proxy-groups:
       - Cloudcone L.A. Snap-2
       - Racknerd Seattle Snap-CF
       - Racknerd Seattle Snap-1
-      - Racknerd Seattle Snap-2
+      - paotung.org:n
     type: select
 rules:
   - MATCH,Global
