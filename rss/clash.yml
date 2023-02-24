@@ -23,7 +23,7 @@ proxies:
       path: /
       headers:
         Host: www.paotung.org
-  - name: www.paotung.org:8
+  - name: www.paotung.org:8443
     type: vmess
     server: paotung.org
     port: "8443"
