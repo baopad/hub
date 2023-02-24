@@ -65,10 +65,10 @@ proxies:
     network: ws
     ws-opts:
       path: /cone
-  - name: paotung.org:n
+  - name: paotung.org:8443
     type: vmess
     server: paotung.org
-    port: "8"
+    port: "8443"
     uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
     alterId: 0
     cipher: auto
