@@ -7,10 +7,33 @@ port: 7890
 socks-port: 7891
 allow-lan: true
 mode: Rule
-log-level: info
+log-level: none
 external-controller: :9090
 proxies:
-  - name: Cloudcone L.A. Snap-CF
+  - name: https://paotung.org:8443/cone
+    type: vmess
+    server: www.paotung.org
+    port: "8443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /cone
+    _index: 0
+  - name: https://cone.paotung.org:1000
+    type: vmess
+    server: cone.paotung.org
+    port: "1000"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+  - name: https://ccdn.paotung.org
     type: vmess
     server: ccdn.paotung.org
     port: "443"
@@ -20,30 +43,8 @@ proxies:
     tls: true
     network: ws
     ws-opts:
-      path: /
-  - name: Cloudcone L.A. Snap-1
-    type: vmess
-    server: cone.paotung.org
-    port: "1000"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: /
-  - name: Cloudcone L.A. Snap-2
-    type: vmess
-    server: cone.paotung.org
-    port: "2000"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: /
-  - name: Racknerd Seattle Snap-CF
+      path: ""
+  - name: https://ncdn.paotung.org/cone
     type: vmess
     server: ncdn.paotung.org
     port: "443"
@@ -53,66 +54,38 @@ proxies:
     tls: true
     network: ws
     ws-opts:
-      path: /
-  - name: Racknerd Seattle Snap-1
-    type: vmess
-    server: nerd.paotung.org
-    port: "1000"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
       path: /cone
-  - name: paotung.org:8443
-    type: vmess
-    server: paotung.org
-    port: "8443"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: ""
 proxy-groups:
   - name: Global
     proxies:
-      - ⚖️ Balance
+      - ⚖️ Loadbalanc
       - ♻️ Automatic
       - 🔰 Manual
     type: select
   - name: ♻️ Automatic
     proxies:
-      - Cloudcone L.A. Snap-CF
-      - Cloudcone L.A. Snap-1
-      - Cloudcone L.A. Snap-2
-      - Racknerd Seattle Snap-CF
-      - Racknerd Seattle Snap-1
-      - paotung.org:8443
+      - https://paotung.org:8443/cone
+      - https://cone.paotung.org:1000
+      - https://ccdn.paotung.org
+      - https://ncdn.paotung.org/cone
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: "600"
-  - name: ⚖️ Balance
+  - name: ⚖️ Loadbalanc
     proxies:
-      - Cloudcone L.A. Snap-CF
-      - Cloudcone L.A. Snap-1
-      - Cloudcone L.A. Snap-2
-      - Racknerd Seattle Snap-CF
-      - Racknerd Seattle Snap-1
-      - paotung.org:8443
+      - https://paotung.org:8443/cone
+      - https://cone.paotung.org:1000
+      - https://ccdn.paotung.org
+      - https://ncdn.paotung.org/cone
     type: load-balance
     url: http://www.gstatic.com/generate_204
     interval: 600
   - name: 🔰 Manual
     proxies:
-      - Cloudcone L.A. Snap-CF
-      - Cloudcone L.A. Snap-1
-      - Cloudcone L.A. Snap-2
-      - Racknerd Seattle Snap-CF
-      - Racknerd Seattle Snap-1
-      - paotung.org:8443
+      - https://paotung.org:8443/cone
+      - https://cone.paotung.org:1000
+      - https://ccdn.paotung.org
+      - https://ncdn.paotung.org/cone
     type: select
 rules:
   - MATCH,Global
