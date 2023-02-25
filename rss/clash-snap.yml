@@ -58,8 +58,8 @@ proxies:
 proxy-groups:
   - name: Global
     proxies:
-      - ⚖️ Loadbalanc
       - ♻️ Automatic
+      - ⚖️ Balance
       - 🔰 Manual
     type: select
   - name: ♻️ Automatic
