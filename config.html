@@ -54,17 +54,7 @@ cat > /etc/apache2/sites-available/./ray.paotung.org.conf <<EOF
     Include "/etc/letsencrypt/options-ssl-apache.conf"
 </VirtualHost>
 <VirtualHost *:443>
-    ServerAdmin info@paotung.org
-    #ServerName ray.paotung.org
-    ServerAlias rcdn.paotung.org
-    DocumentRoot "/var/www/ray.paotung.org"
-    <Directory /var/www/>
-        Options -Indexes +FollowSymLinks
-        AllowOverride None
-        Require all granted
-    </Directory>
-    ErrorDocument 403 "/error/403.html"
-    ErrorDocument 404 "/error/404.html"
+    ServerName rcdn.paotung.org
     SSLProxyEngine On
     ProxyPass "/" "https://rays.paotung.org/"
     ProxyPassReverse "/" "https://rays.paotung.org/"
