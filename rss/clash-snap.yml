@@ -90,7 +90,7 @@ proxy-groups:
       - Cloudcone L.A. Snap-2
       - Racknerd Seattle Snap-CF
       - Racknerd Seattle Snap-1
-      - paotung.org:n
+      - paotung.org:8443
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: "600"
@@ -101,7 +101,7 @@ proxy-groups:
       - Cloudcone L.A. Snap-2
       - Racknerd Seattle Snap-CF
       - Racknerd Seattle Snap-1
-      - paotung.org:n
+      - paotung.org:8443
     type: load-balance
     url: http://www.gstatic.com/generate_204
     interval: 600
@@ -112,7 +112,7 @@ proxy-groups:
       - Cloudcone L.A. Snap-2
       - Racknerd Seattle Snap-CF
       - Racknerd Seattle Snap-1
-      - paotung.org:n
+      - paotung.org:8443
     type: select
 rules:
   - MATCH,Global
