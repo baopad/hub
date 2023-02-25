@@ -71,7 +71,7 @@ proxy-groups:
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: "600"
-  - name: ⚖️ Loadbalanc
+  - name: ⚖️ Balance
     proxies:
       - https://paotung.org:8443/cone
       - https://cone.paotung.org:8443
