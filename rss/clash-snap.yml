@@ -25,7 +25,7 @@ proxies:
   - name: https://cone.paotung.org:8443
     type: vmess
     server: cone.paotung.org
-    port: "1000"
+    port: "8443"
     uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
     alterId: 0
     cipher: auto
