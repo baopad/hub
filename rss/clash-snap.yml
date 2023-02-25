@@ -22,7 +22,7 @@ proxies:
     ws-opts:
       path: /cone
     _index: 0
-  - name: https://cone.paotung.org:1000
+  - name: https://cone.paotung.org:8443
     type: vmess
     server: cone.paotung.org
     port: "1000"
@@ -65,7 +65,7 @@ proxy-groups:
   - name: ♻️ Automatic
     proxies:
       - https://paotung.org:8443/cone
-      - https://cone.paotung.org:1000
+      - https://cone.paotung.org:8443
       - https://ccdn.paotung.org
       - https://ncdn.paotung.org/cone
     type: url-test
@@ -74,7 +74,7 @@ proxy-groups:
   - name: ⚖️ Loadbalanc
     proxies:
       - https://paotung.org:8443/cone
-      - https://cone.paotung.org:1000
+      - https://cone.paotung.org:8443
       - https://ccdn.paotung.org
       - https://ncdn.paotung.org/cone
     type: load-balance
@@ -83,7 +83,7 @@ proxy-groups:
   - name: 🔰 Manual
     proxies:
       - https://paotung.org:8443/cone
-      - https://cone.paotung.org:1000
+      - https://cone.paotung.org:8443
       - https://ccdn.paotung.org
       - https://ncdn.paotung.org/cone
     type: select
