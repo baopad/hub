@@ -13,3 +13,5 @@ cloudflare开启CDN-->ray.paotung.org
 ### A/CNAME记录,
 主机端rays反代baopad.github.io<br>
 cloudflare开启CDN-->ray.paotung.org
+# license
+MIT
