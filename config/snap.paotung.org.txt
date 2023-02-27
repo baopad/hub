@@ -2,6 +2,15 @@
 A record:         snap.paotung.org    	66.152.171.78
 CNAME record:     scdn.paotung.org    	snap.paotung.org" (to apply Cloudflare)
 
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
+1.安装iptables-persistent
+apt install iptables-persistent -y
+2.保存当前iptables配置
+netfilter-persistent save
+3.重载当前iptables配置
+netfilter-persistent reload
 
 1.Install Apache
 apt install apache2
