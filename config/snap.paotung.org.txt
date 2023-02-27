@@ -11,6 +11,9 @@ apt install iptables-persistent
 netfilter-persistent save
 3.重载当前iptables配置
 netfilter-persistent reload
+通过iptables-persistent生成的规则默认将被存储在以下文件中
+/etc/iptables/rules.v4
+/etc/iptables/rules.v6
 
 1.Install Apache
 apt install apache2
