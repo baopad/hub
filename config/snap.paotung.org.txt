@@ -1,7 +1,7 @@
 0.qianzhi
 A record:         snap.paotung.org    	66.152.171.78
-CNAME record:     scdn.paotung.org    	snap.paotung.org"
-CNAME record:     rays.paotung.org    	baopad.github.io"
+CNAME record:     scdn.paotung.org    	snap.paotung.org" (to apply CF)
+
 
 1.Install Apache
 apt install apache2
