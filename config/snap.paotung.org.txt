@@ -6,7 +6,7 @@ iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
 1.安装iptables-persistent
-apt install iptables-persistent -y
+apt install iptables-persistent
 2.保存当前iptables配置
 netfilter-persistent save
 3.重载当前iptables配置
