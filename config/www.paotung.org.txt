@@ -76,7 +76,7 @@ Listen 1443
     RewriteEngine On
     RewriteCond %{REQUEST_URI} ^/cone$ [NC]
     RewriteRule /(.*) ws://cone.paotung.org:8080/ [P,L]
-    RewriteCond %{REQUEST_URI} ^/nerd$ [NC]
+    RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteRule /(.*) ws://127.0.0.1:8080/ [P,L]
     RewriteCond %{HTTP:Upgrade} !=websocket [NC]
     RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
