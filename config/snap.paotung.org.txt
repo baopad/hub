@@ -1,6 +1,6 @@
 0.qianzhi
 A record:         snap.paotung.org    	66.152.171.78
-CNAME record:     scdn.paotung.org    	snap.paotung.org" (to apply CF)
+CNAME record:     scdn.paotung.org    	snap.paotung.org" (to apply Cloudflare)
 
 
 1.Install Apache
