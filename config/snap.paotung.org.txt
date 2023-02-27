@@ -43,7 +43,7 @@ cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
     DocumentRoot "/var/www/snap.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
-    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
