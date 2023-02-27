@@ -66,6 +66,7 @@ cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
     Include "/etc/letsencrypt/options-ssl-apache.conf"
 </VirtualHost>
 <VirtualHost *:443>
+    ServerAdmin info@paotung.org
     ServerName scdn.paotung.org
     DocumentRoot "/var/www/snap.paotung.org"
     RewriteEngine On
