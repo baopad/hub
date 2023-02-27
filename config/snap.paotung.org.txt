@@ -28,7 +28,7 @@ cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
     ServerAdmin info@paotung.org
     ServerName snap.paotung.org
     ServerAlias scdn.paotung.org
-    DocumentRoot "/var/www/ray.paotung.org"
+    DocumentRoot "/var/www/snap.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
@@ -75,8 +75,8 @@ systemctl status apache2
 
 ------------------------
 a2dissite snap.paotung.org.conf
-rm /etc/apache2/sites-available/ray.paotung.org.conf
-rm -r /var/www/ray.paotung.org
+rm /etc/apache2/sites-available/snap.paotung.org.conf
+rm -r /var/www/snap.paotung.org
 systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
@@ -84,9 +84,9 @@ certbot delete
 -----------------------
 
 4.File download
-cd /var/www/ray.paotung.org
-rm -r /var/www/ray.paotung.org/*
-wget -cP /var/www/ray.paotung.org https://github.com/baopad/rays/archive/refs/heads/main.zip
+cd /var/www/snap.paotung.org
+rm -r /var/www/snap.paotung.org/*
+wget -cP /var/www/snap.paotung.org https://github.com/baopad/rays/archive/refs/heads/main.zip
 unzip -o main.zip
 cd rays-main
 mv * ../
