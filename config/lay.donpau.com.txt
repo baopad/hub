@@ -1,0 +1,66 @@
+cat > /usr/local/etc/xray/./config.json <<EOF
+{
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "port": 8080,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "settings": {}
+        }
+    ]
+}
+EOF
+systemctl restart xray
+systemctl status xray
+
+
+
+cat > /etc/apache2/sites-available/./lay.donpau.com.conf <<EOF
+<VirtualHost *:80>
+    ServerName lay.donpau.com
+    DocumentRoot "/var/www/lay.donpau.com"
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</VirtualHost>
+<VirtualHost *:443>
+    ServerAdmin info@paotung.org
+    ServerName lay.donpau.com
+    DocumentRoot "/var/www/lay.donpau.com"
+    ErrorDocument 403 "/error/403.html"
+    ErrorDocument 404 "/error/404.html"
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^/cone$ [NC]
+    RewriteRule /(.*) ws://cone.paotung.org:8080/ [P,L]
+    RewriteCond %{REQUEST_URI} ^/nerd$ [NC]
+    RewriteRule /(.*) ws://nerd.paotung.org:8080/ [P,L]
+    RewriteCond %{HTTP:Upgrade} =websocket [NC]
+    RewriteRule /(.*) ws://127.0.0.1:8080/ [P,L]
+    SSLEngine On
+    SSLCertificateFile "/etc/letsencrypt/live/lay.donpau.com/fullchain.pem"
+    SSLCertificateKeyFile "/etc/letsencrypt/live/lay.donpau.com/privkey.pem"
+    Include "/etc/letsencrypt/options-ssl-apache.conf"
+</VirtualHost>
+EOF
+a2ensite lay.donpau.com.conf
+apache2ctl configtest
+systemctl stop apache2
+systemctl start apache2
+systemctl reload apache2
+systemctl status apache2
