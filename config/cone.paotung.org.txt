@@ -2,7 +2,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
@@ -18,7 +18,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8443,
             "protocol": "VLESS",
             "settings": {
@@ -57,17 +57,16 @@ systemctl status xray
 cat > /etc/apache2/sites-available/./cone.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerName cone.paotung.org
-    #ServerAlias ccdn.paotung.org
+    ServerAlias ccdn.paotung.org
     DocumentRoot "/var/www/cone.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-Listen 1443
-<VirtualHost *:443 *:1443>
+<VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName cone.paotung.org
-    #ServerAlias ccdn.paotung.org
+    ServerAlias ccdn.paotung.org
     DocumentRoot "/var/www/cone.paotung.org"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
