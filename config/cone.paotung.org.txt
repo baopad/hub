@@ -90,3 +90,17 @@ systemctl stop apache2
 systemctl start apache2
 systemctl reload apache2
 systemctl status apache2
+
+
+
+
+
+------------------------
+a2dissite cone.paotung.org.conf
+rm /etc/apache2/sites-available/cone.paotung.org.conf
+rm -r /var/www/cone.paotung.org
+systemctl reload apache2
+systemctl stop apache2
+systemctl start apache2
+certbot delete
+-----------------------
