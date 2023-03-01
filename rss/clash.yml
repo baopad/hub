@@ -10,10 +10,10 @@ mode: Rule
 log-level: none
 external-controller: :9090
 proxies:
-  - name: www.paotung.org:1443
+  - name: www.paotung.org:2443
     type: vmess
     server: www.paotung.org
-    port: "1443"
+    port: "2443"
     uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
     alterId: "0"
     cipher: auto
@@ -85,7 +85,7 @@ proxy-groups:
     type: select
   - name: ♻️ Automatic
     proxies:
-      - paotung.org:1443/cone
+      - paotung.org:2443/cone
       - cone.paotung.org:443
       - ccdn.paotung.org:443
       - nerd.paotung.org/cone
@@ -94,7 +94,7 @@ proxy-groups:
     interval: "600"
   - name: ⚖️ Balance
     proxies:
-      - paotung.org:1443/cone
+      - paotung.org:2443/cone
       - cone.paotung.org:443
       - ccdn.paotung.org:443
       - nerd.paotung.org/cone
@@ -103,7 +103,7 @@ proxy-groups:
     interval: 600
   - name: 🔰 Manual
     proxies:
-      - paotung.org:1443/cone
+      - paotung.org:2443/cone
       - cone.paotung.org:443
       - ccdn.paotung.org:443
       - nerd.paotung.org/cone
