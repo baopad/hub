@@ -65,8 +65,8 @@ cat > /etc/apache2/sites-available/./www.paotung.org.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-Listen 1443
-<VirtualHost *:443 *:1443>
+Listen 2443
+<VirtualHost *:443 *:2443>
     ServerAdmin info@paotung.org
     ServerName www.paotung.org
     ServerAlias paotung.org
