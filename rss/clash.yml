@@ -21,10 +21,10 @@ proxies:
     network: ws
     ws-opts:
       path: ""
-  - name: paotung.org:1443/cone
+  - name: paotung.org:2443/cone
     type: vmess
     server: paotung.org
-    port: "1443"
+    port: "2443"
     uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
     alterId: 0
     cipher: auto
