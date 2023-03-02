@@ -45,7 +45,7 @@ echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
 echo "ServerSignature Off" >> /etc/apache2/apache2.conf
 mkdir -p /var/www/hub.paotung.org
-chmod -R 755 /var/www/cone.paotung.org
+chmod -R 755 /var/www/hub.paotung.org
 
 apt install snapd
 snap install core
