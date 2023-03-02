@@ -23,7 +23,6 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
-    #ServerAlias scdn.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
