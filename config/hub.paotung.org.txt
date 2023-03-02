@@ -1,3 +1,7 @@
+前置条件：
+    1：安装apache,certbot;
+    2: 安装xray，vmess，端口8080开发
+
 设置A记录
 A record:         hub.paotung.org    	66.152.171.78
 创建证书
