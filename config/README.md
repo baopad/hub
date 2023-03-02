@@ -1,3 +1,5 @@
+# hub.paotung.org  链接中枢
+
 # ray.paotung.org
 "A:  ray.paotung.org    	66.152.171.78    "<br>
 "CNAME:  rays.paotung.org    		baopad.github.io"<br>
