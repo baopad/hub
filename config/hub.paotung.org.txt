@@ -54,7 +54,6 @@ snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --apache -d hub.paotung.org
 
-mkdir -p /var/www/hub.paotung.org
 cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
