@@ -123,7 +123,7 @@ cd /var/www/hub.paotung.org
 rm -r /var/www/hub.paotung.org/*
 wget -cP /var/www/hub.paotung.org https://github.com/baopad/rays/archive/refs/heads/main.zip
 unzip -o main.zip
-cd rays-main
+cd hubs-main
 mv * ../
 cd ../
 rm -r main.zip rays-main
