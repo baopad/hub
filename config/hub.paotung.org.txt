@@ -87,8 +87,8 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     ServerName hcdn.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
     SSLProxyEngine On
-    ProxyPass "/" "https://rays.paotung.org/"
-    ProxyPassReverse "/" "https://rays.paotung.org/"
+    ProxyPass "/" "https://hubs.paotung.org/"
+    ProxyPassReverse "/" "https://hubs.paotung.org/"
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
