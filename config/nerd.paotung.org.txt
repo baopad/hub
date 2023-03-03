@@ -55,7 +55,7 @@ systemctl restart xray
 systemctl status xray
 
 
-
+certbot certonly --apache -d nerd.paotung.org -d ncdn.paotung.org
 
 cat > /etc/apache2/sites-available/./nerd.paotung.org.conf <<EOF
 <VirtualHost *:80>
