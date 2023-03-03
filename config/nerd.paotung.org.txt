@@ -59,7 +59,9 @@ systemctl status xray
 
 cat > /etc/apache2/sites-available/./nerd.paotung.org.conf <<EOF
 <VirtualHost *:80>
+    ServerAdmin info@paotung.org
     ServerName nerd.paotung.org
+    ServerAlias ncdn.paotung.org
     DocumentRoot "/var/www/nerd.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
