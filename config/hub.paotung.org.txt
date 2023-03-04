@@ -47,7 +47,8 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     ],
     "outbounds": [
         {
-            "protocol": "freedom"
+            "protocol": "freedom",
+            "settings": {}
         }
     ]
 }
