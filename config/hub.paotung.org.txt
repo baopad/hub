@@ -86,9 +86,6 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
-    RewriteEngine On
-    RewriteCond %{HTTP:Upgrade} =websocket [NC]
-    RewriteRule ^/(.*) ws://127.0.0.1:8080/ [P,L]
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
         AllowOverride None
@@ -96,6 +93,9 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     </Directory>
     ErrorDocument 403 "/error/403.html"
     ErrorDocument 404 "/error/404.html"
+    RewriteEngine On
+    RewriteCond %{HTTP:Upgrade} =websocket [NC]
+    RewriteRule ^/(.*) ws://127.0.0.1:8080/ [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
