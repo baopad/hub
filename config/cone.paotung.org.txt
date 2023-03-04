@@ -1,32 +1,6 @@
-cat > /usr/local/etc/xray/./config.json <<EOF
-{
-    "inbounds": [
-        {
-            "listen": "0.0.0.0",
-            "port": 8080,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "3C02DC15-56AE-7889-8936-9A2EA8FF8666"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom"
-        }
-    ]
-}
-EOF
-systemctl restart xray
-systemctl status xray
+certbot certonly --apache -d cone.paotung.org -d ccdn.paotung.org
+certbot renew --dry-run
+
 
 cat > /etc/apache2/sites-available/./cone.paotung.org.conf <<EOF
 <VirtualHost *:80>
