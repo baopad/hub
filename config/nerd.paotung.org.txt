@@ -2,7 +2,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
@@ -18,7 +18,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8443,
             "protocol": "VLESS",
             "settings": {
@@ -31,15 +31,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             },
             "streamSettings": {
                 "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "certificates": [
-                        {
-                            "certificateFile": "/etc/letsencrypt/live/nerd.paotung.org/fullchain.pem",
-                            "keyFile": "/etc/letsencrypt/live/nerd.paotung.org/privkey.pem"
-                        }
-                    ]
-                }
+                "security": "none"
             }
         }
     ],
