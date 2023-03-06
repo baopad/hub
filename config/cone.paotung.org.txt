@@ -1,3 +1,6 @@
+mkdir -p /var/www/cone.paotung.org
+chmod -R 755 /var/www/cone.paotung.org
+
 certbot certonly --apache -d cone.paotung.org -d ccdn.paotung.org
 certbot renew --dry-run
 
