@@ -140,12 +140,12 @@ certbot delete
 4.File download
 cd /var/www/hub.paotung.org
 rm -r /var/www/hub.paotung.org/*
-wget -cP /var/www/hub.paotung.org https://github.com/baopad/hubs/archive/refs/heads/main.zip
+wget -cP /var/www/hub.paotung.org https://github.com/baopad/hub/archive/refs/heads/main.zip
 unzip -o main.zip
-cd hubs-main
+cd hub-main
 mv * ../
 cd ../
-rm -r main.zip hubs-main
+rm -r main.zip hub-main
 cd test
 dd if=/dev/zero of=1K.bin bs=1K count=1
 dd if=/dev/zero of=10K.bin bs=1K count=10
