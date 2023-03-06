@@ -73,7 +73,7 @@ cat > /etc/apache2/sites-available/./nerd.paotung.org.conf <<EOF
     
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{HTTP_HOST} !^ncdn\.paotung\.org [NC]
-    RewriteRule ^/(.*) ws://hub.paotung.org:8443/ [P,L]
+    RewriteRule ^/(.*) ws://127.0.0.1:8443/ [P,L]
     
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{REQUEST_URI} ^/hub$ [NC]
