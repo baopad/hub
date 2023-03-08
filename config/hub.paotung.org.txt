@@ -165,5 +165,19 @@ dd if=/dev/zero of=10G.bin bs=1G count=10
 sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 优先IPv6网络    curl ip.sb 测试  curl ip.sb -6
 sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf
+------------------------
+
+
+
+开启BBR
+------------------------
+uname -v
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+sysctl -p
+sysctl net.ipv4.tcp_available_congestion_control
+lsmod | grep bbr
+------------------------
+
 
 
