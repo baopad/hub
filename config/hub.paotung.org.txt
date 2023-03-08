@@ -158,11 +158,12 @@ dd if=/dev/zero of=100M.bin bs=1M count=100
 dd if=/dev/zero of=1000M.bin bs=1M count=1000
 dd if=/dev/zero of=1G.bin bs=1G count=1
 dd if=/dev/zero of=10G.bin bs=1G count=10
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
+
+
+------------------------
+优先IPv4网络    curl ip.sb 测试  curl ip.sb -4
+sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf
+优先IPv6网络    curl ip.sb 测试  curl ip.sb -6
+sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf
+
+
