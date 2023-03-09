@@ -94,7 +94,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     ErrorDocument 403 "/error/403.html"
     ErrorDocument 404 "/error/404.html"
     RewriteEngine On
-    RewriteCond %{HTTP:Upgrade} =websocket [NC]
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) "ws://127.0.0.1:8080/$1" [P,L]
     SSLEngine On
