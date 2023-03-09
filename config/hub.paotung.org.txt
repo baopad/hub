@@ -79,7 +79,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     ServerAlias hcdn.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
     RewriteEngine On
-    RewriteCond %{HTTPS} off
+    RewriteCond "%{HTTPS}" "off"
     RewriteRule "^/?(.*)" "https://%{HTTP_HOST}%{REQUEST_URI}/$1" [R=301,L]
 </VirtualHost>
 <VirtualHost *:443>
