@@ -38,6 +38,7 @@ Listen 1443
 EOF
 a2ensite cone.paotung.org.conf
 apache2ctl configtest
+systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
 systemctl reload apache2
