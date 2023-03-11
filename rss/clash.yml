@@ -10,32 +10,10 @@ mode: Rule
 log-level: none
 external-controller: :9090
 proxies:
-  - name: www.paotung.org:2443
-    type: vmess
-    server: www.paotung.org
-    port: "2443"
-    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
-    alterId: "0"
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: ""
-  - name: paotung.org:2443/cone
-    type: vmess
-    server: paotung.org
-    port: "2443"
-    uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: /cone
-  - name: cone.paotung.org:443
+  - name: cone.paotung.org
     type: vmess
     server: cone.paotung.org
-    port: "443"
+    port: "1443"
     uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
     alterId: 0
     cipher: auto
@@ -43,20 +21,33 @@ proxies:
     network: ws
     ws-opts:
       path: ""
-  - name: ccdn.paotung.org:443
+    _index: 0
+  - name: ccdn.paotung.org
     type: vmess
     server: ccdn.paotung.org
     port: "443"
     uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
-    alterId: 0
+    alterId: "0"
     cipher: auto
     tls: true
     network: ws
     ws-opts:
       path: ""
-  - name: nerd.paotung.org/cone
+    _index: 1
+  - name: oci.donpau.com/hub
     type: vmess
-    server: nerd.paotung.org
+    server: oci.donpau.com
+    port: "8443"
+    uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /hub
+  - name: aws.paotung.org
+    type: vmess
+    server: aws.paotung.org
     port: "443"
     uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
     alterId: 0
@@ -64,10 +55,23 @@ proxies:
     tls: true
     network: ws
     ws-opts:
-      path: /cone
-  - name: oci.donpau.com/cone
+      path: ""
+    _index: 3
+  - name: snap.paotung.org/hub
     type: vmess
-    server: oci.donpau.com
+    server: snap.paotung.org
+    port: "443"
+    uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /hub
+    _index: 4
+  - name: snap.paotung.org
+    type: vmess
+    server: snap.paotung.org
     port: "443"
     uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
     alterId: "0"
@@ -75,7 +79,9 @@ proxies:
     tls: true
     network: ws
     ws-opts:
-      path: /cone
+      path: ""
+      headers:
+        Host: snap.paotung.org
 proxy-groups:
   - name: Global
     proxies:
@@ -85,28 +91,28 @@ proxy-groups:
     type: select
   - name: ♻️ Automatic
     proxies:
-      - paotung.org:2443/cone
-      - cone.paotung.org:443
-      - ccdn.paotung.org:443
-      - nerd.paotung.org/cone
+      - cone.paotung.org
+      - oci.donpau.com/hub
+      - aws.paotung.org
+      - snap.paotung.org/hub
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: "600"
   - name: ⚖️ Balance
     proxies:
-      - paotung.org:2443/cone
-      - cone.paotung.org:443
-      - ccdn.paotung.org:443
-      - nerd.paotung.org/cone
+      - cone.paotung.org
+      - oci.donpau.com/hub
+      - aws.paotung.org
+      - snap.paotung.org/hub
     type: load-balance
     url: http://www.gstatic.com/generate_204
     interval: 600
   - name: 🔰 Manual
     proxies:
-      - paotung.org:2443/cone
-      - cone.paotung.org:443
-      - ccdn.paotung.org:443
-      - nerd.paotung.org/cone
+      - cone.paotung.org
+      - oci.donpau.com/hub
+      - aws.paotung.org
+      - snap.paotung.org/hub
     type: select
 rules:
   - MATCH,Global
