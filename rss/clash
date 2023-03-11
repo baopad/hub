@@ -37,7 +37,7 @@ proxies:
   - name: oci.donpau.com/hub
     type: vmess
     server: oci.donpau.com
-    port: "8443"
+    port: "443"
     uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
     alterId: 0
     cipher: auto
@@ -82,6 +82,7 @@ proxies:
       path: ""
       headers:
         Host: gcore.donpau.com
+    _index: 5
 proxy-groups:
   - name: Global
     proxies:
