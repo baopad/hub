@@ -47,3 +47,7 @@ sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/
 优先IPv6网络    curl ip.sb 测试  curl ip.sb -6
 sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 ------------------------
+
+------删除 IPv6 隧道------
+ifdown he-ipv6
+rm -f /etc/network/interfaces.d/he-ipv6
