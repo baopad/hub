@@ -69,9 +69,9 @@ proxies:
     ws-opts:
       path: /hub
     _index: 4
-  - name: snap.paotung.org
+  - name: gcore.donpau.com
     type: vmess
-    server: snap.paotung.org
+    server: 2a03:90c0:f1:2801::9999
     port: "443"
     uuid: 3C02DC15-56AE-7889-8936-9A2EA8FF8666
     alterId: "0"
@@ -81,7 +81,7 @@ proxies:
     ws-opts:
       path: ""
       headers:
-        Host: snap.paotung.org
+        Host: gcore.donpau.com
 proxy-groups:
   - name: Global
     proxies:
@@ -92,27 +92,33 @@ proxy-groups:
   - name: ♻️ Automatic
     proxies:
       - cone.paotung.org
+      - ccdn.paotung.org
       - oci.donpau.com/hub
       - aws.paotung.org
       - snap.paotung.org/hub
+      - gcore.donpau.com
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: "600"
   - name: ⚖️ Balance
     proxies:
       - cone.paotung.org
+      - ccdn.paotung.org
       - oci.donpau.com/hub
       - aws.paotung.org
       - snap.paotung.org/hub
+      - gcore.donpau.com
     type: load-balance
     url: http://www.gstatic.com/generate_204
     interval: 600
   - name: 🔰 Manual
     proxies:
       - cone.paotung.org
+      - ccdn.paotung.org
       - oci.donpau.com/hub
       - aws.paotung.org
       - snap.paotung.org/hub
+      - gcore.donpau.com
     type: select
 rules:
   - MATCH,Global
