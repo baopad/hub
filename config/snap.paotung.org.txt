@@ -50,6 +50,9 @@ systemctl status xray
 certbot certonly --apache -d snap.paotung.org -d scdn.paotung.org
 certbot delete
 
+mkdir -p /var/www/snap.paotung.org
+chmod -R 755 /var/www/snap.paotung.org
+
 cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
