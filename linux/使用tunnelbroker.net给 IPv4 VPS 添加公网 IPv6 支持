@@ -1,0 +1,44 @@
+https://p3terx.com/archives/use-he-tunnel-broker-to-add-public-network-ipv6-support-to-ipv4-vps-for-free.html
+
+将 he-ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
+------------------------------------
+tee /etc/network/interfaces.d/he-ipv6 <<EOF
+auto he-ipv6
+iface he-ipv6 inet6 v4tunnel
+        address 2001:470:a:242::2
+        netmask 64
+        endpoint 216.218.226.238
+        local 192.3.249.168
+        ttl 255
+        gateway 2001:470:a:242::1
+EOF
+
+
+------安装启动网络工具包------
+apt install net-tools iproute2
+ifup he-ipv6
+TIPS：若提示 ifup: unknown interface he-ipv6 
+echo 'source /etc/network/interfaces.d/*' >>/etc/network/interfaces
+
+启用后执行 ifconfig 命令，这时应该有一个 he-ipv6 接口，类似下面这样：
+he-ipv6: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1480
+          inet6 2001:xxx:xxxx:xxxx::2  prefixlen 64  scopeid 0x0<global>
+          inet6 fe80::xxxx:xxxx  prefixlen 64  scopeid 0x20<link>
+          sit  txqueuelen 1000  (IPv6-in-IPv4)
+          RX packets 11605  bytes 3127821 (3.1 MB)
+          RX errors 0  dropped 0  overruns 0  frame 0
+          TX packets 13811  bytes 2403522 (2.4 MB)
+          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+          
+------重启网络------
+systemctl restart networking
+
+------DNS 设置------
+编辑 /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+
+------检测 IPv6 支持------
+执行 ping6 google.com
+
+优先使用 IPv4 网络
