@@ -29,6 +29,11 @@ systemctl restart xray
 systemctl status xray
 
 
+certbot certonly --apache -d oci.donpau.com
+certbot renew --dry-run
+
+mkdir -p /var/www/oci.donpau.com
+chmod -R 755 /var/www/oci.donpau.com
 
 cat > /etc/apache2/sites-available/./oci.donpau.com.conf <<EOF
 <VirtualHost *:80>
