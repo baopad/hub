@@ -82,7 +82,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
-    ServerAlias hcdn.paotung.org
+    ServerAlias hcc.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
@@ -92,7 +92,7 @@ Listen 1443
 <VirtualHost *:443 *:1443>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
-    ServerAlias hcdn.paotung.org
+    ServerAlias hcc.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
