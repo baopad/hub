@@ -85,6 +85,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
+    ServerAlias hcdn.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
@@ -97,18 +98,6 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) "ws://127.0.0.1:8080/$1" [P,L]
-    SSLEngine On
-    SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
-    SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
-    Include "/etc/letsencrypt/options-ssl-apache.conf"
-</VirtualHost>
-<VirtualHost *:443>
-    ServerAdmin info@paotung.org
-    ServerName hcdn.paotung.org
-    DocumentRoot "/var/www/hub.paotung.org"
-    SSLProxyEngine On
-    ProxyPass "/" "https://hubs.paotung.org/"
-    ProxyPassReverse "/" "https://hubs.paotung.org/"
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
