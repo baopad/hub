@@ -5,6 +5,8 @@ A record:           hub.paotung.org     66.152.171.78
 AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:0ef4:566f]
 AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:41ad:1175]
 CNAME record:       hcc.paotung.org     hub.paotung.org   Proxied
+CNAME record:   _7c323b8ab572365bd2af3ad198242c04.hac.paotung.org   _73a873c9b2f18a98202c20dc51d5f7f0.ghcgkbmxjw.acm-validations.aws
+CNAME record:       hac.paotung.org     d2vem4oglv1yuh.cloudfront.net
 
 sudo -i
 apt update
