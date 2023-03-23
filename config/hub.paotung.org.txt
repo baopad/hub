@@ -86,7 +86,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     DocumentRoot "/var/www/hub.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
-    RewriteRule ^/?(.*) "https://%{HTTP_HOST}%{REQUEST_URI}/$1" [R=301,L]
+    RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
 Listen 1443
 <VirtualHost *:443 *:1443>
@@ -105,7 +105,7 @@ Listen 1443
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     #RewriteCond %{HTTP_HOST} ^hub\.paotung\.org$ [NC]
-    RewriteRule ^/?(.*) "ws://127.0.0.1:8080/$1" [P,L]
+    RewriteRule ^/?(.*) ws://127.0.0.1:8080/ [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
