@@ -61,7 +61,7 @@ cat > /etc/apache2/sites-available/./baopad.eu.org.conf <<EOF
     DocumentRoot "/var/www/baopad.eu.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
-    RewriteRule ^/?(.*) "https://%{HTTP_HOST}%{REQUEST_URI}/$1" [R=301,L]
+    RewriteRule ^/?(.*) "https://%{HTTP_HOST}%{REQUEST_URI}" [R=301,L]
 </VirtualHost>
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
@@ -76,10 +76,10 @@ cat > /etc/apache2/sites-available/./baopad.eu.org.conf <<EOF
     RewriteEngine On    
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{REQUEST_URI} ^/hub$ [NC]
-    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
-    RewriteRule ^/?(.*) "ws://127.0.0.1:8080/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://127.0.0.1:8080/" [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/baopad.eu.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/baopad.eu.org/privkey.pem"
