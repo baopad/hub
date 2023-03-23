@@ -93,3 +93,14 @@ systemctl stop apache2
 systemctl start apache2
 systemctl reload apache2
 systemctl status apache2
+
+
+--------删除----------------
+a2dissite baopad.eu.org.conf
+rm /etc/apache2/sites-available/baopad.eu.org.conf
+rm -r /var/www/baopad.eu.org.conf
+systemctl reload apache2
+systemctl stop apache2
+systemctl start apache2
+certbot delete
+-----------------------
