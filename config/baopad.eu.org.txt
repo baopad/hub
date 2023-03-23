@@ -74,7 +74,7 @@ cat > /etc/apache2/sites-available/./baopad.eu.org.conf <<EOF
         Require all granted
     </Directory>
     RewriteEngine On    
-    RewriteCond %{HTTP:Upgrade} =websocket [NC]
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{REQUEST_URI} ^/hub$ [NC]
     RewriteRule ^/?(.*) ws://hub.paotung.org:8080/ [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
