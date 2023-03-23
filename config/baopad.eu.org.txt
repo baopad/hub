@@ -63,8 +63,7 @@ cat > /etc/apache2/sites-available/./baopad.eu.org.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) "https://%{HTTP_HOST}%{REQUEST_URI}/$1" [R=301,L]
 </VirtualHost>
-Listen 2443
-<VirtualHost *:443 *:2443>
+<VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName baopad.eu.org
     ServerAlias www.baopad.eu.org
