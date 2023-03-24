@@ -1,3 +1,15 @@
+域名账户：
+    https://nic.eu.org/
+    user:PI112-FREE
+    password:Pw0****0
+
+A record:           baopad.eu.org           192.3.249.168
+AAAA record:        baopad.eu.org           [2001:470:a:242::2]
+CNAME record:       www.baopad.eu.org       baopad.eu.org   Proxied
+
+
+
+
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
