@@ -94,6 +94,7 @@ Listen 1443
     RewriteCond %{REQUEST_URI} ^/hub$ [NC]
     RewriteRule ^/(.*)$ ws://hub.paotung.org:8080/ [P,L]    
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
+    RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/(.*)$ ws://127.0.0.1:8080/ [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/snap.paotung.org/fullchain.pem"
