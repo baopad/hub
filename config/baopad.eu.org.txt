@@ -61,7 +61,7 @@ systemctl status xray
 
 
 certbot certonly --apache -d baopad.eu.org -d www.baopad.eu.org -d cdn.baopad.eu.org
-certbot delete
+certbot renew --dry-run
 
 mkdir -p /var/www/baopad.eu.org
 chmod -R 755 /var/www/baopad.eu.org
