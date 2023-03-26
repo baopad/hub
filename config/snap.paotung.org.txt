@@ -57,7 +57,20 @@ EOF
 systemctl restart xray
 systemctl status xray
 
+apt install apache2
+a2enmod proxy proxy_wstunnel proxy_http proxy_http2 ssl rewrite headers
+systemctl restart apache2
+echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
+echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
+echo "ServerSignature Off" >> /etc/apache2/apache2.conf
+mkdir -p /var/www/hub.paotung.org
+chmod -R 755 /var/www/hub.paotung.org
 
+apt install snapd
+snap install core
+snap refresh core
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --apache -d snap.paotung.org -d scdn.paotung.org -d baopad.eu.org -d www.baopad.eu.org -d cdn.baopad.eu.org
 certbot renew --dry-run
 certbot delete
