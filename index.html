@@ -49,8 +49,12 @@ div {
 .b {
     font-size: 5em;
     line-height: 1;
-    min-height: calc(1.5em - 0px);
-    height: 2em;
+    min-height: calc(1.2em - 0px);
+    height: 1.5em;
+    display: flex;
+    flex-direction: column;
+    flex-flow: nowrap;
+    white-space: nowrap;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -58,24 +62,80 @@ div {
     font-size: 4.5em;
 }
 }
+
 @media only screen and (max-width: 960px) {
 .b {
     font-size: 4em;
 }
 }
+
 @media only screen and (max-width: 720px) {
 .b {
     font-size: 3.5em;
 }
 }
+
 @media only screen and (max-width: 640px) {
 .b {
     font-size: 3em;
 }
 }
+
 @media only screen and (max-width: 480px) {
 .b {
     font-size: 2.5em;
+}
+}
+.c {
+    font-size: 1.25em;
+    line-height: 1;
+    min-height: calc(1.2em - 0px);
+    height: 1.20em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1280px) {
+.c {
+    font-size: 1.2em;
+}
+}
+
+@media only screen and (max-width: 960px) {
+.c {
+    font-size: 1.1em;
+}
+}
+
+@media only screen and (max-width: 720px) {
+.c {
+    font-size: 1.0em;
+}
+}
+
+@media only screen and (max-width: 640px) {
+.c {
+    font-size: 0.9em;
+}
+}
+
+@media only screen and (max-width: 480px) {
+.c {
+    font-size: 0.8em;
+    /*flex-direction: column;*/
+}
+}
+.c div {
+    margin: 0 auto;
+    padding: 0 1em;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 480px) {
+.c div {
+/*    margin: 0 auto;
+    padding: 2em 1em;*/
 }
 }
 </style>
@@ -83,6 +143,11 @@ div {
 <body>
 <div class="a">
   <div class="b">Hello, World!</div>
+  <div class="c">
+    <div>Liberty</div>
+    <div>Human Rights</div>
+    <div>Democracy</div>
+  </div>
 </div>
 </body>
 </html>
