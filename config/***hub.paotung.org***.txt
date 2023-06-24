@@ -86,18 +86,28 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 </VirtualHost>
 Listen 1443
 <VirtualHost *:443 *:1443>
+
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
     ServerAlias cfp.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
+
+    SSLProxyEngine On
+    ProxyPass "/vmess$" "ws://localhost:8080"
+    ProxyPassReverse "/vmess$" "ws://localhost:8080"
+    ProxyPass "/vless$" "ws://localhost:8443"
+    ProxyPassReverse "/vless$" "ws://localhost:8443"
+
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) ws://127.0.0.1:8080/ [P,L]
+
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
     Include "/etc/letsencrypt/options-ssl-apache.conf"
+
 </VirtualHost>
 EOF
 a2ensite hub.paotung.org.conf
