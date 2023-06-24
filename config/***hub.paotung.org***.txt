@@ -94,9 +94,9 @@ Listen 1443
 
     SSLProxyEngine On
     ProxyPass "/vmess" "ws://localhost:8080"
-    ProxyPassReverse "/vmess$" "ws://localhost:8080"
-    ProxyPass "/vless$" "ws://localhost:8443"
-    ProxyPassReverse "/vless$" "ws://localhost:8443"
+    ProxyPassReverse "/vmess" "ws://localhost:8080"
+    ProxyPass "/vless" "ws://localhost:8443"
+    ProxyPassReverse "/vless" "ws://localhost:8443"
 
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} websocket [NC]
