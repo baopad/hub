@@ -93,7 +93,7 @@ Listen 1443
     DocumentRoot "/var/www/hub.paotung.org"
 
     SSLProxyEngine On
-    ProxyPass "/vmess$" "ws://localhost:8080"
+    ProxyPass "/vmess" "ws://localhost:8080"
     ProxyPassReverse "/vmess$" "ws://localhost:8080"
     ProxyPass "/vless$" "ws://localhost:8443"
     ProxyPassReverse "/vless$" "ws://localhost:8443"
