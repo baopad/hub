@@ -103,7 +103,7 @@ Listen 1443
     RewriteCond %{REQUEST_URI} !^/vless [NC]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
-    RewriteRule ^/?(.*) ws://127.0.0.1:8080/ [P,L]
+    RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
 
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
