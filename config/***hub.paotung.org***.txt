@@ -88,7 +88,6 @@ Listen 1443
 <VirtualHost *:443 *:1443>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
-    ServerAlias cfp.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
     RewriteEngine On
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
