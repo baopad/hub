@@ -71,7 +71,7 @@ snap install core
 snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d snap.paotung.org -d scdn.paotung.org -d baopad.eu.org -d www.baopad.eu.org -d cdn.baopad.eu.org
+certbot certonly --apache -d snap.paotung.org -d scdn.paotung.org -d baopad.eu.org
 certbot renew --dry-run
 certbot delete
 
@@ -82,7 +82,7 @@ cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName snap.paotung.org
-    ServerAlias scdn.paotung.org scdn.paotung.org baopad.eu.org www.baopad.eu.org cdn.baopad.eu.org
+    ServerAlias scdn.paotung.org baopad.eu.org
     DocumentRoot "/var/www/snap.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
@@ -92,7 +92,7 @@ Listen 1443
 <VirtualHost *:443 *:1443>
     ServerAdmin info@paotung.org
     ServerName snap.paotung.org
-    ServerAlias scdn.paotung.org scdn.paotung.org baopad.eu.org www.baopad.eu.org cdn.baopad.eu.org
+    ServerAlias scdn.paotung.org baopad.eu.org
     DocumentRoot "/var/www/snap.paotung.org"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
