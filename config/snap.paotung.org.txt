@@ -106,6 +106,12 @@ Listen 1443
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{REQUEST_URI} ^/hub$ [NC]
     RewriteRule ^/(.*)$ ws://hub.paotung.org:8080/ [P,L]
+
+    RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
+    RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
+    RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
+    RewriteRule ^/?(.*) ws://localhost:8443/ [P,L]
+
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/(.*)$ ws://127.0.0.1:8080/ [P,L]
