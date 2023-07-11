@@ -165,3 +165,13 @@ systemctl stop apache2
 systemctl start apache2
 systemctl reload apache2
 systemctl status apache2
+---------删除网站及证书---------------
+a2dissite snap.linkpc.net.conf
+rm /etc/apache2/sites-available/snap.linkpc.net.conf
+rm /etc/apache2/sites-enabled/snap.linkpc.net.conf
+rm -r /var/www/snap.linkpc.net
+systemctl reload apache2
+systemctl stop apache2
+systemctl start apache2
+certbot delete
+-----------------------
