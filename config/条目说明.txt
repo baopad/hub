@@ -1,4 +1,4 @@
-0. 原生 hub.paotung.org A:66.152.171.78 AAAA:
+0. 原生 hub.paotung.org A:66.152.171.78 AAAA: STL
 
 1. cfp.paotung.org CNAME:hub.paotung.org CF:ProxyOpen SSL
 
@@ -6,8 +6,8 @@
 
 3. aws.paotung.org CNAME:hub.paotung.org AWS
 
-4. 
+4. ged.donpau.com CNAME:hub.paotung.org AWS 
 
-5. snap.linkpc.net A:66.152.171.78 AAAA:
+5. snap.linkpc.net A:66.152.171.78 AAAA: STL
 
-6. snap.publicvm.com/hub A:150.230.196.70 OCI
+6. snap.publicvm.com/hub A:150.230.196.70 OCI STL
