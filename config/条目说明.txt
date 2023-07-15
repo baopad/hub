@@ -8,6 +8,6 @@
 
 4. 
 
-5. snap.linkpc.net
+5. snap.linkpc.net A:66.152.171.78 AAAA:
 
-6. snap.publicvm.com A:66.152.171.78 AAAA:
+6. snap.publicvm.com/hub A:150.230.196.70 OCI
