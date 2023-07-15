@@ -4,7 +4,8 @@
 
 2. baopad.eu.org CNAME:hub.paotung.org CF:ProxyOpen SSL
 
-3. aws.paotung.org CNAME:hub.paotung.org AWS
+3. aws.paotung.org CNAME:d2vem4oglv1yuh.cloudfront.net() 
+for aws.paotung.org AWS Certificate Manager (ACM):_821f7288ac79b135d2eca0653d0ef8e3.aws _38f74ca0ca84e525a1cbec25fdb819b7.dqxlbvzbzt.acm-validations.aws
 
 4. ged.donpau.com CNAME:hub.paotung.org AWS 
 
