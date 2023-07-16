@@ -26,8 +26,7 @@ cat > /etc/apache2/sites-available/./snap.linkpc.net.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-Listen 1443
-<VirtualHost *:443 *:1443>
+<VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName snap.linkpc.net
     DocumentRoot "/var/www/html"
