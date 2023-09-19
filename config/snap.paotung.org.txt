@@ -82,17 +82,16 @@ cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName snap.paotung.org
-    ServerAlias scdn.paotung.org baopad.eu.org
+    ServerAlias scdn.paotung.org
     DocumentRoot "/var/www/snap.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-Listen 1443
-<VirtualHost *:443 *:1443>
+<VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName snap.paotung.org
-    ServerAlias scdn.paotung.org baopad.eu.org
+    ServerAlias scdn.paotung.org
     DocumentRoot "/var/www/snap.paotung.org"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
@@ -106,12 +105,10 @@ Listen 1443
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{REQUEST_URI} ^/hub$ [NC]
     RewriteRule ^/(.*)$ ws://hub.paotung.org:8080/ [P,L]
-
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
     RewriteRule ^/?(.*) ws://localhost:8443/ [P,L]
-
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/(.*)$ ws://127.0.0.1:8080/ [P,L]
