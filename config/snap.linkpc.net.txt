@@ -2,6 +2,7 @@
 A record:           snap.linkpc.net     66.152.171.78
 AAAA record:        snap.linkpc.net     [2607:f130:0000:014e:0000:0000:0ef4:566f]
 AAAA record:        snap.linkpc.net     [2607:f130:0000:014e:0000:0000:41ad:1175]
+CNAME  record:      snap.linkpc.net     www.snap.linkpc.net
 
 
 
