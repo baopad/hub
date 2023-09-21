@@ -7,82 +7,23 @@ AAAA record:        snap.linkpc.net     [2607:f130:0000:014e:0000:0000:41ad:1175
 
 sudo -i
 apt update
-apt install curl
-apt remove iptables             //oci等带有iptables
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata
-cat > /usr/local/etc/xray/./config.json <<EOF
-{
-    "inbounds": [
-        {
-            "port": 8080,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "8f9b9b26-1917-dcea-0505-8b3a81686666"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        },
-        {
-            "listen": "127.0.0.1",
-            "port": 8443,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "8f9b9b26-1917-dcea-0505-8b3a81686666"
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "settings": {}
-        }
-    ]
-}
-EOF
-systemctl restart xray
-systemctl status xray
 
-apt install apache2
-a2enmod proxy proxy_wstunnel proxy_http proxy_http2 ssl rewrite headers
-echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
-echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
-echo "ServerSignature Off" >> /etc/apache2/apache2.conf
-mkdir -p /var/www/hub.paotung.org
-chmod -R 755 /var/www/hub.paotung.org
+mkdir -p /var/www/snap.linkpc.net
+chmod -R 755 /var/www/snap.linkpc.net
 
-apt install snapd
-snap install core
-snap refresh core
-snap install --classic certbot
-ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d hub.paotung.org
+
+certbot certonly --apache -d snap.linkpc.net
 
 cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
-    ServerName hub.paotung.org
-    DocumentRoot "/var/www/hub.paotung.org"
+    ServerName snap.linkpc.net
+    DocumentRoot "/var/www/snap.linkpc.net"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-Listen 1443
-<VirtualHost *:443 *:1443>
+<VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
