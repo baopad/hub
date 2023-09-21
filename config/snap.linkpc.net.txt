@@ -8,13 +8,13 @@ AAAA record:        snap.linkpc.net     [2607:f130:0000:014e:0000:0000:41ad:1175
 sudo -i
 apt update
 
-mkdir -p /var/www/snap.linkpc.net
-chmod -R 755 /var/www/snap.linkpc.net
-
-
+------安装TLS证书------
 certbot certonly --apache -d snap.linkpc.net
 
-cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
+------配置虚拟主机及重写------
+mkdir -p /var/www/snap.linkpc.net
+chmod -R 755 /var/www/snap.linkpc.net
+cat > /etc/apache2/sites-available/./snap.linkpc.net.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName snap.linkpc.net
@@ -25,8 +25,8 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 </VirtualHost>
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
-    ServerName hub.paotung.org
-    DocumentRoot "/var/www/hub.paotung.org"
+    ServerName snap.linkpc.net
+    DocumentRoot "/var/www/snap.linkpc.net"
     RewriteEngine On
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
