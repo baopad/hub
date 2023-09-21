@@ -12,6 +12,7 @@ apt update
 certbot certonly --apache -d snap.linkpc.net
 
 ------配置虚拟主机及重写------
+rm -r /var/www/snap.linkpc.net
 mkdir -p /var/www/snap.linkpc.net
 chmod -R 755 /var/www/snap.linkpc.net
 cat > /etc/apache2/sites-available/./snap.linkpc.net.conf <<EOF
