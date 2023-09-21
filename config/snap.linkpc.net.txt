@@ -72,8 +72,8 @@ certbot delete
 -----------------------
 
 4.File download
-cd /var/www/hub.paotung.org
-rm -r /var/www/hub.paotung.org/*
+cd /var/www/snap.linkpc.net
+rm -r /var/www/snap.linkpc.net/*
 wget -cP /var/www/hub.paotung.org https://github.com/baopad/hub/archive/refs/heads/main.zip
 unzip -o main.zip
 cd *main
