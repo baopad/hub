@@ -67,7 +67,7 @@ snap install core
 snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d snap.donpau.com
+certbot certonly --apache -d snap.donpau.com -d snap.baopad.eu.org
 certbot renew --dry-run
 certbot delete
 
@@ -78,6 +78,7 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName snap.donpau.com
+    ServerAlias snap.baopad.eu.org
     DocumentRoot "/var/www/snap.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTPS} off
@@ -86,6 +87,7 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName snap.donpau.com
+    ServerAlias snap.baopad.eu.org
     DocumentRoot "/var/www/snap.donpau.com"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
