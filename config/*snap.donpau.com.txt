@@ -1,7 +1,11 @@
 A record:           snap.donpau.com           192.3.249.168
 AAAA record:        snap.donpau.com           [2001:470:a:242::2]
 
-
+sudo -i
+apt update
+apt install curl
+apt remove iptables             //oci等带有iptables
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
@@ -63,28 +67,28 @@ snap install core
 snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d snap.paotung.org -d scdn.paotung.org
+certbot certonly --apache -d snap.donpau.com -d scdn.paotung.org
 certbot renew --dry-run
 certbot delete
 
-mkdir -p /var/www/snap.paotung.org
-chmod -R 755 /var/www/snap.paotung.org
+mkdir -p /var/www/snap.donpau.com
+chmod -R 755 /var/www/snap.donpau.com
 
-cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
+cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
-    ServerName snap.paotung.org
+    ServerName snap.donpau.com
     ServerAlias scdn.paotung.org
-    DocumentRoot "/var/www/snap.paotung.org"
+    DocumentRoot "/var/www/snap.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
-    ServerName snap.paotung.org
+    ServerName snap.donpau.com
     ServerAlias scdn.paotung.org
-    DocumentRoot "/var/www/snap.paotung.org"
+    DocumentRoot "/var/www/snap.donpau.com"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
         AllowOverride None
@@ -105,12 +109,12 @@ cat > /etc/apache2/sites-available/./snap.paotung.org.conf <<EOF
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/(.*)$ ws://127.0.0.1:8080/ [P,L]
     SSLEngine On
-    SSLCertificateFile "/etc/letsencrypt/live/snap.paotung.org/fullchain.pem"
-    SSLCertificateKeyFile "/etc/letsencrypt/live/snap.paotung.org/privkey.pem"
+    SSLCertificateFile "/etc/letsencrypt/live/snap.donpau.com/fullchain.pem"
+    SSLCertificateKeyFile "/etc/letsencrypt/live/snap.donpau.com/privkey.pem"
     Include "/etc/letsencrypt/options-ssl-apache.conf"
 </VirtualHost>
 EOF
-a2ensite snap.paotung.org.conf
+a2ensite snap.donpau.com.conf
 apache2ctl configtest
 systemctl stop apache2
 systemctl start apache2
