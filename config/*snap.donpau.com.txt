@@ -1,5 +1,6 @@
 A record:           snap.donpau.com           192.3.249.168
 AAAA record:        snap.donpau.com           [2001:470:a:242::2]
+CNAME record:       snap.donpau.com           snap.baopad.eu.org
 
 sudo -i
 apt update
