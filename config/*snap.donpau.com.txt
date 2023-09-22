@@ -1,6 +1,6 @@
 A record:           snap.donpau.com           192.3.249.168
 AAAA record:        snap.donpau.com           [2001:470:a:242::2]
-CNAME record:       snap.donpau.com           snap.baopad.eu.org
+
 
 sudo -i
 apt update
@@ -68,7 +68,7 @@ snap install core
 snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d snap.donpau.com -d snap.baopad.eu.org
+certbot certonly --apache -d snap.donpau.com
 certbot renew --dry-run
 certbot delete
 
@@ -79,7 +79,6 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName snap.donpau.com
-    ServerAlias snap.baopad.eu.org
     DocumentRoot "/var/www/snap.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTPS} off
@@ -88,7 +87,6 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName snap.donpau.com
-    ServerAlias snap.baopad.eu.org
     DocumentRoot "/var/www/snap.donpau.com"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
