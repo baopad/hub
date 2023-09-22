@@ -78,7 +78,6 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName snap.donpau.com
-    ServerAlias scdn.paotung.org
     DocumentRoot "/var/www/snap.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTPS} off
@@ -87,7 +86,6 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
 <VirtualHost *:443>
     ServerAdmin info@paotung.org
     ServerName snap.donpau.com
-    ServerAlias scdn.paotung.org
     DocumentRoot "/var/www/snap.donpau.com"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
