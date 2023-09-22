@@ -1,7 +1,6 @@
 ------设置DNS记录------
-A record:           scdn.paotung.org    66.152.171.78
-AAAA record:        snap.linkpc.net     [2607:f130:0000:014e:0000:0000:0ef4:566f]
-AAAA record:        snap.linkpc.net     [2607:f130:0000:014e:0000:0000:41ad:1175]
+A record:           scdn.paotung.org    192.3.249.168
+AAAA record:        snap.linkpc.net     [2001:470:a:242::2]
 CNAME record:       snap.linkpc.net     www.snap.linkpc.net
 
 
