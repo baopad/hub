@@ -134,3 +134,8 @@ systemctl stop apache2
 systemctl start apache2
 certbot delete
 -----------------------
+
+--------语法存档---------------
+    RewriteEngine On    
+    RewriteCond %{HTTP:Upgrade} =websocket [NC]
+    RewriteCond %{HTTP_HOST} ^scdn\.paotung\.org$ [NC]
