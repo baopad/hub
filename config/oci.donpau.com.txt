@@ -51,8 +51,9 @@ Listen 8888
     ErrorDocument 403 "/error/403.html"
     ErrorDocument 404 "/error/404.html"
     RewriteEngine On
-    RewriteCond %{REQUEST_URI} ^/?hub$ [NC]
-    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
+    RewriteCond %{HTTP:Upgrade} =websocket [NC]
+    RewriteCond %{REQUEST_URI} ^/hub$ [NC]
+    RewriteRule ^/(.*)$ ws://hub.paotung.org:8080/ [P,L]
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteRule ^/?(.*) "ws://127.0.0.1:8080/$1" [P,L]
     SSLEngine On
