@@ -33,6 +33,7 @@ cat > /etc/apache2/sites-available/./scdn.paotung.org.conf <<EOF
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/scdn.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/scdn.paotung.org/privkey.pem"
+    Include "/etc/letsencrypt/options-ssl-apache.conf"
 </VirtualHost>
 EOF
 a2ensite scdn.paotung.org.conf
