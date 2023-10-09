@@ -27,19 +27,12 @@ cat > /etc/apache2/sites-available/./scdn.paotung.org.conf <<EOF
     ServerName scdn.paotung.org
     DocumentRoot "/var/www/scdn.paotung.org"
     RewriteEngine On
-    RewriteCond %{REQUEST_URI} ^/hub$ [NC]
-    RewriteRule ^/(.*)$ ws://hub.paotung.org:8080/ [P,L]
-    RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
-    RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
-    RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
-    RewriteRule ^/?(.*) ws://localhost:8443/ [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) ws://localhost:8443/ [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/scdn.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/scdn.paotung.org/privkey.pem"
-    Include "/etc/letsencrypt/options-ssl-apache.conf"
 </VirtualHost>
 EOF
 a2ensite scdn.paotung.org.conf
