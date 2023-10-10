@@ -108,8 +108,7 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --apache -d hub.paotung.org
 
 cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
-Listen 446
-<VirtualHost *:80 *:446>
+<VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
@@ -117,6 +116,7 @@ Listen 446
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
+Listen 446
 <VirtualHost *:443 *:446>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
