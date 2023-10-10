@@ -66,7 +66,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "127.0.0.1:844",
+                    "dest": "127.0.0.1:446",
                     "xver": 0,
                     "serverNames": [
                         "learn.microsoft.com",
@@ -108,8 +108,7 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --apache -d hub.paotung.org
 
 cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
-Listen 844
-<VirtualHost *:80 *:844>
+<VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
@@ -117,8 +116,8 @@ Listen 844
     #RewriteCond %{HTTPS} off
     #RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-Listen 644
-<VirtualHost *:443 *:644>
+Listen 446
+<VirtualHost *:443 *:446>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
