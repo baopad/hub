@@ -94,8 +94,8 @@ systemctl restart xray
 systemctl status xray
 
 
-mkdir -p /var/www/qnc.baopad.eu.org
-chmod -R 755 /var/www/qnc.baopad.eu.org
+mkdir -p /var/www/qnc.donpau.com
+chmod -R 755 /var/www/qnc.donpau.com
 
 apt install snapd
 snap install core
@@ -104,18 +104,18 @@ snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --apache -d hub.paotung.org
 
-cat > /etc/apache2/sites-available/./qnc.baopad.eu.org.conf <<EOF
+cat > /etc/apache2/sites-available/./qnc.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName qnc.baopad.eu.org
-    DocumentRoot "/var/www/qnc.baopad.eu.org"
+    DocumentRoot "/var/www/qnc.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
 </VirtualHost>
 EOF
-a2ensite qnc.baopad.eu.org.conf
+a2ensite qnc.donpau.com.conf
 apache2ctl configtest
 systemctl reload apache2
 systemctl stop apache2
