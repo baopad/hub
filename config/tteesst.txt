@@ -107,7 +107,7 @@ certbot certonly --apache -d hub.paotung.org
 cat > /etc/apache2/sites-available/./qnc.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
-    ServerName qnc.baopad.eu.org
+    ServerName qnc.donpau.com
     DocumentRoot "/var/www/qnc.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} websocket [NC]
