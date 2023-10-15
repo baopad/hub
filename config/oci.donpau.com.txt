@@ -48,12 +48,14 @@ cat > /etc/apache2/sites-available/./oci.donpau.com.conf <<EOF
     ServerName oci.donpau.com
     DocumentRoot "/var/www/oci.donpau.com"
     RewriteEngine On
-    RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{REQUEST_URI} ^/?hub(.*)$ [NC]
-    RewriteRule ^/(.*)$ "ws://hub.paotung.org:8080/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
+    RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
+    RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
+    RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
+    RewriteRule ^/?(.*) "ws://localhost:8443/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
-    RewriteCond %{HTTP:Connection} upgrade [NC]
-    RewriteRule ^/(.*)$ "ws://localhost:8080/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/oci.donpau.com/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/oci.donpau.com/privkey.pem"
