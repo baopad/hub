@@ -97,14 +97,14 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{REQUEST_URI} ^/hub$ [NC]
-    RewriteRule ^/?(.*) ws://hub.paotung.org:8080/ [P,L]
+    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
     RewriteRule ^/?(.*) ws://localhost:8443/ [P,L]
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
-    RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
+    RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/snap.donpau.com/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/snap.donpau.com/privkey.pem"
