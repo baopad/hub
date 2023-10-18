@@ -97,9 +97,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                          "password": "8f9b9b26-1917-dcea-0505-8b3a81686666",
                          "method": "chacha20-poly1305"
                     }
-                ]
-            },
-            "streamSettings": {
+                ],
                 "network": "tcp,udp"
             }
         }
