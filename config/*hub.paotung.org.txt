@@ -80,27 +80,27 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 }
             }
         },
-         {
-             "port": 1080,
-             "protocol": "shadowsocks",
-             "settings": {
-                 "clients": [
-                     {
+        {
+            "port": 1080,
+            "protocol": "shadowsocks",
+            "network": "tcp,udp",
+            "settings": {
+                "clients": [
+                    {
                          "password": "8f9b9b26-1917-dcea-0505-8b3a81686666",
                          "method": "aes-128-gcm"
-                     },
-                     {
+                    },
+                    {
                          "password": "8f9b9b26-1917-dcea-0505-8b3a81686666",
                          "method": "aes-256-gcm"
-                     },
-                     {
+                    },
+                    {
                          "password": "8f9b9b26-1917-dcea-0505-8b3a81686666",
                          "method": "chacha20-poly1305"
-                     }
-                 ],
-                 "network": "tcp,udp"
-             }
-         }
+                    }
+                ]
+            }
+        }
     ],
     "outbounds": [
         {
