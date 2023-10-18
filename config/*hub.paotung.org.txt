@@ -84,7 +84,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "port": 1080,
             "protocol": "shadowsocks",
             "settings": {
-                "network": "tcp,udp",
                 "clients": [
                     {
                          "password": "8f9b9b26-1917-dcea-0505-8b3a81686666",
@@ -99,6 +98,9 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                          "method": "chacha20-poly1305"
                     }
                 ]
+            },
+            "streamSettings": {
+                "network": "tcp,udp"
             }
         }
     ],
