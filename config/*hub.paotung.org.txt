@@ -85,7 +85,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "protocol": "shadowsocks",
             "settings": {
                 "password": "8f9b9b26-1917-dcea-0505-8b3a81686666",
-                "method": "aes-128-gcm",
+                "method": "2022-blake3-aes-128-gcm",
                 "network": "tcp,udp"
             }
         }
