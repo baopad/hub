@@ -1,0 +1,195 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: none
+external-controller: :9090
+proxies:
+  - name: snap.linkpc.net
+    type: vmess
+    server: snap.linkpc.net
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+    _index: 0
+  - name: baopad.eu.org
+    type: vmess
+    server: baopad.eu.org
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+    _index: 1
+  - name: cfp.paotung.org
+    type: vmess
+    server: cfp.paotung.org
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+    _index: 2
+  - name: aws.paotung.org
+    type: vmess
+    server: aws.paotung.org
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+    _index: 3
+  - name: aic.donpau.com
+    type: vmess
+    server: aic.donpau.com
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+  - name: ged.donpau.com
+    type: vmess
+    server: ged.donpau.com
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+  - name: snap.donpau.com/hub
+    type: vmess
+    server: snap.donpau.com
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /hub
+  - name: oci.donpau.com/hub
+    type: vmess
+    server: oci.donpau.com
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /hub
+  - name: Add1
+    type: vmess
+    server: hub.paotung.org
+    port: "8080"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    network: ws
+    ws-opts:
+      path: ""
+  - name: Add2
+    type: vmess
+    server: fff
+    port: "443"
+    uuid: 3a2cc75a-5fc1-4123-983b-7a1c86a10888
+    alterId: "0"
+    cipher: auto
+    network: ws
+    ws-opts:
+      path: ""
+  - name: snap.donpau.com
+    type: vmess
+    server: snap.donpau.com
+    port: "443"
+    uuid: 3c02dc15-56ae-7889-8936-9a2ea8ff8666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+    _index: 10
+  - name: oci.donpau.com
+    type: vmess
+    server: oci.donpau.com
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+    _index: 11
+  - name: hub.paotung.org
+    type: vmess
+    server: hub.paotung.org
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+  - name: scdn.baopad.eu.org
+    type: vmess
+    server: snap.baopad.eu.org
+    port: "443"
+    uuid: 8f9b9b26-1917-dcea-0505-8b3a81686666
+    alterId: "0"
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: ""
+proxy-groups:
+  - name: Automatic
+    proxies:
+      - snap.linkpc.net
+      - baopad.eu.org
+      - cfp.paotung.org
+      - aws.paotung.org
+      - aic.donpau.com
+      - ged.donpau.com
+      - snap.donpau.com/hub
+      - oci.donpau.com/hub
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: "600"
+  - name: Balance
+    proxies:
+      - snap.linkpc.net
+      - baopad.eu.org
+      - cfp.paotung.org
+      - aws.paotung.org
+      - aic.donpau.com
+      - ged.donpau.com
+      - snap.donpau.com/hub
+      - oci.donpau.com/hub
+    type: load-balance
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+rules:
+  - MATCH,Balance
+  - MATCH,Automatic
