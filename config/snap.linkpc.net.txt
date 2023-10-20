@@ -37,7 +37,7 @@ cat > /etc/apache2/sites-available/./snap.linkpc.net.conf <<EOF
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
-    RewriteRule ^/?(.*) ws://localhost:8443/ [P,L]
+    RewriteRule ^/?(.*) ws://localhost:8088/ [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) ws://localhost:8080/ [P,L]
