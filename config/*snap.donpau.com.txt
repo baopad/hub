@@ -28,7 +28,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         },
         {
             "listen": "127.0.0.1",
-            "port": 8443,
+            "port": 8088,
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -100,7 +100,7 @@ cat > /etc/apache2/sites-available/./snap.donpau.com.conf <<EOF
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
-    RewriteRule ^/?(.*) "ws://localhost:8443/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     SSLEngine On
