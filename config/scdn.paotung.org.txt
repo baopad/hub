@@ -29,7 +29,7 @@ cat > /etc/apache2/sites-available/./scdn.paotung.org.conf <<EOF
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
-    RewriteRule ^/?(.*) "ws://localhost:8443/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/scdn.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/scdn.paotung.org/privkey.pem"
