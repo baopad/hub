@@ -97,17 +97,9 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         {
             "protocol": "freedom",
             "settings": {}
-        },
-        {
-            "protocol": "blackhole",
-            "tag": "blocked"
         }
     ],
     "routing": {
-        "domainStrategy": "AsIs",
-        "rules": [
-
-        ]
     }
 }
 EOF
