@@ -102,7 +102,10 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "protocol": "blackhole",
             "tag": "blocked"
         }
-    ]
+    ],
+    "routing": {
+
+    }
 }
 EOF
 systemctl restart xray
