@@ -107,6 +107,10 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 EOF
 systemctl restart xray
 systemctl status xray
+systemctl restart xray
+systemctl status xray
+reboot
+
 
 apt install apache2
 a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
