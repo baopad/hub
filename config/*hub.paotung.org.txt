@@ -98,9 +98,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "protocol": "freedom",
             "settings": {}
         }
-    ],
-    "routing": {
-    }
+    ]
 }
 EOF
 systemctl restart xray
