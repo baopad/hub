@@ -1,5 +1,8 @@
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
+    "log": {
+        "loglevel": "none"
+    },
     "inbounds": [
         {
             "listen": "127.0.0.1",
