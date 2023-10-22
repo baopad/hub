@@ -2,15 +2,32 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
-            "listen": "127.0.0.1",
+            "listen": "0.0.0.0",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
                 "clients": [
                     {
-                        "id": "8f9b9b26-1917-dcea-0505-8b3a81686666"
+                        "id": "3c02dc15-56ae-7889-8936-9a2ea8ff8666"
                     }
                 ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 8088,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "decryption": "none"
             },
             "streamSettings": {
                 "network": "ws",
@@ -20,7 +37,8 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     ],
     "outbounds": [
         {
-            "protocol": "freedom"
+            "protocol": "freedom",
+            "settings": {}
         }
     ]
 }
