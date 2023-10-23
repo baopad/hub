@@ -110,7 +110,7 @@ Listen 446
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
-    RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
