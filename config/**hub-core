@@ -114,7 +114,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
     Include "/etc/letsencrypt/options-ssl-apache.conf"
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
-    Protocols h2 h2c http/1.1
+    Protocols h2 http/1.1
 </VirtualHost>
 EOF
 a2ensite hub.paotung.org.conf
