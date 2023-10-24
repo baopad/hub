@@ -53,7 +53,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         },
         {
             "listen": "0.0.0.0",
-            "port": 444,
+            "port": 443,
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -69,7 +69,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "127.0.0.1:446",
+                    "dest": "127.0.0.1:443",
                     "xver": 0,
                     "serverNames": [
                         "hub.paotung.org",
