@@ -58,6 +58,7 @@ chmod -R 755 /var/www/oci.donpau.com
 
 cat > /etc/apache2/sites-available/./oci.donpau.com.conf <<EOF
 <VirtualHost *:80>
+    ServerAdmin baopad@yahoo.com
     ServerName oci.donpau.com
     DocumentRoot "/var/www/oci.donpau.com"
     RewriteEngine On
@@ -65,12 +66,12 @@ cat > /etc/apache2/sites-available/./oci.donpau.com.conf <<EOF
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
 <VirtualHost *:443>
-    ServerAdmin info@paotung.org
+    ServerAdmin baopad@yahoo.com
     ServerName oci.donpau.com
     DocumentRoot "/var/www/oci.donpau.com"
     RewriteEngine On
     RewriteCond %{REQUEST_URI} ^/?hub(.*)$ [NC]
-    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://hub.paotung.org:8088/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
