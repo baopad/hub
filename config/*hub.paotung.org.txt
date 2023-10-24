@@ -69,7 +69,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "www.ibm.com:443",
+                    "dest": "127.0.0.1:443",
                     "xver": 0,
                     "serverNames": [
                         "www.ibm.com",
