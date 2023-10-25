@@ -25,7 +25,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "8f9b9b26-1917-dcea-0505-8b3a81686666"
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
                     }
                 ]
             },
@@ -41,7 +41,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "8f9b9b26-1917-dcea-0505-8b3a81686666"
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
                     }
                 ],
                 "decryption": "none"
@@ -58,7 +58,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "8f9b9b26-1917-dcea-0505-8b3a81686666",
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
                         "flow": "xtls-rprx-vision"
                     }
                 ],
@@ -87,7 +87,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "port": 1080,
             "protocol": "shadowsocks",
             "settings": {
-                "password": "8f9b9b26-1917-dcea-0505-8b3a81686666",
+                "password": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
                 "method": "aes-128-gcm",
                 "network": "tcp,udp"
             }
