@@ -72,7 +72,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                     "dest": "hub.paotung.org:443",
                     "xver": 0,
                     "serverNames": [
-                        "www.ibm.com",
+                        "hub.paotung.org",
                         "www.paotung.org"
                     ],
                     "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
