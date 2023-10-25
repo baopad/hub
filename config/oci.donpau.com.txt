@@ -71,6 +71,9 @@ cat > /etc/apache2/sites-available/./oci.donpau.com.conf <<EOF
     ServerName oci.donpau.com
     ServerAlias scdn.paotung.org
     DocumentRoot "/var/www/oci.donpau.com"
+    SSLProxyEngine On
+    ProxyPass "/asd" "https://www.google.com/"
+    ProxyPassReverse "/asd" "https://www.google.com/"
     RewriteEngine On
     RewriteCond %{REQUEST_URI} ^/?hub(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8088/$1" [P,L]
