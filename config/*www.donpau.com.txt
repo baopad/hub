@@ -69,7 +69,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "www.donpau.com:443",
+                    "dest": "www.donpau.com:444",
                     "xver": 0,
                     "serverNames": [
                         "www.donpau.com",
