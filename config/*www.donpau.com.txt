@@ -133,8 +133,8 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-Listen 446
-<VirtualHost *:443 *:446>
+Listen 8446
+<VirtualHost *:8443>
     ServerAdmin baopad@yahoo.com
     ServerName www.donpau.com
     ServerAlias donpau.com
@@ -155,7 +155,7 @@ Listen 446
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
-    RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
+    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/www.donpau.com/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/www.donpau.com/privkey.pem"
