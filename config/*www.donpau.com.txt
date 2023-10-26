@@ -69,11 +69,11 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "localhost:444",
+                    "dest": "hub.paotung.org:444",
                     "xver": 0,
                     "serverNames": [
-                        "www.donpau.com",
-                        "donpau.com"
+                        "hub.paotung.org",
+                        "www.paotung.org"
                     ],
                     "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
                     "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
