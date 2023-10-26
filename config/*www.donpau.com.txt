@@ -1,10 +1,10 @@
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
-A record:           hub.paotung.org     66.152.171.78
-AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:0ef4:566f]
-AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:41ad:1175]
-
+A record:           www.donpau.com     66.152.171.78
+A record:           donpau.com     66.152.171.78
+AAAA record:        www.donpau.com     [2001:470:a:242::8888:8888]
+AAAA record:        donpau.com     [2001:470:a:242::8888:8888]
 
 
 sudo -i
@@ -69,10 +69,10 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "hub.paotung.org:443",
+                    "dest": "www.donpau.com:443",
                     "xver": 0,
                     "serverNames": [
-                        "hub.paotung.org",
+                        "www.donpau.com",
                         "www.paotung.org"
                     ],
                     "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
@@ -113,21 +113,22 @@ a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
 echo "ServerSignature Off" >> /etc/apache2/apache2.conf
-mkdir -p /var/www/hub.paotung.org
-chmod -R 755 /var/www/hub.paotung.org
+mkdir -p /var/www/www.donpau.com
+chmod -R 755 /var/www/www.donpau.com
 
 apt install snapd
 snap install core
 snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d hub.paotung.org
+certbot certonly --apache -d www.donpau.com -d donpau.com
 
-cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
+cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
-    ServerName hub.paotung.org
-    DocumentRoot "/var/www/hub.paotung.org"
+    ServerName www.donpau.com
+    ServerAlias donpau.com
+    DocumentRoot "/var/www/www.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
@@ -135,8 +136,9 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 Listen 446
 <VirtualHost *:443 *:446>
     ServerAdmin info@paotung.org
-    ServerName hub.paotung.org
-    DocumentRoot "/var/www/hub.paotung.org"
+    ServerName www.donpau.com
+    ServerAlias donpau.com
+    DocumentRoot "/var/www/www.donpau.com"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
         AllowOverride None
@@ -155,14 +157,14 @@ Listen 446
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     SSLEngine On
-    SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
-    SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+    SSLCertificateFile "/etc/letsencrypt/live/www.donpau.com/fullchain.pem"
+    SSLCertificateKeyFile "/etc/letsencrypt/live/www.donpau.com/privkey.pem"
     Include "/etc/letsencrypt/options-ssl-apache.conf"
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
     Protocols h2 h2c http/1.1
 </VirtualHost>
 EOF
-a2ensite hub.paotung.org.conf
+a2ensite www.donpau.com.conf
 apache2ctl configtest
 systemctl reload apache2
 systemctl stop apache2
@@ -176,10 +178,10 @@ certbot renew --dry-run
 
 
 ---------删除网站及证书---------------
-a2dissite hub.paotung.org.conf
-rm /etc/apache2/sites-available/hub.paotung.org.conf
-rm /etc/apache2/sites-enabled/hub.paotung.org.conf
-rm -r /var/www/hub.paotung.org
+a2dissite www.donpau.com.conf
+rm /etc/apache2/sites-available/www.donpau.com.conf
+rm /etc/apache2/sites-enabled/www.donpau.com.conf
+rm -r /var/www/www.donpau.com
 systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
@@ -187,9 +189,9 @@ certbot delete
 -----------------------
 
 4.File download
-cd /var/www/hub.paotung.org
-rm -r /var/www/hub.paotung.org/*
-wget -cP /var/www/hub.paotung.org https://github.com/baopad/hub/archive/refs/heads/main.zip
+cd /var/www/www.donpau.com
+rm -r /var/www/www.donpau.com/*
+wget -cP /var/www/www.donpau.com https://github.com/baopad/hub/archive/refs/heads/main.zip
 unzip -o main.zip
 cd *main
 mv docs/* ../
