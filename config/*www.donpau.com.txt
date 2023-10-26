@@ -125,7 +125,7 @@ certbot certonly --apache -d www.donpau.com -d donpau.com
 
 cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 <VirtualHost *:80>
-    ServerAdmin info@paotung.org
+    ServerAdmin baopad@yahoo.com
     ServerName www.donpau.com
     ServerAlias donpau.com
     DocumentRoot "/var/www/www.donpau.com"
@@ -135,7 +135,7 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 </VirtualHost>
 Listen 446
 <VirtualHost *:443 *:446>
-    ServerAdmin info@paotung.org
+    ServerAdmin baopad@yahoo.com
     ServerName www.donpau.com
     ServerAlias donpau.com
     DocumentRoot "/var/www/www.donpau.com"
