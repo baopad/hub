@@ -11,6 +11,8 @@ sudo -i
 apt update
 apt install curl
 apt remove iptables             //oci等带有iptables
+
+******安装XRAY******
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
