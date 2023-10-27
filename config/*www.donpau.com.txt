@@ -115,16 +115,19 @@ a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
 echo "ServerSignature Off" >> /etc/apache2/apache2.conf
-
-
-******安装CERTBOY******
-apt install certbot
-systemctl stop apache2
-certbot certonly --standalone -d www.donpau.com -d donpau.com
-
-******配置APACHE******
 sed -i 's/Listen 443/Listen 444/' /etc/apache2/ports.conf
 sed -i 's/:443/:444/' /etc/apache2/sites-available/default-ssl.conf
+systemctl restart apache2
+
+******安装配置CERTBOY******
+apt install snapd
+snap install core
+snap refresh core
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
+certbot certonly --apache -d www.donpau.com -d donpau.com
+
+******配置APACHE******
 mkdir -p /var/www/www.donpau.com
 chmod -R 755 /var/www/www.donpau.com
 cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
@@ -171,22 +174,18 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 EOF
 a2ensite www.donpau.com.conf
 apache2ctl configtest
+systemctl restart apache2
+
+续订
+certbot renew --dry-run
+systemctl restart xray
+systemctl status xray
 systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
 systemctl reload apache2
-systemctl restart apache2
 systemctl status apache2
 
-******更新证书******
-systemctl stop apache2
-certbot renew --dry-run
-******自动证书******
-crontab -e
-1 0 1 1,3,5,7,9,11 * systemctl stop apache2
-2 0 1 1,3,5,7,9,11 * certbot renew --dry-run
-3 0 1 1,3,5,7,9,11 * systemctl start apache2
-systemctl enable cron
 
 
 
