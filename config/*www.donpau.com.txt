@@ -127,6 +127,7 @@ apt install certbot
 systemctl stop apache2
 certbot certonly --standalone -d www.donpau.com -d donpau.com
 
+******配置APACHE******
 cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin baopad@yahoo.com
