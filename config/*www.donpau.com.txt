@@ -159,6 +159,9 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
+    RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+    RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+    RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/www.donpau.com/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/www.donpau.com/privkey.pem"
