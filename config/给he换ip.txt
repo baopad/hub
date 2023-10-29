@@ -15,7 +15,7 @@ EOF
 
  auto ipv6
   iface ipv6 inet6 v4tunnel
-   address 2001:470:a:38b::ff:ff
+   address 2001:470:a:38b::8888:8888
    netmask 64
    endpoint 216.218.226.238
    local 192.3.249.168
