@@ -168,6 +168,7 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/www.donpau.com/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/www.donpau.com/privkey.pem"
+    Include "/etc/letsencrypt/options-ssl-apache.conf"
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
     Protocols h2 http/1.1
 </VirtualHost>
