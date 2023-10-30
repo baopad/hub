@@ -1,10 +1,10 @@
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
-A record:           www.donpau.com     66.152.171.78
-A record:           donpau.com     66.152.171.78
-AAAA record:        www.donpau.com     [2001:470:a:242::8888:8888]
-AAAA record:        donpau.com     [2001:470:a:242::8888:8888]
+A record:           www.donpau.com     192.3.249.168
+A record:           donpau.com     192.3.249.168
+AAAA record:        www.donpau.com     [2001:470:a:38b::8888:8888]
+AAAA record:        donpau.com     [2001:470:a:38b::8888:8888]
 
 
 sudo -i
