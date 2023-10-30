@@ -170,6 +170,9 @@ sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/
 ------------------------
 
 
+crontab -e
+0 0 1 * * /sbin/reboot
+systemctl enable cron
 
 开启BBR
 ------------------------
