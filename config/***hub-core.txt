@@ -27,7 +27,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                        "id": "3c02dc15-56ae-7889-8936-9a2ea8ff8666"
                     }
                 ]
             },
