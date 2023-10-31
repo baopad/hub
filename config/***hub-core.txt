@@ -130,7 +130,7 @@ certbot certonly --apache -d hub.paotung.org
 ******配置APACHE******
 mkdir -p /var/www/hub.paotung.org
 chmod -R 755 /var/www/hub.paotung.org
-cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
+cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
