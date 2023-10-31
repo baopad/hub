@@ -12,3 +12,14 @@ WARNING: DO NOT MOVE OR RENAME THESE FILES!
 
 We recommend not moving these files. For more information, see the Certbot
 User Guide at https://certbot.eff.org/docs/using.html#where-are-my-certificates.
+
+
+mkdir -p /etc/letsencrypt/live/hub.paotung.org
+chmod -R 755 /etc/letsencrypt/live/hub.paotung.org
+cd /etc/letsencrypt/live/hub.paotung.org
+
+wget https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/README
+wget https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/cert.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/chain.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/fullchain.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/privkey.pem
