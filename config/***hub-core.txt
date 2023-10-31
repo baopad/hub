@@ -125,26 +125,24 @@ snap install core
 snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d www.donpau.com -d donpau.com
+certbot certonly --apache -d hub.paotung.org
 
 ******配置APACHE******
-mkdir -p /var/www/www.donpau.com
-chmod -R 755 /var/www/www.donpau.com
+mkdir -p /var/www/hub.paotung.org
+chmod -R 755 /var/www/hub.paotung.org
 cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 <VirtualHost *:80>
-    ServerAdmin baopad@yahoo.com
-    ServerName www.donpau.com
-    ServerAlias donpau.com
-    DocumentRoot "/var/www/www.donpau.com"
+    ServerAdmin info@paotung.org
+    ServerName hub.paotung.org
+    DocumentRoot "/var/www/hub.paotung.org"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
 <VirtualHost *:444>
-    ServerAdmin baopad@yahoo.com
-    ServerName www.donpau.com
-    ServerAlias donpau.com
-    DocumentRoot "/var/www/www.donpau.com"
+    ServerAdmin info@paotung.org
+    ServerName hub.paotung.org
+    DocumentRoot "/var/www/hub.paotung.org"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
         AllowOverride None
@@ -159,14 +157,9 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
-    RewriteCond %{HTTP_HOST} ^scdn\.paotung\.org$ [NC]
-    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
-    RewriteCond %{HTTP:Upgrade} !=websocket [NC]
-    RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-    RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/www.donpau.com/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/www.donpau.com/privkey.pem"
@@ -175,7 +168,7 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     Protocols h2 http/1.1
 </VirtualHost>
 EOF
-a2ensite www.donpau.com.conf
+a2ensite hub.paotung.org.conf
 apache2ctl configtest
 systemctl restart apache2
 
@@ -195,10 +188,10 @@ systemctl status apache2
 
 
 ---------删除网站及证书---------------
-a2dissite www.donpau.com.conf
-rm /etc/apache2/sites-available/www.donpau.com.conf
-rm /etc/apache2/sites-enabled/www.donpau.com.conf
-rm -r /var/www/www.donpau.com
+a2dissite hub.paotung.org.conf
+rm /etc/apache2/sites-available/hub.paotung.org.conf
+rm /etc/apache2/sites-enabled/hub.paotung.org.conf
+rm -r /var/www/hub.paotung.org
 systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
@@ -206,9 +199,9 @@ certbot delete
 -----------------------
 
 4.File download
-cd /var/www/www.donpau.com
-rm -r /var/www/www.donpau.com/*
-wget -cP /var/www/www.donpau.com https://github.com/baopad/hub/archive/refs/heads/main.zip
+cd /var/www/hub.paotung.org
+rm -r /var/www/hub.paotung.org/*
+wget -cP /var/www/hub.paotung.org https://github.com/baopad/hub/archive/refs/heads/main.zip
 unzip -o main.zip
 cd *main
 mv docs/* ../
@@ -216,14 +209,21 @@ cd ../
 rm -r main.zip hub-main
 cd test
 dd if=/dev/zero of=1K.bin bs=1K count=1
+dd if=/dev/zero of=5K.bin bs=1K count=5
 dd if=/dev/zero of=10K.bin bs=1K count=10
+dd if=/dev/zero of=50K.bin bs=1K count=50
 dd if=/dev/zero of=100K.bin bs=1K count=100
+dd if=/dev/zero of=500K.bin bs=1K count=500
 dd if=/dev/zero of=1000K.bin bs=1K count=1000
 dd if=/dev/zero of=1M.bin bs=1M count=1
+dd if=/dev/zero of=5M.bin bs=1M count=5
 dd if=/dev/zero of=10M.bin bs=1M count=10
+dd if=/dev/zero of=50M.bin bs=1M count=50
 dd if=/dev/zero of=100M.bin bs=1M count=100
+dd if=/dev/zero of=500M.bin bs=1M count=500
 dd if=/dev/zero of=1000M.bin bs=1M count=1000
 dd if=/dev/zero of=1G.bin bs=1G count=1
+dd if=/dev/zero of=5G.bin bs=1G count=5
 dd if=/dev/zero of=10G.bin bs=1G count=10
 
 
