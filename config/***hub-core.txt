@@ -139,7 +139,7 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-<VirtualHost *:444>
+<VirtualHost localhost:444>
     ServerAdmin info@paotung.org
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
