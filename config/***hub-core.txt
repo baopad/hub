@@ -84,15 +84,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                     ]
                 }
             }
-        },
-        {
-            "port": 8388,
-            "protocol": "shadowsocks",
-            "settings": {
-                "password": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                "method": "aes-128-gcm",
-                "network": "tcp,udp"
-            }
         }
     ],
     "outbounds": [
