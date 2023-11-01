@@ -30,7 +30,7 @@ vi /etc/network/interfaces
    local 192.3.249.168
    ttl 255
    gateway 2001:470:a:38b::1
-EOF
+
 
 
 ------安装启动网络工具包------
