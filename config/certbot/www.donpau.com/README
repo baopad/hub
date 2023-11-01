@@ -12,3 +12,13 @@ WARNING: DO NOT MOVE OR RENAME THESE FILES!
 
 We recommend not moving these files. For more information, see the Certbot
 User Guide at https://certbot.eff.org/docs/using.html#where-are-my-certificates.
+
+mkdir -p /etc/letsencrypt/live/www.donpau.com
+chmod -R 755 /etc/letsencrypt/live/www.donpau.com
+cd /etc/letsencrypt/live/www.donpau.com
+
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/README
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/cert.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/chain.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/fullchain.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/privkey.pem
