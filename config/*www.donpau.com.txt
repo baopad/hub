@@ -18,10 +18,10 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
 
-
-vi /etc/network/interfaces
-
-auto ipv6
+将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
+------------------------------------
+cat > /etc/network/interfaces.d/ipv6 <<EOF
+ auto ipv6
   iface ipv6 inet6 v4tunnel
    address 2001:470:a:38b::8888:8888
    netmask 64
@@ -29,9 +29,22 @@ auto ipv6
    local 192.3.249.168
    ttl 255
    gateway 2001:470:a:38b::1
+EOF
 
+
+------安装启动网络工具包------
+//apt install net-tools iproute2
 ifup ipv6
+ifconfig
 systemctl restart networking
+
+TIPS：若提示 ifup: unknown interface ipv6 
+echo 'source /etc/network/interfaces.d/*' >>/etc/network/interfaces
+
+
+
+
+
 
 apt remove iptables             //oci等带有iptables
 
