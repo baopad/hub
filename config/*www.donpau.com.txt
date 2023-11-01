@@ -18,10 +18,10 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
 
+
 将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
 ------------------------------------
-tee /etc/network/interfaces <<EOF
-
+vi /etc/network/interfaces
  auto ipv6
   iface ipv6 inet6 v4tunnel
    address 2001:470:a:38b::8888:8888
