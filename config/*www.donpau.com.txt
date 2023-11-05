@@ -224,6 +224,9 @@ certbot renew --dry-run
 
 systemctl restart xray
 systemctl status xray
+systemctl restart apache2
+systemctl status apache2
+
 systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
