@@ -26,7 +26,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     },
     "inbounds": [
         {
-            "listen": "127.0.0.1",
+            "listen": "0.0.0.0",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
@@ -42,7 +42,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "listen": "127.0.0.1",
+            "listen": "0.0.0.0",
             "port": 8088,
             "protocol": "VLESS",
             "settings": {
