@@ -312,7 +312,8 @@ sysctl -p
 
 
 
-
+wget -cP /etc/letsencrypt/live/www.donpau.com https://raw.githubusercontent.com/baopad/hub/main/config/certbot/donpau.com/fullchain.pem
+wget -cP /etc/letsencrypt/live/www.donpau.com https://raw.githubusercontent.com/baopad/hub/main/config/certbot/www.donpau.com/privkey.pem
 
 
 
