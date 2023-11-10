@@ -150,9 +150,10 @@ cat > /etc/apache2/sites-available/./oci.cbu.net.conf <<EOF
     </Directory>
     ErrorDocument 403 "/error/403.html"
     ErrorDocument 404 "/error/404.html"
+    SSLProxyEngine On
+    ProxyPass "/hub" "ws://hub.paotung.org:8080/"
+    ProxyPassReverse "ws://hub.paotung.org:8080/"
     RewriteEngine On
-    RewriteCond %{REQUEST_URI} ^/?hub(.*)$ [NC]
-    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
