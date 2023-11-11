@@ -1,9 +1,9 @@
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
-A record:           oci.cbu.net     192.3.249.168
-AAAA record:        oci.cbu.net     [2001:470:a:38b::8888:8888]
-
+A record:           oci.cbu.net     131.186.47.138
+AAAA record:        oci.cbu.net     [2603:c021:8012:d500::8]
+AAAA record:        oci.cbu.net     [2603:c021:8012:d500::88]
 
 
 sudo -i
