@@ -154,6 +154,8 @@ cat > /etc/apache2/sites-available/./oci.cbu.net.conf <<EOF
     ProxyPass "/hub" "https://www.google.com:443/"
     ProxyPassReverse "/hub" "https://www.google.com:443/"
     RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^/?hub(.*)$ [NC]
+    RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
