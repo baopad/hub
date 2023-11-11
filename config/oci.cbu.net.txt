@@ -262,7 +262,7 @@ systemctl enable cron
 
 
 0 0 2,7,12,17,22,27 * * wget -cP /root https://hub.paotung.org/test/1G.bin
-0 0 2,7,12,17,22,27 * * rm /root/1G*.bin
+10 0 2,7,12,17,22,27 * * rm /root/1G*.bin
 
 
 
