@@ -159,7 +159,6 @@ cat > /etc/apache2/sites-available/./oci.cbu.net.conf <<EOF
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
-    RewriteCond %{HTTP:Connection} upgrade [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/oci.cbu.net/fullchain.pem"
