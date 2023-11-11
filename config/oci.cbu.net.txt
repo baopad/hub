@@ -256,23 +256,13 @@ sysctl -p
 
 
 
+crontab -e
+0 0 1 * * /sbin/reboot
+systemctl enable cron
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-wget -cP /etc/letsencrypt/live/oci.cbu.net https://raw.githubusercontent.com/baopad/hub/main/config/certbot/oci.cbu.net/fullchain.pem
-wget -cP /etc/letsencrypt/live/oci.cbu.net https://raw.githubusercontent.com/baopad/hub/main/config/certbot/oci.cbu.net/privkey.pem
+0 0 2,7,12,17,22,27 * * wget -cP /root https://hub.paotung.org/test/1G.bin
+0 0 2,7,12,17,22,27 * * rm /root/1G*.bin
 
 
 
