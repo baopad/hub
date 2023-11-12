@@ -130,6 +130,7 @@ snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --apache -d oci.cbu.net
+certbot certonly --apache -d oci.publicvm.com
 
 ******配置APACHE oci.cbu.net******
 mkdir -p /var/www/oci.cbu.net
