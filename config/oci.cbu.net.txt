@@ -4,6 +4,9 @@
 A record:           oci.cbu.net     131.186.47.138
 AAAA record:        oci.cbu.net     [2603:c021:8012:d500::8]
 AAAA record:        oci.cbu.net     [2603:c021:8012:d500::88]
+A record:           oci.publicvm.com     131.186.47.138
+AAAA record:        oci.publicvm.com     [2603:c021:8012:d500::8]
+AAAA record:        oci.publicvm.com     [2603:c021:8012:d500::88]
 
 
 sudo -i
