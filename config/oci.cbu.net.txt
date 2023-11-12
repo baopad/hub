@@ -178,7 +178,7 @@ systemctl restart apache2
 systemctl status apache2
 
 ******配置APACHE oci.publicvm.com******
-mkdir -p /var/www/oci.publicvm.com
+ln -s oci.cbu.net oci.publicvm.com
 chmod -R 755 /var/www/oci.publicvm.com
 cat > /etc/apache2/sites-available/./oci.publicvm.com.conf <<EOF
 <VirtualHost *:80>
