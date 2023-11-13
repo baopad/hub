@@ -310,10 +310,12 @@ crontab -e
 systemctl enable cron
 
 
+
+0 0 1 * * /sbin/reboot
 0 0 2,7,12,17,22,27 * * wget -cP /root https://hub.paotung.org/test/1G.bin
-10 0 2,7,12,17,22,27 * * rm /root/1G*.bin
-0 2,4,6 * * * dd if=/dev/zero of=/root/1G.bin bs=1M count=1024
-0 3,5,7 * * * rm /root/1G*.bin
+0 1 2,7,12,17,22,27 * * rm /root/1G*.bin
+0 2,10,18 * * * dd if=/dev/zero of=/root/1G.bin bs=1M count=1024
+0 6,14,22 * * * rm /root/1G*.bin
 
 
 
