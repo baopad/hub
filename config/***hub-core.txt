@@ -1,3 +1,7 @@
+The validity of the code never expires. However, the code can only be used once.
+108050356922
+
+
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
