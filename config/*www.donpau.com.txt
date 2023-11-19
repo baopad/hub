@@ -30,6 +30,12 @@ vi /etc/network/interfaces
    local 192.3.249.168
    ttl 255
    gateway 2001:470:a:38b::1
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::44/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::66/64
+
+
+
+
 
 
 
