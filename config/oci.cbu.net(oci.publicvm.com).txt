@@ -258,6 +258,18 @@ systemctl stop apache2
 systemctl start apache2
 certbot delete
 -----------------------
+---------删除网站及证书---------------
+a2dissite oci.publicvm.com.conf
+rm /etc/apache2/sites-available/oci.publicvm.com.conf
+rm /etc/apache2/sites-enabled/oci.publicvm.com.conf
+rm -r /var/www/oci.publicvm.com
+systemctl reload apache2
+systemctl stop apache2
+systemctl start apache2
+certbot delete
+-----------------------
+
+
 
 4.File download
 cd /var/www/oci.cbu.net
