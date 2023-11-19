@@ -1,9 +1,11 @@
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
+//https://freedns.afraid.org/
 A record:           oci.cbu.net     131.186.47.138
 AAAA record:        oci.cbu.net     [2603:c021:8012:d500::66]
 AAAA record:        oci.cbu.net     [2603:c021:8012:d500::88]
+//https://dnsexit.com/Login.sv
 A record:           oci.publicvm.com     131.186.47.138
 AAAA record:        oci.publicvm.com     [2603:c021:8012:d500::66]
 AAAA record:        oci.publicvm.com     [2603:c021:8012:d500::88]
