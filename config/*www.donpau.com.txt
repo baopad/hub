@@ -198,9 +198,9 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     ErrorDocument 403 "/error/403.html"
     ErrorDocument 404 "/error/404.html"
     RewriteEngine On
-    RewriteCond %{REQUEST_URI} ^/?hub(.*)$ [NC]
+    RewriteCond %{REQUEST_URI} ^/?hubvm(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
-    RewriteCond %{REQUEST_URI} ^/?hub(.*)$ [NC]
+    RewriteCond %{REQUEST_URI} ^/?hubvl(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8088/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
