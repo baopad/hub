@@ -44,7 +44,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         {
             "listen": "0.0.0.0",
             "port": 8088,
-            "protocol": "VLESS",
+            "protocol": "vless",
             "settings": {
                 "clients": [
                     {
