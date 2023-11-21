@@ -18,6 +18,9 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
 
+cd /etc/network/
+rm interfaces
+wget https://raw.githubusercontent.com/baopad/rss/main/vpn/interfaces
 
 将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
 ------------------------------------
