@@ -100,6 +100,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerName hubc.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
+    Protocols h2c http/1.1
 </VirtualHost>
 <VirtualHost *:443>
     ServerAdmin baopad@yahoo.com
