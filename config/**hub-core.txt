@@ -98,7 +98,6 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
 <VirtualHost *:80>
-    ServerAdmin baopad@yahoo.com
     ServerName huc.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
 </VirtualHost>
