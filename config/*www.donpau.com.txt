@@ -33,21 +33,19 @@ vi /etc/network/interfaces
    local 192.3.249.168
    ttl 255
    gateway 2001:470:a:38b::1
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::11/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::22/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::33/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::44/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::55/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::66/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::77/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::88/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::99/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::aa/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::bb/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::cc/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::dd/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::ee/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::ff/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::3/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::4/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::5/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::6/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::7/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::8/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::9/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::a/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::b/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::c/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::d/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::e/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::f/64
 
 
 
