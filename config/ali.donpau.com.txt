@@ -334,8 +334,6 @@ Listen 88
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?hubvl(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8088/$1" [P,L]
-    RewriteCond %{REQUEST_URI} ^/?asdfg(.*)$ [NC]
-    RewriteRule ^/?(.*) "https://hub.paotung.org:443/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
@@ -343,8 +341,6 @@ Listen 88
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} !=websocket [NC]
-    RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-    RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/ali.donpau.com/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/ali.donpau.com/privkey.pem"
