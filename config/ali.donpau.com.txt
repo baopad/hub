@@ -310,9 +310,6 @@ mkdir -p /var/www/ali.donpau.com
 chmod -R 755 /var/www/ali.donpau.com
 cat > /etc/apache2/sites-available/./ali.donpau.com.conf <<EOF
 Listen 88
-mkdir -p /var/www/ali.donpau.com
-chmod -R 755 /var/www/ali.donpau.com
-cat > /etc/apache2/sites-available/./ali.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin baopad@yahoo.com
     ServerName ali.donpau.com
