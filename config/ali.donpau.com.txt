@@ -2,7 +2,7 @@
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
 A record:           ali.donpau.com     8.134.19.54
-AAAA record:        ali.donpau.com     [2001:470:a:38b::88]
+AAAA record:        ali.donpau.com     [2001:470:18:a7b::2]
 
 
 添加HE IPv6    https://tunnelbroker.net/  
