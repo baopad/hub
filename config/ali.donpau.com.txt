@@ -245,6 +245,7 @@ certbot certonly --apache -d ali.donpau.com
 mkdir -p /var/www/ali.donpau.com
 chmod -R 755 /var/www/ali.donpau.com
 cat > /etc/apache2/sites-available/./ali.donpau.com.conf <<EOF
+Listen 88
 <VirtualHost *:88>
     ServerAdmin baopad@yahoo.com
     DocumentRoot "/var/www/ali.donpau.com"
@@ -268,15 +269,18 @@ cat > /etc/apache2/sites-available/./ali.donpau.com.conf <<EOF
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
-    RewriteCond %{HTTP:Upgrade} !=websocket [NC]
-    RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-    RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-    Protocols h2 http/1.1
 </VirtualHost>
 EOF
 a2ensite ali.donpau.com.conf
 apache2ctl configtest
 systemctl restart apache2
+systemctl reload apache2
+systemctl stop apache2
+systemctl start apache2
+systemctl reload apache2
+systemctl restart apache2
+systemctl status apache2
+
 
 续订
 snap remove certbot
