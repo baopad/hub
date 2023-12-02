@@ -197,7 +197,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "domain": [
                     "geosite:netflix",
                     "geosite:disney",
-                    "google.com","live.com","bing.com","godaddy.com","yahoo.com","openai.com","microsoft.com",
+                    "google.com","live.com","bing.com","godaddy.com","yahoo.com","openai.com","microsoft.com"
                 ]
             },
             {
