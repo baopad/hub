@@ -183,6 +183,43 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 }
             }
         },
+    {
+      "tag": "staticIP",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "cfp.paotung.org",
+            "port": 443,
+            "users": [
+              {
+                "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                "alterId": 0,
+                "email": "t@t.tt",
+                "security": "auto",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": false,
+          "show": false
+        },
+        "wsSettings": {
+          "path": "/vless",
+          "headers": {}
+        }
+      },
+      "mux": {
+        "enabled": false,
+        "concurrency": -1
+      }
+    },
         {
             "tag": "direct",
             "protocol": "freedom",
@@ -197,7 +234,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "domain": [
                     "geosite:netflix",
                     "geosite:disney",
-                    "google.com","live.com","bing.com","godaddy.com","yahoo.com","openai.com","microsoft.com"
+                    "google.com","live.com","bing.com","godaddy.com","yahoo.com","openai.com","whoer.net"
                 ]
             },
             {
