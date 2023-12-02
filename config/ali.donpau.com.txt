@@ -112,7 +112,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         },
         {
             "listen": "0.0.0.0",
-            "port": 443,
+            "port": 447,
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -148,16 +148,126 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "password": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
                 "method": "aes-128-gcm",
-                "network": "tcp,udp"
+                "network": "tcp,udp",
+                "security": "none"
+            }
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 1080,
+            "protocol": "socks",
+            "settings": {
+                "auth": "password",
+                "accounts": [
+                    {
+                        "user": "user",
+                        "pass": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "udp": true,
+                "ip": "127.0.0.1"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": 1081,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "ip": "127.0.0.1"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 1088,
+            "protocol": "http",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "allowTransparent": false
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none"
             }
         }
     ],
     "outbounds": [
         {
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "www.donpau.com",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                                "alterId": 0,
+                                "security": "auto",
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "reality",
+                "realitySettings": {
+                    "serverName": "www.donpau.com",
+                    "fingerprint": "chrome",
+                    "show": false,
+                    "publicKey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
+                    "shortId": "",
+                    "spiderX": ""
+                }
+            }
+        },
+        {
+            "tag": "direct",
             "protocol": "freedom",
             "settings": {}
         }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "netflix_proxy",
+                "domain": [
+                    "geosite:netflix",
+                    "geosite:disney",
+                    "whoer.net"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "geosite:cn"
+                ]
+            },
+        {
+            "type": "field",
+            "outboundTag": "direct",
+            "ip": [
+                "geoip:private",
+                "geoip:cn"
+            ]
+        }
     ]
+  }
 }
 EOF
 systemctl restart xray
