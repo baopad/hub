@@ -61,7 +61,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         },
         {
             "listen": "0.0.0.0",
-            "port": 447,
+            "port": 444,
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -193,8 +193,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                         "port": 443,
                         "users": [
                             {
-                                 "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                                 "alterId": 0,
+                                "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
                                 "security": "auto",
                                 "encryption": "none"
                             }
