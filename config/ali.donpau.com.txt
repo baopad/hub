@@ -261,8 +261,6 @@ Listen 88
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?hubvl(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8088/$1" [P,L]
-    RewriteCond %{REQUEST_URI} ^/?asdfg(.*)$ [NC]
-    RewriteRule ^/?(.*) "https://hub.paotung.org:443/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
