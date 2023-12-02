@@ -242,23 +242,12 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --apache -d ali.donpau.com
 
 ******配置APACHE******
-mkdir -p /var/www/www.donpau.com
-chmod -R 755 /var/www/www.donpau.com
-cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
-<VirtualHost *:80>
+mkdir -p /var/www/ali.donpau.com
+chmod -R 755 /var/www/ali.donpau.com
+cat > /etc/apache2/sites-available/./ali.donpau.com.conf <<EOF
+<VirtualHost *:88>
     ServerAdmin baopad@yahoo.com
-    ServerName www.donpau.com
-    ServerAlias donpau.com
-    DocumentRoot "/var/www/www.donpau.com"
-    RewriteEngine On
-    RewriteCond %{HTTPS} off
-    RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</VirtualHost>
-<VirtualHost localhost:444>
-    ServerAdmin baopad@yahoo.com
-    ServerName www.donpau.com
-    ServerAlias donpau.com
-    DocumentRoot "/var/www/www.donpau.com"
+    DocumentRoot "/var/www/ali.donpau.com"
     <Directory /var/www/>
         Options -Indexes +FollowSymLinks
         AllowOverride None
