@@ -19,7 +19,7 @@ lsmod | grep bbr
 apt remove iptables             //oci等带有iptables
 
 ******安装XRAY******
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "log": {
