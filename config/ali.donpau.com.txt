@@ -1,7 +1,7 @@
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
-A record:           www.donpau.com     192.3.249.168
+A record:           ali.donpau.com     8.134.19.54
 A record:           donpau.com     192.3.249.168
 AAAA record:        www.donpau.com     [2001:470:a:38b::88]
 AAAA record:        donpau.com     [2001:470:a:38b::88]
