@@ -187,7 +187,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 1088,
             "protocol": "http",
             "settings": {
