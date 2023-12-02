@@ -2,9 +2,7 @@
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
 A record:           ali.donpau.com     8.134.19.54
-A record:           donpau.com     192.3.249.168
-AAAA record:        www.donpau.com     [2001:470:a:38b::88]
-AAAA record:        donpau.com     [2001:470:a:38b::88]
+AAAA record:        ali.donpau.com     [2001:470:a:38b::88]
 
 
 sudo -i
@@ -17,55 +15,6 @@ echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
-
-cd /etc/network/
-rm interfaces
-wget https://raw.githubusercontent.com/baopad/rss/main/vpn/interfaces
-
-将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
-------------------------------------
-vi /etc/network/interfaces
- auto ipv6
-  iface ipv6 inet6 v4tunnel
-   address 2001:470:a:38b::2
-   netmask 64
-   endpoint 216.218.226.238
-   local 192.3.249.168
-   ttl 255
-   gateway 2001:470:a:38b::1
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::3/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::4/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::5/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::6/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::7/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::8/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::9/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::a/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::b/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::c/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::d/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::e/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::f/64
-
-
-
-
-
-
-
-------安装启动网络工具包------
-//apt install net-tools iproute2
-ifup ipv6
-ifconfig
-systemctl restart networking
-
-TIPS：若提示 ifup: unknown interface ipv6 
-echo 'source /etc/network/interfaces.d/*' >>/etc/network/interfaces
-
-
-
-
-
 
 apt remove iptables             //oci等带有iptables
 
