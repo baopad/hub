@@ -6,30 +6,36 @@ AAAA record:        ali.donpau.com     [2001:470:a:38b::88]
 
 
 添加HE IPv6    https://tunnelbroker.net/  
-TIPS: 如果是 NAT VPS 或 VPC 内网方案则需要将local字段后面的公网 IP 替换为内网 IP 。获取命令：ip route get 8.8.8.8 | grep -oP 'src \K\S+'
+TIPS: 如果是 NAT VPS 或 VPC 内网方案则需要将local字段后面的公网 IP 替换为内网 IP 。
+获取命令：
+ip route get 8.8.8.8 | grep -oP 'src \K\S+'
 
 vi /etc/network/interfaces
- auto ipv6
-  iface ipv6 inet6 v4tunnel
-   address 2001:470:18:a7b::2
-   netmask 64
-   endpoint 216.218.226.238
-   local 172.31.66.33
-   ttl 255
-   gateway 2001:470:18:a7b::1
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::3/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::4/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::5/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::6/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::7/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::8/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::9/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::a/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::b/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::c/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::d/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::e/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::f/64
+auto he-ipv6
+iface he-ipv6 inet6 v4tunnel
+        address 2001:470:18:a7b::2
+        netmask 64
+        endpoint 216.218.221.6
+        local 172.31.66.33
+        ttl 255
+        gateway 2001:470:18:a7b::1
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::3/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::4/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::5/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::6/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::7/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::8/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::9/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::a/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::b/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::c/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::d/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::e/64
+        up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::f/64
+
+
+
+
 
 
 sudo -i
