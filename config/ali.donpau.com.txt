@@ -37,6 +37,12 @@ systemctl restart networking
 sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 
 
+***win***
+netsh interface teredo set state disabled
+netsh interface ipv6 add v6v4tunnel interface=IP6Tunnel localaddress=172.31.66.33 remoteaddress=216.218.221.6
+netsh interface ipv6 add address interface=IP6Tunnel address=2001:470:18:a7b::2
+netsh interface ipv6 add route prefix=::/0 interface=IP6Tunnel nexthop=2001:470:18:a7b::1
+
 
 sudo -i
 apt update
