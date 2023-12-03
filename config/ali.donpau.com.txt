@@ -279,7 +279,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "field",
                 "outboundTag": "IP4_out",
                 "domain": [
-                    "",""
+                    "youtube.com","googlevideo.com"
                 ]
             },
             {
