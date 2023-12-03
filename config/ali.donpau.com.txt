@@ -124,9 +124,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                     ],
                     "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
                     "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
-                    "shortIds": [
-                        ""
-                    ]
+                    "shortIds": [""]
                 }
             }
         },
