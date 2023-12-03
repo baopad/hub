@@ -191,6 +191,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         {
             "protocol": "vless",
             "settings": {
+                "domainStrategy": "UseIPv4",
                 "vnext": [
                     {
                         "address": "www.donpau.com",
@@ -278,7 +279,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "field",
                 "outboundTag": "IP4_out",
                 "domain": [
-                    "youtube.com","googlevideo.com"
+                    "",""
                 ]
             },
             {
