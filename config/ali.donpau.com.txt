@@ -252,16 +252,16 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "tag": "direct",
-            "protocol": "freedom",
-            "settings": {}
-        },
-        {
             "tag": "IP4_out",
             "protocol": "freedom",
             "settings": {
                 "domainStrategy": "UseIPv4"
             }
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {}
         }
     ],
     "routing": {
@@ -272,6 +272,13 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "domain": [
                     "geosite:netflix",
                     "geosite:disney",
+                    "google.com","live.com","bing.com","godaddy.com","yahoo.com","openai.com","whoer.net"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "IP4_out",
+                "domain": [
                     "google.com","live.com","bing.com","godaddy.com","yahoo.com","openai.com","whoer.net"
                 ]
             },
