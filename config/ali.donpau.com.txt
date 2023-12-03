@@ -154,7 +154,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "ip": "127.0.0.1"
             },
             "streamSettings": {
-                "network": "ws",
+                "network": "tcp",
                 "security": "none"
             }
         },
