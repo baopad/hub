@@ -255,6 +255,13 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "tag": "direct",
             "protocol": "freedom",
             "settings": {}
+        },
+        {
+            "tag": "IP4_out",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv4"
+            }
         }
     ],
     "routing": {
