@@ -124,7 +124,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "network": "tcp",
                 "security": "reality",
                 "realitySettings": {
-                    "dest": "444",
+                    "dest": "8443",
                     "xver": 0,
                     "serverNames": [
                         "www.donpau.com",
@@ -165,8 +165,8 @@ a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
 echo "ServerSignature Off" >> /etc/apache2/apache2.conf
-sed -i 's/Listen 443/Listen 444/' /etc/apache2/ports.conf
-sed -i 's/:443/:444/' /etc/apache2/sites-available/default-ssl.conf
+sed -i 's/Listen 443/Listen 8443/' /etc/apache2/ports.conf
+sed -i 's/:443/:8443/' /etc/apache2/sites-available/default-ssl.conf
 systemctl restart apache2
 
 ******安装配置CERTBOY******
@@ -190,7 +190,7 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-<VirtualHost localhost:444>
+<VirtualHost localhost:8443>
     ServerAdmin baopad@yahoo.com
     ServerName www.donpau.com
     ServerAlias donpau.com
