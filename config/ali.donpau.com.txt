@@ -100,7 +100,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         },
         {
             "listen": "0.0.0.0",
-            "port": 8443,
+            "port": 443,
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -116,7 +116,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
-                    "dest": "443",
+                    "dest": "80",
                     "xver": 0,
                     "serverNames": [
                         "www.donpau.com",
