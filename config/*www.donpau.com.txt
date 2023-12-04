@@ -163,7 +163,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             {
                 "type": "field",
                 "outboundTag": "IP4_out",
-                "domain": ["google.com",""]
+                "domain": ["geosite:google",""]
             }
         ]
     }
