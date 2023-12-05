@@ -6,8 +6,9 @@
     AAAA record:        donpau.com          [2607:f130:0000:014e:0000:0000:545d:d91c]
     Cname record:       www.donpau.com      192.3.249.168
 
-
+程序安装：
 sudo -i
+apt remove iptables             //oci等带有iptables
 apt update
 apt upgrade
 apt install curl
@@ -18,64 +19,32 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
 
-cd /etc/network/
-rm interfaces
-wget https://raw.githubusercontent.com/baopad/rss/main/vpn/interfaces
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+apt install apache2
+a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
+echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
+echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
+echo "ServerSignature Off" >> /etc/apache2/apache2.conf
+sed -i 's/Listen 443/Listen 8443/' /etc/apache2/ports.conf
+sed -i 's/:443/:8443/' /etc/apache2/sites-available/default-ssl.conf
+apt install snapd
+snap install core
+snap refresh core
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
 
-将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
-------------------------------------
-vi /etc/network/interfaces
- auto ipv6
-  iface ipv6 inet6 v4tunnel
-   address 2001:470:a:38b::2
-   netmask 64
-   endpoint 216.218.226.238
-   local 192.3.249.168
-   ttl 255
-   gateway 2001:470:a:38b::1
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::3/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::4/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::5/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::6/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::7/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::8/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::9/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::a/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::b/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::c/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::d/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::e/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::f/64
+基础配置：
+certbot certonly --apache -d www.donpau.com -d donpau.com
+certbot renew --dry-run
+mkdir -p /var/www/www.donpau.com
+chmod -R 755 /var/www/www.donpau.com
 
-
-
-
-
-
-
-------安装启动网络工具包------
-//apt install net-tools iproute2
-ifup ipv6
-ifconfig
-systemctl restart networking
-
-TIPS：若提示 ifup: unknown interface ipv6 
-echo 'source /etc/network/interfaces.d/*' >>/etc/network/interfaces
-
-
-
-
-
-
-apt remove iptables             //oci等带有iptables
-
-******安装XRAY******
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root --without-geodata
+参数配置：
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
@@ -84,23 +53,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                         "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
                     }
                 ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        },
-        {
-            "listen": "0.0.0.0",
-            "port": 8088,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
-                    }
-                ],
-                "decryption": "none"
             },
             "streamSettings": {
                 "network": "ws",
@@ -126,76 +78,21 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "realitySettings": {
                     "dest": "8443",
                     "xver": 0,
-                    "serverNames": [
-                        "www.donpau.com",
-                        "donpau.com"
-                    ],
+                    "serverNames": ["www.donpau.com","donpau.com"],
                     "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
                     "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
                     "shortIds": [""]
                 }
-            }
-        },
-        {
-            "port": 8388,
-            "protocol": "shadowsocks",
-            "settings": {
-                "password": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                "method": "aes-128-gcm",
-                "network": "tcp,udp"
             }
         }
     ],
     "outbounds": [
         {
             "protocol": "freedom"
-        },
-        {
-            "tag": "IP4_out",
-            "protocol": "freedom",
-            "settings": {
-                "domainStrategy": "UseIPv4"
-            }
         }
-    ],
-    "routing": {
-        "rules": [
-            {
-                "type": "field",
-                "outboundTag": "IP4_out",
-                "domain": ["geosite:google",""]
-            }
-        ]
-    }
+    ]
 }
 EOF
-systemctl restart xray
-systemctl status xray
-systemctl restart xray
-systemctl status xray
-reboot
-
-******安装APACHE******
-apt install apache2
-a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
-echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
-echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
-echo "ServerSignature Off" >> /etc/apache2/apache2.conf
-sed -i 's/Listen 443/Listen 8443/' /etc/apache2/ports.conf
-sed -i 's/:443/:8443/' /etc/apache2/sites-available/default-ssl.conf
-systemctl restart apache2
-
-******安装配置CERTBOY******
-apt install snapd
-snap install core
-snap refresh core
-snap install --classic certbot
-ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d www.donpau.com -d donpau.com
-
-******配置APACHE******
-mkdir -p /var/www/www.donpau.com
-chmod -R 755 /var/www/www.donpau.com
 cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin baopad@yahoo.com
@@ -223,12 +120,8 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8080/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?hubvl(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8088/$1" [P,L]
-    RewriteCond %{REQUEST_URI} ^/?asdfg(.*)$ [NC]
-    RewriteRule ^/?(.*) "https://hub.paotung.org:443/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
-    RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
-    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} !=websocket [NC]
@@ -244,13 +137,12 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 EOF
 a2ensite www.donpau.com.conf
 apache2ctl configtest
-systemctl restart apache2
 
 续订
 snap remove certbot
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-certbot renew --dry-run
+
 
 systemctl restart xray
 systemctl status xray
