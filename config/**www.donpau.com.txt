@@ -144,7 +144,7 @@ systemctl restart xray
 systemctl restart apache2
 systemctl status xray
 systemctl status apache2
-
+reboot
 
 
 
