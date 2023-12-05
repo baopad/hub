@@ -29,14 +29,14 @@ echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
 echo "ServerSignature Off" >> /etc/apache2/apache2.conf
 sed -i 's/Listen 443/Listen 8443/' /etc/apache2/ports.conf
 sed -i 's/:443/:8443/' /etc/apache2/sites-available/default-ssl.conf
-systemctl restart apache2
 apt install snapd
 snap install core
 snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
 
-基础配置：
+基础配置：   /var/log/letsencrypt/letsencrypt.log
+systemctl restart apache2
 certbot certonly --apache -d www.donpau.com -d donpau.com
 certbot renew --dry-run
 mkdir -p /var/www/www.donpau.com
