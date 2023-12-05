@@ -5,6 +5,8 @@
     AAAA record:        donpau.com          [2607:f130:0000:014e:0000:0000:0ef4:566f]
     AAAA record:        donpau.com          [2607:f130:0000:014e:0000:0000:545d:d91c]
     Cname record:       www.donpau.com      192.3.249.168
+//查看都占用
+sudo lsof -i -P -n
 
 程序安装：
 sudo -i
