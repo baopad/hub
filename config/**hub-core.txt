@@ -1,7 +1,7 @@
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
-A record:           hub.paotung.org     66.152.171.78
+A record:           hub.paotung.org     192.3.249.168
 AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:0ef4:566f]
 AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:41ad:1175]
 
