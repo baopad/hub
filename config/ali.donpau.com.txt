@@ -327,12 +327,12 @@ Listen 88
 <VirtualHost *:80>
     ServerAdmin baopad@yahoo.com
     ServerName ali.donpau.com
-    DocumentRoot "/var/www/www.donpau.com"
+    DocumentRoot "/var/www/ali.donpau.com"
     RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-<VirtualHost *:443>
+<VirtualHost *:88>
     ServerAdmin baopad@yahoo.com
     ServerName ali.donpau.com
     DocumentRoot "/var/www/ali.donpau.com"
