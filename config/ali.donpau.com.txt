@@ -61,12 +61,9 @@ apt remove iptables             //oci等带有iptables
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
-    "log": {
-        "loglevel": "none"
-    },
     "inbounds": [
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
@@ -82,7 +79,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8088,
             "protocol": "vless",
             "settings": {
@@ -100,35 +97,28 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         },
         {
             "listen": "0.0.0.0",
-            "port": 443,
+            "port": 88,
             "protocol": "vless",
             "settings": {
                 "clients": [
                     {
-                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                        "flow": "xtls-rprx-vision"
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
                     }
                 ],
-                "decryption": "none"
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    }
+                ]
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "reality",
-                "realitySettings": {
-                    "show": false,
-                    "dest": "80",
-                    "xver": 0,
-                    "serverNames": [
-                        "www.donpau.com",
-                        "donpau.com"
-                    ],
-                    "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
-                    "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
-                    "shortIds": [""]
-                }
+                "security": "none"
             }
         },
         {
+            "listen": "127.0.0.1",
             "port": 8388,
             "protocol": "shadowsocks",
             "settings": {
@@ -139,44 +129,17 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "listen": "0.0.0.0",
-            "port": 1080,
-            "protocol": "socks",
-            "settings": {
-                "auth": "password",
-                "accounts": [
-                    {
-                        "user": "socks",
-                        "pass": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
-                    }
-                ]
-                //"udp": true,
-                //"ip": "127.0.0.1"
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        },
-        {
-            "listen": "0.0.0.0",
-            "port": 1081,
-            "protocol": "socks",
-            "settings": {
-                "auth": "noauth",
-                "allowTransparent": false,
-                "udp": true,
-                "ip": "127.0.0.1"
-            },
-            "streamSettings": {
-                "network": "tcp",
-                "security": "none"
-            }
-        },
-        {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 3128,
             "protocol": "http",
+            "sniffing": {
+                "enabled": true,
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ],
+                "routeOnly": false
+                },
             "settings": {
                 "auth": "noauth",
                 "udp": true,
@@ -195,9 +158,8 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                         "users": [
                             {
                                 "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                                "security": "auto",
-                                "encryption": "none",
-                                "flow": "xtls-rprx-vision"
+                                "flow": "xtls-rprx-vision",
+                                "encryption": "none"
                             }
                         ]
                     }
@@ -209,7 +171,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "realitySettings": {
                     "serverName": "www.donpau.com",
                     "fingerprint": "chrome",
-                    "show": false,
                     "publicKey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
                     "shortId": "",
                     "spiderX": ""
@@ -227,7 +188,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                         "users": [
                             {
                                 "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                                "security": "auto",
                                 "encryption": "none"
                             }
                         ]
@@ -242,16 +202,8 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                     "show": false
                 },
                 "wsSettings": {
-                    "path": "/vless",
-                    "headers": {}
+                    "path": "/vless"
                 }
-            }
-        },
-        {
-            "tag": "IP4_out",
-            "protocol": "freedom",
-            "settings": {
-                "domainStrategy": "UseIPv4"
             }
         },
         {
@@ -268,14 +220,9 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "domain": [
                     "geosite:netflix",
                     "geosite:disney",
-                    "google.com","live.com","bing.com","godaddy.com","yahoo.com","openai.com","whoer.net"
-                ]
-            },
-            {
-                "type": "field",
-                "outboundTag": "IP4_out",
-                "domain": [
-                    "",""
+                    "",
+                    "",
+                    "whoer.net"
                 ]
             },
             {
@@ -297,6 +244,11 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     }
 }
 EOF
+systemctl restart xray
+systemctl status xray
+systemctl restart xray
+systemctl status xray
+
 systemctl restart xray
 systemctl status xray
 systemctl restart xray
