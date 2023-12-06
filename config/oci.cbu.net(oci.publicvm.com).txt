@@ -49,7 +49,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "network": "tcp",
                 "security": "reality",
                 "realitySettings": {
-                    "dest": "localhost:444",
+                    "dest": 444,
                     "xver": 0,
                     "serverNames": ["oci.cbu.net","oci.publicvm.com"],
                     "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
