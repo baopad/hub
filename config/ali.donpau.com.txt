@@ -178,8 +178,8 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "tag": "staticIP",
-            "protocol": "vless",
+            "tag": "static",
+            "protocol": "vmess",
             "settings": {
                 "vnext": [
                     {
@@ -202,7 +202,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                     "show": false
                 },
                 "wsSettings": {
-                    "path": "/vless"
+                    "path": "/vmess"
                 }
             }
         },
@@ -216,12 +216,9 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         "rules": [
             {
                 "type": "field",
-                "outboundTag": "staticIP",
+                "outboundTag": "static",
                 "domain": [
                     "geosite:netflix",
-                    "geosite:disney",
-                    "",
-                    "",
                     "whoer.net"
                 ]
             },
