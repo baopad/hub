@@ -5,6 +5,39 @@ A record:           hub.paotung.org     192.3.249.168
 AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:0ef4:566f]
 AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:41ad:1175]
 
+将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
+------------------------------------
+vi /etc/network/interfaces
+ auto ipv6
+  iface ipv6 inet6 v4tunnel
+   address 2001:470:a:38b::2
+   netmask 64
+   endpoint 216.218.226.238
+   local 192.3.249.168
+   ttl 255
+   gateway 2001:470:a:38b::1
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::11/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::22/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::33/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::44/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::55/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::66/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::77/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::88/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::99/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::aa/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::bb/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::cc/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::dd/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::ee/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::ff/64
+
+systemctl restart networking
+
+ifconfig
+
+
+
 设置UTC时间
 sudo -i
 apt update
