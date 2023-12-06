@@ -148,7 +148,7 @@ cat > /etc/apache2/sites-available/./oci.cbu.net.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-<VirtualHost localhost:444>
+<VirtualHost localhost:8443>
     ServerAdmin oci@cbu.net
     ServerName oci.cbu.net
     DocumentRoot "/var/www/oci.cbu.net"
