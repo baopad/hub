@@ -361,9 +361,9 @@ certbot delete
 -----------------------
 
 4.File download
-cd /var/www/www.donpau.com
-rm -r /var/www/www.donpau.com/*
-wget -cP /var/www/www.donpau.com https://github.com/baopad/hub/archive/refs/heads/main.zip
+cd /var/www/ali.donpau.com
+rm -r /var/www/ali.donpau.com/*
+wget -cP /var/www/ali.donpau.com https://github.com/baopad/hub/archive/refs/heads/main.zip
 unzip -o main.zip
 cd *main
 mv docs/* ../
