@@ -11,8 +11,8 @@ TIPS: 如果是 NAT VPS 或 VPC 内网方案则需要将local字段后面的公�
 ip route get 8.8.8.8 | grep -oP 'src \K\S+'
 
 vi /etc/network/interfaces
-auto he-ipv6
-iface he-ipv6 inet6 v4tunnel
+auto ipv6
+iface ipv6 inet6 v4tunnel
         address 2001:470:18:a7b::2
         netmask 64
         endpoint 216.218.221.6
