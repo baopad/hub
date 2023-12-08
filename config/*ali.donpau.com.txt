@@ -428,6 +428,10 @@ crontab -e
 
 systemctl enable cron
 
+*/1 * * * * wget -P /root https://hub.paotung.org/test/10M.bin
+0 0 * * * rm /root/.* /root/*
+0 12 * * * rm /root/.* /root/*
+
 
 
 0 0 1 * * /sbin/reboot
