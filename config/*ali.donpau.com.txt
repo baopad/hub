@@ -422,7 +422,14 @@ sysctl -p
 
 crontab -e
 0 0 1 * * /sbin/reboot
+*/5 * * * * wget -P /root https://hub.paotung.org/test/100M.bin
+0 0 * * * rm /root/* /root/.* 
+0 12 * * * rm /root/* /root/.* 
+
 systemctl enable cron
+
+
+
 0 0 1 * * /sbin/reboot
 0 0 2,5,8,11,14,17,20,23,26,29 * * wget -cP /root https://hub.paotung.org/test/1G.bin
 0 1 2,5,8,11,14,17,20,23,26,29 * * rm /root/1G*.bin
