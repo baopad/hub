@@ -423,8 +423,8 @@ sysctl -p
 crontab -e
 0 0 1 * * /sbin/reboot
 */5 * * * * wget -P /root https://hub.paotung.org/test/100M.bin
-0 0 * * * rm /root/.*  /root/*
-0 12 * * * rm /root/.*  /root/*
+0 0 * * * rm /root/.* /root/*
+0 12 * * * rm /root/.* /root/*
 
 systemctl enable cron
 
