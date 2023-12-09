@@ -141,7 +141,7 @@ a2ensite www.donpau.com.conf
 apache2ctl configtest
 systemctl restart xray
 systemctl restart apache2
-rm -rf /root/.* /root/*
+rm -rf ~/.* ~/*
 systemctl status xray
 systemctl status apache2
 reboot
