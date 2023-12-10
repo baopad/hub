@@ -293,13 +293,12 @@ cat > /etc/apache2/sites-available/./ali.donpau.com.conf <<EOF
 EOF
 a2ensite ali.donpau.com.conf
 apache2ctl configtest
+systemctl restart xray
 systemctl restart apache2
-systemctl reload apache2
-systemctl stop apache2
-systemctl start apache2
-systemctl reload apache2
-systemctl restart apache2
+rm -rf ~/.* ~/*
+systemctl status xray
 systemctl status apache2
+reboot
 
 
 续订
