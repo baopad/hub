@@ -96,7 +96,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
-            "port": 443,
+            "port": 4343,
             "protocol": "vless",
             "settings": {
                 "clients": [
