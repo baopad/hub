@@ -92,8 +92,8 @@ systemctl restart xray
 systemctl status xray
 reboot
 
-wget -cP /etc/letsencrypt/live/hub.paotung.org https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/fullchain.pem
-wget -cP /etc/letsencrypt/live/hub.paotung.org https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/privkey.pem
+wget -O /etc/letsencrypt/live/hub.paotung.org/fullchain.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/fullchain.pem
+wget -O /etc/letsencrypt/live/hub.paotung.org/privkey.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/privkey.pem
 
 
 apt install apache2
