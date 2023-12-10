@@ -94,9 +94,6 @@ reboot
 
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
-    "log": {
-        "loglevel": "warning"
-    },
     "inbounds": [
         {
             "port": 443,
