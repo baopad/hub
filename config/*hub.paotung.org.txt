@@ -164,6 +164,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         }
     ]
 }
+EOF
 systemctl restart xray
 systemctl status xray
 
