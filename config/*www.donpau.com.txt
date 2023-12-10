@@ -186,6 +186,7 @@ dd if=/dev/zero of=1M.bin bs=1M count=1
 dd if=/dev/zero of=2M.bin bs=1M count=2
 dd if=/dev/zero of=5M.bin bs=1M count=5
 dd if=/dev/zero of=10M.bin bs=1M count=10
+dd if=/dev/zero of=20M.bin bs=1M count=20
 dd if=/dev/zero of=50M.bin bs=1M count=50
 dd if=/dev/zero of=100M.bin bs=1M count=100
 dd if=/dev/zero of=200M.bin bs=1M count=200
