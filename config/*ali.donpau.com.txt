@@ -344,9 +344,9 @@ certbot delete
 -----------------------
 
 4.File download
-cd /var/www/ali.donpau.com
-rm -r /var/www/ali.donpau.com/*
-wget -cP /var/www/ali.donpau.com https://github.com/baopad/hub/archive/refs/heads/main.zip
+cd /var/www/html
+rm -r /var/www/html/*
+wget -cP /var/www/html https://github.com/baopad/hub/archive/refs/heads/main.zip
 unzip -o main.zip
 cd *main
 mv docs/* ../
@@ -377,25 +377,6 @@ dd if=/dev/zero of=1G.bin bs=1G count=1
 dd if=/dev/zero of=2G.bin bs=1G count=2
 dd if=/dev/zero of=5G.bin bs=1G count=5
 dd if=/dev/zero of=10G.bin bs=1G count=10
-
-cd /var/www/html
-dd if=/dev/zero of=1K.bin bs=1K count=1
-dd if=/dev/zero of=5K.bin bs=1K count=5
-dd if=/dev/zero of=10K.bin bs=1K count=10
-dd if=/dev/zero of=50K.bin bs=1K count=50
-dd if=/dev/zero of=100K.bin bs=1K count=100
-dd if=/dev/zero of=500K.bin bs=1K count=500
-dd if=/dev/zero of=1000K.bin bs=1K count=1000
-dd if=/dev/zero of=1M.bin bs=1M count=1
-dd if=/dev/zero of=5M.bin bs=1M count=5
-dd if=/dev/zero of=10M.bin bs=1M count=10
-dd if=/dev/zero of=50M.bin bs=1M count=50
-dd if=/dev/zero of=100M.bin bs=1M count=100
-dd if=/dev/zero of=500M.bin bs=1M count=500
-dd if=/dev/zero of=1000M.bin bs=1M count=1000
-dd if=/dev/zero of=1G.bin bs=1M count=1024
-dd if=/dev/zero of=5G.bin bs=1M count=5120
-dd if=/dev/zero of=10G.bin bs=1M count=10240
 
 
 
