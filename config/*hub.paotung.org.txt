@@ -92,6 +92,84 @@ systemctl restart xray
 systemctl status xray
 reboot
 
+cat > /usr/local/etc/xray/./config.json <<EOF
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "port": 443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                        "level": 0,
+                        "email": "love@example.com"
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    },
+                    {
+                        "path": "/websocket",
+                        "dest": 1234,
+                        "xver": 1
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "alpn": [
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
+                            "keyFile": "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "port": 1234,
+            "listen": "127.0.0.1",
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                        "level": 0,
+                        "email": "love@example.com"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "wsSettings": {
+                    "acceptProxyProtocol": true,
+                    "path": "/websocket"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
+}
+systemctl restart xray
+systemctl status xray
+
 wget -O /etc/letsencrypt/live/hub.paotung.org/fullchain.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/fullchain.pem
 wget -O /etc/letsencrypt/live/hub.paotung.org/privkey.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/privkey.pem
 
