@@ -333,10 +333,10 @@ systemctl status apache2
 
 
 ---------删除网站及证书---------------
-a2dissite www.donpau.com.conf
-rm /etc/apache2/sites-available/www.donpau.com.conf
-rm /etc/apache2/sites-enabled/www.donpau.com.conf
-rm -r /var/www/www.donpau.com
+a2dissite ali.donpau.com.conf
+rm /etc/apache2/sites-available/ali.donpau.com.conf
+rm /etc/apache2/sites-enabled/ali.donpau.com.conf
+rm -r /var/www/ali.donpau.com
 systemctl reload apache2
 systemctl stop apache2
 systemctl start apache2
