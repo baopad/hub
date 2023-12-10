@@ -24,7 +24,7 @@ systemctl restart networking
 
 ifconfig
 
-
+lsof -i -P -n
 
 设置UTC时间
 sudo -i
