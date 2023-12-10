@@ -144,7 +144,6 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
-    Include "/etc/letsencrypt/options-ssl-apache.conf"
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
     Protocols h2 http/1.1
 </VirtualHost>
