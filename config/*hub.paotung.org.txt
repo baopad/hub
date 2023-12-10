@@ -92,6 +92,9 @@ systemctl restart xray
 systemctl status xray
 reboot
 
+wget -cP /etc/letsencrypt/live/hub.paotung.org https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/fullchain.pem
+wget -cP /etc/letsencrypt/live/hub.paotung.org https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/privkey.pem
+
 
 apt install apache2
 a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
