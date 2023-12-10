@@ -224,3 +224,19 @@ sysctl -p
 crontab -e
 0 0 1 * * /sbin/reboot
 systemctl enable cron
+
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.com
+    DocumentRoot /var/www/html
+
+    Alias /myapp "/var/www/html/myapp"
+    <Directory "/var/www/html/myapp">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
