@@ -170,7 +170,7 @@ systemctl status xray
 
 
 rm -rf /etc/letsencrypt/live/hub.paotung.org
-mkdir /etc/letsencrypt/live/hub.paotung.org
+mkdir -p /etc/letsencrypt/live/hub.paotung.org
 wget -O /etc/letsencrypt/live/hub.paotung.org/fullchain.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/fullchain.pem
 wget -O /etc/letsencrypt/live/hub.paotung.org/privkey.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/privkey.pem
 
