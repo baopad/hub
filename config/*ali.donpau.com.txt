@@ -353,6 +353,16 @@ mv docs/* ../
 cd ../
 rm -r main.zip hub-main
 cd test
+dd if=/dev/zero of=1B.bin bs=1 count=1
+dd if=/dev/zero of=2B.bin bs=1 count=2
+dd if=/dev/zero of=5B.bin bs=1 count=5
+dd if=/dev/zero of=10B.bin bs=1 count=10
+dd if=/dev/zero of=20B.bin bs=1 count=20
+dd if=/dev/zero of=50B.bin bs=1 count=50
+dd if=/dev/zero of=100B.bin bs=1 count=100
+dd if=/dev/zero of=200B.bin bs=1 count=200
+dd if=/dev/zero of=500B.bin bs=1 count=500
+dd if=/dev/zero of=1000B.bin bs=1 count=1000
 dd if=/dev/zero of=1K.bin bs=1K count=1
 dd if=/dev/zero of=2K.bin bs=1K count=2
 dd if=/dev/zero of=5K.bin bs=1K count=5
