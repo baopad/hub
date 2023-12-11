@@ -88,7 +88,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "decryption": "none",
                 "fallbacks": [
                     {
-                        "alpn": "h2",
                         "dest": 80
                     }
                 ]
