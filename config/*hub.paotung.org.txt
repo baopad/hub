@@ -97,7 +97,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "network": "tcp",
                 "security": "tls",
                 "tlsSettings": {
-                    //"alpn": ["h2","http/1.1"],
                     "certificates": [
                         {
                             "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
