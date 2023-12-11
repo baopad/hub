@@ -128,26 +128,19 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     "routing": {
         "rules": [
             {
-                "type": "field",
+                "type": "IP4_out",
+                "outboundTag": "static",
+                "domain": [
+                    "geosite:netflix",
+                    "google.com","www.google.com"
+                ]
+            },
+            {
+                "type": "IP6_out",
                 "outboundTag": "static",
                 "domain": [
                     "geosite:netflix",
                     "whoer.net"
-                ]
-            },
-            {
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "geosite:cn"
-                ]
-            },
-            {
-                "type": "field",
-                "outboundTag": "direct",
-                "ip": [
-                    "geoip:private",
-                    "geoip:cn"
                 ]
             }
         ]
