@@ -131,7 +131,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "field",
                 "outboundTag": "UseIPv4",
                 "domain": [
-                    "geosite:netflix",
                     "google.com","www.google.com"
                 ]
             },
@@ -139,7 +138,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "field",
                 "outboundTag": "UseIPv6",
                 "domain": [
-                    "whoer.net"
+                    "geosite:netflix"
                 ]
             }
         ]
