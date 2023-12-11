@@ -109,8 +109,49 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     "outbounds": [
         {
             "protocol": "freedom"
+        },
+        {
+            "tag": "IP4_out",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv4"
+            }
+        },
+        {
+            "tag":"IP6_out",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv6"
+            }
         }
-    ]
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "static",
+                "domain": [
+                    "geosite:netflix",
+                    "whoer.net"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "geosite:cn"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "ip": [
+                    "geoip:private",
+                    "geoip:cn"
+                ]
+            }
+        ]
+    }
 }
 EOF
 systemctl restart xray
