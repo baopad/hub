@@ -139,7 +139,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "IP6_out",
                 "outboundTag": "static",
                 "domain": [
-                    "geosite:netflix",
                     "whoer.net"
                 ]
             }
