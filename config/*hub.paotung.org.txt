@@ -2,8 +2,8 @@
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
 A record:           hub.paotung.org     192.3.249.168
-AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:0ef4:566f]
-AAAA record:        hub.paotung.org     [2607:f130:0000:014e:0000:0000:41ad:1175]
+AAAA record:        hub.paotung.org     [2001:470:a:38b::4]
+AAAA record:        hub.paotung.org     [2001:470:a:38b::8]
 
 将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
 ------------------------------------
