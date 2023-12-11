@@ -131,7 +131,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "field",
                 "outboundTag": "UseIPv4",
                 "domain": [
-                    "google.com","www.google.com"
+                    "google.com"
                 ]
             },
             {
