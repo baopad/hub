@@ -91,8 +91,60 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     "outbounds": [
         {
             "protocol": "freedom"
+        },
+        {
+            "tag": "UseIPv4",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv4"
+            }
+        },
+        {
+            "tag": "UseIPv6",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv6"
+            }
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {}
         }
-    ]
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "UseIPv4",
+                "domain": [
+                    "Use.IPv4"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "UseIPv6",
+                "domain": [
+                    "Use.IPv6"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "geosite:cn"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "ip": [
+                    "geoip:private",
+                    "geoip:cn"
+                ]
+            }
+        ]
+    }
 }
 EOF
 cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
