@@ -138,7 +138,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "vnext": [
                     {
-                        "address": "www.donpau.com",
+                        "address": "hub.paotung.org",
                         "port": 443,
                         "users": [
                             {
