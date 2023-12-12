@@ -106,8 +106,40 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     "outbounds": [
         {
             "protocol": "freedom"
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {}
         }
-    ]
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "static",
+                "domain": [
+                    "geosite:netflix",
+                    "whoer.net"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "geosite:cn"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "ip": [
+                    "geoip:private",
+                    "geoip:cn"
+                ]
+            }
+        ]
+    }
 }
 EOF
 cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
