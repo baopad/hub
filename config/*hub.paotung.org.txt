@@ -111,6 +111,20 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "tag": "direct",
             "protocol": "freedom",
             "settings": {}
+        },
+        {
+            "tag": "UseIPv4",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv4"
+            }
+        },
+        {
+            "tag": "UseIPv6",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv6"
+            }
         }
     ],
     "routing": {
