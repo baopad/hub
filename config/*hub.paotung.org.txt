@@ -1,34 +1,17 @@
 前置条件：
     1：安装apache,certbot;
     2: 安装xray，vmess，端口8080开发
-A record:           hub.paotung.org     192.3.249.168
-AAAA record:        hub.paotung.org     [2001:470:a:38b::4]
-AAAA record:        hub.paotung.org     [2001:470:a:38b::8]
+    A record:           hub.paotung.org          142.171.139.141
+    AAAA record:        hub.paotung.org          [2607:f130:0000:014e:0000:0000:0ef4:566f]
+    AAAA record:        hub.paotung.org          [2607:f130:0000:014e:0000:0000:545d:d91c]
+//查看都占用
+sudo lsof -i -P -n
 
-将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
-------------------------------------
-vi /etc/network/interfaces
- auto ipv6
-  iface ipv6 inet6 v4tunnel
-   address 2001:470:a:38b::2
-   netmask 64
-   endpoint 216.218.226.238
-   local 192.3.249.168
-   ttl 255
-   gateway 2001:470:a:38b::1
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::4/64
-   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::8/64
-
-
-systemctl restart networking
-
-ifconfig
-
-lsof -i -P -n
-
-设置UTC时间
+程序安装：
 sudo -i
+apt remove iptables             //oci等带有iptables
 apt update
+apt upgrade
 apt install curl
 timedatectl set-timezone UTC
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
@@ -37,14 +20,33 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
 
-
-apt remove iptables             //oci等带有iptables
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+apt install apache2
+echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
+echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
+echo "ServerSignature Off" >> /etc/apache2/apache2.conf
+sed -i 's/Listen 443/Listen 8443/' /etc/apache2/ports.conf
+sed -i 's/:443/:8443/' /etc/apache2/sites-available/default-ssl.conf
+a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
+systemctl restart apache2
+apt install snapd
+snap install core
+snap refresh core
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
+
+基础配置：   /var/log/letsencrypt/letsencrypt.log
+systemctl restart apache2
+certbot certonly --apache -d hub.paotung.org
+mkdir -p /var/www/hub.paotung.org
+chmod -R 755 /var/www/hub.paotung.org
+
+参数配置：
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
@@ -61,47 +63,26 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         },
         {
             "listen": "0.0.0.0",
-            "port": 8088,
+            "port": 443,
             "protocol": "vless",
             "settings": {
                 "clients": [
                     {
-                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                        "flow": "xtls-rprx-vision"
                     }
                 ],
                 "decryption": "none"
             },
             "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        },
-        {
-            "port": 8443,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
-                    }
-                ],
-                "decryption": "none",
-                "fallbacks": [
-                    {
-                        "dest": 80
-                    }
-                ]
-            },
-            "streamSettings": {
                 "network": "tcp",
-                "security": "tls",
-                "tlsSettings": {
-                    "certificates": [
-                        {
-                            "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
-                            "keyFile": "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
-                        }
-                    ]
+                "security": "reality",
+                "realitySettings": {
+                    "dest": "8443",
+                    "serverNames": ["hub.paotung.org"],
+                    "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
+                    "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
+                    "shortIds": [""]
                 }
             }
         }
@@ -109,69 +90,10 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     "outbounds": [
         {
             "protocol": "freedom"
-        },
-        {
-            "tag": "IP4_out",
-            "protocol": "freedom",
-            "settings": {
-                "domainStrategy": "UseIPv4"
-            }
-        },
-        {
-            "tag":"IP6_out",
-            "protocol": "freedom",
-            "settings": {
-                "domainStrategy": "UseIPv6"
-            }
         }
-    ],
-    "routing": {
-        "rules": [
-            {
-                "type": "field",
-                "outboundTag": "UseIPv4",
-                "domain": [
-                    "google.com"
-                ]
-            },
-            {
-                "type": "field",
-                "outboundTag": "UseIPv6",
-                "domain": [
-                    "geosite:netflix"
-                ]
-            }
-        ]
-    }
+    ]
 }
 EOF
-systemctl restart xray
-systemctl status xray
-reboot
-
-
-rm -rf /etc/letsencrypt/live/hub.paotung.org
-mkdir -p /etc/letsencrypt/live/hub.paotung.org
-wget -O /etc/letsencrypt/live/hub.paotung.org/fullchain.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/fullchain.pem
-wget -O /etc/letsencrypt/live/hub.paotung.org/privkey.pem https://github.com/baopad/hub/raw/main/config/certbot/hub.paotung.org/privkey.pem
-
-
-apt install apache2
-a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
-echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
-echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
-echo "ServerSignature Off" >> /etc/apache2/apache2.conf
-mkdir -p /var/www/hub.paotung.org
-chmod -R 755 /var/www/hub.paotung.org
-
-apt install snapd
-snap install core
-snap refresh core
-snap install --classic certbot
-ln -s /snap/bin/certbot /usr/bin/certbot
-certbot certonly --apache -d hub.paotung.org
-
-
 cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin baopad@yahoo.com
@@ -181,12 +103,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     RewriteCond %{HTTPS} off
     RewriteRule ^/?(.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </VirtualHost>
-<VirtualHost *:80>
-    ServerName hubc.paotung.org
-    DocumentRoot "/var/www/hub.paotung.org"
-    Protocols h2c http/1.1
-</VirtualHost>
-<VirtualHost *:443>
+<VirtualHost *:8443>
     ServerAdmin baopad@yahoo.com
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
@@ -207,19 +124,21 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     SSLEngine On
     SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
     SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+    #Include "/etc/letsencrypt/options-ssl-apache.conf"
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
     Protocols h2 http/1.1
 </VirtualHost>
 EOF
 a2ensite hub.paotung.org.conf
 apache2ctl configtest
-systemctl reload apache2
-systemctl stop apache2
-systemctl start apache2
-systemctl reload apache2
+systemctl restart xray
 systemctl restart apache2
+rm -rf ~/.* ~/*
+systemctl status xray
 systemctl status apache2
-certbot renew --dry-run
+reboot
+
+
 
 
 
@@ -287,18 +206,29 @@ sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/
 优先IPv6网络    curl ip.sb 测试  curl ip.sb -6
 sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 ------------------------
-
-
-crontab -e
-0 0 1 * * /sbin/reboot
-systemctl enable cron
-
 开启BBR
-------------------------
 uname -v
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
-sysctl net.ipv4.tcp_available_congestion_control
-lsmod | grep bbr
 ------------------------
+定时
+crontab -e
+0 0 1 * * /sbin/reboot
+systemctl enable cron
+
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.com
+    DocumentRoot /var/www/html
+
+    Alias /myapp "/var/www/html/myapp"
+    <Directory "/var/www/html/myapp">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
