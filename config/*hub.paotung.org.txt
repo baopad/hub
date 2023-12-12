@@ -134,14 +134,14 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "field",
                 "outboundTag": "UseIPv4",
                 "domain": [
-                    "geosite:cn"
+                    "Use.IPv4"
                 ]
             },
             {
                 "type": "field",
                 "outboundTag": "UseIPv6",
                 "domain": [
-                    "geosite:cn"
+                    "Use.IPv6"
                 ]
             },
             {
