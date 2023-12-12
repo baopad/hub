@@ -97,7 +97,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "vnext": [
                     {
-                        "address": "www.donpau.com",
+                        "address": "hub.paotung.org",
                         "port": 443,
                         "users": [
                             {
@@ -113,7 +113,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "network": "tcp",
                 "security": "reality",
                 "realitySettings": {
-                    "serverName": "www.donpau.com",
+                    "serverName": "hub.paotung.org",
                     "fingerprint": "chrome",
                     "publicKey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
                     "shortId": "",
