@@ -174,7 +174,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 </VirtualHost>
 <VirtualHost *:80>
     ServerAdmin baopad@yahoo.com
-    ServerName hubC.paotung.org
+    ServerName hubc.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
 </VirtualHost>
 <VirtualHost *:8443>
