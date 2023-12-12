@@ -108,11 +108,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "protocol": "freedom"
         },
         {
-            "tag": "direct",
-            "protocol": "freedom",
-            "settings": {}
-        },
-        {
             "tag": "UseIPv4",
             "protocol": "freedom",
             "settings": {
@@ -125,16 +120,27 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "domainStrategy": "UseIPv6"
             }
-        }
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {}
+        },
     ],
     "routing": {
         "rules": [
             {
                 "type": "field",
-                "outboundTag": "static",
+                "outboundTag": "UseIPv4",
                 "domain": [
-                    "geosite:netflix",
-                    "whoer.net"
+                    "geosite:cn"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "UseIPv6",
+                "domain": [
+                    "geosite:cn"
                 ]
             },
             {
