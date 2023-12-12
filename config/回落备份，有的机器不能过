@@ -1,0 +1,103 @@
+{
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "port": 8080,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 8088,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "port": 8443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
+                            "keyFile": "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        },
+        {
+            "tag": "IP4_out",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv4"
+            }
+        },
+        {
+            "tag":"IP6_out",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv6"
+            }
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "UseIPv4",
+                "domain": [
+                    "google.com"
+                ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "UseIPv6",
+                "domain": [
+                    "geosite:netflix"
+                ]
+            }
+        ]
+    }
+}
