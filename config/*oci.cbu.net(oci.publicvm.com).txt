@@ -191,7 +191,7 @@ cat > /etc/apache2/sites-available/./oci.cbu.net.conf <<EOF
     ServerAdmin oci@cbu.net
     ServerName oci.cbu.net
     DocumentRoot "/var/www/oci.cbu.net"
-    <Directory /var/www/>
+    <Directory /var/www/oci.cbu.net>
         Options -Indexes +FollowSymLinks
         AllowOverride None
         Require all granted
@@ -238,7 +238,7 @@ cat > /etc/apache2/sites-available/./oci.publicvm.com.conf <<EOF
     ServerAdmin oci@cbu.net
     ServerName oci.publicvm.com
     DocumentRoot "/var/www/oci.publicvm.com"
-    <Directory /var/www/>
+    <Directory /var/www/oci.publicvm.com>
         Options -Indexes +FollowSymLinks
         AllowOverride None
         Require all granted
