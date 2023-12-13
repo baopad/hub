@@ -6,6 +6,27 @@
     AAAA record:        donpau.com          [2001:470:a:38b::8]
     Cname record:       www                 donpau.com
 //查看都占用
+
+将ipv6 配置文件添加到 /etc/network/interfaces.d/ 目录下
+------------------------------------
+vi /etc/network/interfaces
+ auto ipv6
+  iface ipv6 inet6 v4tunnel
+   address 2001:470:a:38b::2
+   netmask 64
+   endpoint 216.218.226.238
+   local 192.3.249.168
+   ttl 255
+   gateway 2001:470:a:38b::1
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::4/64
+   up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::8/64
+
+
+systemctl restart networking
+
+ifconfig
+
+lsof -i -P -n
 sudo lsof -i -P -n
 
 程序安装：
