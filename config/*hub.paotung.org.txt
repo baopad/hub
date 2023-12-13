@@ -181,7 +181,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     ServerAdmin baopad@yahoo.com
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
-    <Directory /var/www/>
+    <Directory /var/www/hub.paotung.org>
         Options -Indexes +FollowSymLinks
         AllowOverride None
         Require all granted
