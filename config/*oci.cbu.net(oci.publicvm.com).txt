@@ -33,6 +33,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
+            "tag": "vmess",
             "listen": "127.0.0.1",
             "port": 8080,
             "protocol": "vmess",
@@ -49,6 +50,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
+            "tag": "vless",
             "listen": "127.0.0.1",
             "port": 8088,
             "protocol": "vless",
@@ -129,6 +131,11 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     ],
     "routing": {
         "rules": [
+            {
+                "type": "field",
+                "inboundTag": ["vmess","vless"],
+                "outboundTag": "direct"
+            },
             {
                 "type": "field",
                 "outboundTag": "direct",
