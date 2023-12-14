@@ -2,6 +2,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
+            "tag": "vmess",
             "listen": "0.0.0.0",
             "port": 8080,
             "protocol": "vmess",
@@ -18,6 +19,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
+            "tag": "vless",
             "listen": "0.0.0.0",
             "port": 8088,
             "protocol": "vless",
@@ -32,6 +34,37 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "streamSettings": {
                 "network": "ws",
                 "security": "none"
+            }
+        },
+        {
+            "tag": "reality",
+            "listen": "0.0.0.0",
+            "port": 1443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
+                            "keyFile": "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+                        }
+                    ]
+                }
             }
         },
         {
