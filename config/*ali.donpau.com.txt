@@ -151,11 +151,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "show": false
-        }
+                "security": "tls"
             }
         },
         {
