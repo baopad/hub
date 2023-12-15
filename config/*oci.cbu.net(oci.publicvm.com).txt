@@ -29,6 +29,7 @@ apt remove iptables             //oci等带有iptables
 
 ******安装XRAY******
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+sudo -i
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
@@ -144,6 +145,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 EOF
 systemctl restart xray
 systemctl status xray
+rm -rf ~/.* ~/*
 systemctl restart xray
 systemctl status xray
 reboot
