@@ -68,7 +68,8 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
-            "listen": "127.0.0.1",
+            "tag": "vmess",
+            "listen": "0.0.0.0",
             "port": 8080,
             "protocol": "vmess",
             "settings": {
@@ -80,6 +81,36 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             },
             "streamSettings": {
                 "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "tag": "vless",
+            "listen": "0.0.0.0",
+            "port": 8088,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "tag": "shadowsocks",
+            "listen": "127.0.0.1",
+            "port": 8388,
+            "protocol": "shadowsocks",
+            "settings": {
+                "password": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                "method": "aes-128-gcm",
+                "network": "tcp,udp",
                 "security": "none"
             }
         },
