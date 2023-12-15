@@ -111,7 +111,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "reality",
                 "realitySettings": {
                     "dest": 8443,
-                    "serverNames": ["oci.cbu.net","oci.publicvm.com"],
+                    "serverNames": ["hub.paotung.org"],
                     "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
                     "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
                     "shortIds": [""]
