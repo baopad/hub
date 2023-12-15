@@ -100,26 +100,21 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                        "flow": "xtls-rprx-vision"
                     }
                 ],
-                "decryption": "none",
-                "fallbacks": [
-                    {
-                        "dest": 80
-                    }
-                ]
+                "decryption": "none"
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "tls",
-                "tlsSettings": {
-                    "certificates": [
-                        {
-                            "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
-                            "keyFile": "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
-                        }
-                    ]
+                "security": "reality",
+                "realitySettings": {
+                    "dest": 8443,
+                    "serverNames": ["oci.cbu.net","oci.publicvm.com"],
+                    "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
+                    "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
+                    "shortIds": [""]
                 }
             }
         },
