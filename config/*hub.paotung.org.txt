@@ -256,7 +256,7 @@ rm -rf ~/.* ~/*
 systemctl status xray
 systemctl status apache2
 reboot
-
+exit
 
 
 
