@@ -81,6 +81,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
+            "tag": "shadowsocks",
             "listen": "127.0.0.1",
             "port": 8388,
             "protocol": "shadowsocks",
