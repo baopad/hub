@@ -46,6 +46,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
         {
+            "tag": "vmess",
             "listen": "0.0.0.0",
             "port": 8080,
             "protocol": "vmess",
@@ -62,6 +63,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
+            "tag": "vless",
             "listen": "0.0.0.0",
             "port": 8088,
             "protocol": "vless",
@@ -79,27 +81,63 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
+            "tag": "reality",
+            "listen": "0.0.0.0",
+            "port": 1443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
+                            "keyFile": "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+                        }
+                    ]
+                }
+            }
+        },
+        {
             "listen": "0.0.0.0",
             "port": 443,
             "protocol": "vless",
             "settings": {
                 "clients": [
                     {
-                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                        "flow": "xtls-rprx-vision"
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
                     }
                 ],
-                "decryption": "none"
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 8443
+                    }
+                ]
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "reality",
-                "realitySettings": {
-                    "dest": "8443",
-                    "serverNames": ["hub.paotung.org"],
-                    "privateKey": "cGnBERYTqjCYZMLsk0_xH-ioR5V-GSIHipOgZGcrT18",
-                    "publickey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
-                    "shortIds": [""]
+                "security": "tls",
+                "tlsSettings": {
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem",
+                            "keyFile": "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+                        }
+                    ]
                 }
             }
         }
@@ -195,12 +233,38 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
     RewriteCond %{HTTP:Upgrade} websocket [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
-    SSLEngine On
-    SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
-    SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+    #SSLEngine On
+    #SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
+    #SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
     #Include "/etc/letsencrypt/options-ssl-apache.conf"
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
-    Protocols h2 http/1.1
+    #Protocols h2 http/1.1
+</VirtualHost>
+listen 81
+<VirtualHost *:81>
+    ServerAdmin baopad@yahoo.com
+    ServerName hub.paotung.org
+    DocumentRoot "/var/www/hub.paotung.org"
+    <Directory /var/www/hub.paotung.org>
+        Options -Indexes +FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+    ErrorDocument 403 "/error/403.html"
+    ErrorDocument 404 "/error/404.html"
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
+    RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
+    RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
+    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
+    #SSLEngine On
+    #SSLCertificateFile "/etc/letsencrypt/live/hub.paotung.org/fullchain.pem"
+    #SSLCertificateKeyFile "/etc/letsencrypt/live/hub.paotung.org/privkey.pem"
+    #Include "/etc/letsencrypt/options-ssl-apache.conf"
+    SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
+    #Protocols h2 http/1.1
 </VirtualHost>
 EOF
 a2ensite hub.paotung.org.conf
