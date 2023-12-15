@@ -197,8 +197,10 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     RewriteRule ^/?(.*) "ws://hub.paotung.org:8088/$1" [P,L]
     RewriteCond %{REQUEST_URI} ^/?vmess(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
-    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteCond %{REQUEST_URI} ^/?vless(.*)$ [NC]
     RewriteRule ^/?(.*) "ws://localhost:8088/$1" [P,L]
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteRule ^/?(.*) "ws://localhost:8080/$1" [P,L]
     RewriteCond %{HTTP_HOST} "^donpau\.com$" [NC]
     RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
     SSLEngine On
