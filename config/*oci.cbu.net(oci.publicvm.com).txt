@@ -69,7 +69,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "tag": "reality",
             "listen": "0.0.0.0",
             "port": 443,
             "protocol": "vless",
@@ -118,35 +117,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "tag": "reality",
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "hub.paotung.org",
-                        "port": 1443,
-                        "users": [
-                            {
-                                "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                                "flow": "xtls-rprx-vision",
-                                "encryption": "none"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "tcp",
-                "security": "reality",
-                "realitySettings": {
-                    "fingerprint": "chrome",
-                    "publicKey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
-                    "shortId": "",
-                    "spiderX": ""
-                }
-            }
-        },
-        {
             "tag": "direct",
             "protocol": "freedom",
             "settings": {}
@@ -168,11 +138,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "type": "field",
                 "outboundTag": "direct",
                 "ip": ["geoip:private","geoip:cn"]
-            },
-            {
-                "type": "field",
-                "inboundTag": ["reality"],
-                "outboundTag": "reality"
             }
         ]
     }
