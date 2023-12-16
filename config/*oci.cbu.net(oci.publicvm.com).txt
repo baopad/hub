@@ -137,7 +137,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             {
                 "type": "field",
                 "outboundTag": "direct",
-                "ip": ["geoip:cn","geoip:jp","geoip:kr","geoip:sg","geoip:hk","geoip:mo","geoip:tw"]
+                "ip": ["geoip:cn","geoip:hk","geoip:mo","geoip:tw","geoip:jp","geoip:kr","geoip:sg","geoip:in","geoip:au","geoip:as"]
             }
         ]
     }
