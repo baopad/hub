@@ -69,6 +69,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
+            "tag": "reality",
             "listen": "0.0.0.0",
             "port": 443,
             "protocol": "vless",
@@ -170,6 +171,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             },
             {
                 "type": "field",
+                "inboundTag": ["reality"],
                 "outboundTag": "reality"
             }
         ]
