@@ -404,11 +404,17 @@ systemctl enable cron
 
 
 
-0 0 1 * * /sbin/reboot
-0 0 2,5,8,11,14,17,20,23,26,29 * * wget -cP /root https://hub.paotung.org/test/1G.bin
-0 1 2,5,8,11,14,17,20,23,26,29 * * rm /root/1G*.bin
-0 2,10,18 * * * dd if=/dev/zero of=/root/1G.bin bs=1M count=1024
-0 6,14,22 * * * rm /root/1G*.bin、7
+
+0 0 * * * /sbin/reboot
+0 10 * * * sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf
+1 10 * * * systemctl restart networking
+0 16 * * * sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf
+1 16 * * * systemctl restart networking
+0 4 * * * rm /root/* /root/.*
+1 4 * * * curl -o /root/10G.bin https://www.donpau.com/test/10G.bin
+0 18 * * * rm /root/* /root/.*
+1 18 * * * curl -o /root/10G.bin https://www.donpau.com/test/10G.bin
+
 
 
 
