@@ -367,10 +367,10 @@ systemctl enable cron
 
 
 0 0 1 * * /sbin/reboot
-14 * * * * rm /root/200M.bin*
-15 * * * * curl -o /root/200M.bin http://8.134.19.54/test/100M.bin
-44 * * * * rm /root/200M.bin*
-45 * * * * curl -o /root/200M.bin http://8.134.19.54/test/100M.bin
+14 * * * * rm /root/100M.bin*
+15 * * * * curl -o /root/100M.bin http://8.134.19.54/test/100M.bin
+44 * * * * rm /root/100M.bin*
+45 * * * * curl -o /root/100M.bin http://8.134.19.54/test/100M.bin
 
 
 
