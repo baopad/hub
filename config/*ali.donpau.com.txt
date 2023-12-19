@@ -411,12 +411,13 @@ systemctl enable cron
 0 16 * * * sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 1 16 * * * systemctl restart networking
 0 4 * * * rm /root/* /root/.*
-1 4 * * * curl -o /root/10G.bin https://www.donpau.com/test/10G.bin
+1 4 * * * curl -o /root/10G.bin https://oci.cbu.net/test/10G.bin
 0 12 * * * rm /root/* /root/.*
-1 12 * * * curl -o /root/10G.bin https://www.donpau.com/test/10G.bin
+1 12 * * * curl -o /root/10G.bin https://oci.cbu.net/test/10G.bin
 0 18 * * * rm /root/* /root/.*
-1 18 * * * curl -o /root/10G.bin https://www.donpau.com/test/10G.bin
-
+1 18 * * * curl -o /root/10G.bin https://oci.cbu.net/test/10G.bin
+0 22 * * * rm /root/* /root/.*
+1 22 * * * curl -o /root/10G.bin https://oci.cbu.net/test/10G.bin
 
 
 
