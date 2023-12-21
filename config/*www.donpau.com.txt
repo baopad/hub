@@ -242,11 +242,11 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 EOF
 a2ensite www.donpau.com.conf
 apache2ctl configtest
-systemctl restart xray
-systemctl restart apache2
+service xray restart
+service apache2 restart
 rm -rf ~/.* ~/*
-systemctl status xray
-systemctl status apache2
+service xray status
+service apache2 status
 reboot
 
 
