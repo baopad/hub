@@ -375,7 +375,25 @@ systemctl enable cron
 35 * * * * curl -o /root/100M.bin http://8.134.19.54/test/100M.bin
 49 * * * * rm /root/100M.bin*
 50 * * * * curl -o /root/100M.bin http://8.134.19.54/test/100M.bin
-*/2 * * * * rm /root/50M.bin*
-*/7 * * * * curl -o /root/100M.bin http://8.134.19.54/test/50M.bin
+*/1 * * * * rm /root/10M.bin*
+*/2 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/5 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/7 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/11 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/13 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/17 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/19 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/23 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/29 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/31 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/37 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/41 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/43 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/47 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/53 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
+*/59 * * * * curl -o /root/100M.bin http://8.134.19.54/test/10M.bin
 
 
+
+
+z
