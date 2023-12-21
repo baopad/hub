@@ -21,8 +21,7 @@ vi /etc/network/interfaces
    up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::4/64
    up /sbin/ifconfig eth0 inet6 add 2001:470:a:38b::8/64
 
-
-systemctl restart networking
+service networking restart
 
 ifconfig
 
