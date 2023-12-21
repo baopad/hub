@@ -33,7 +33,6 @@ sudo lsof -i -P -n
 sudo -i
 apt remove iptables             //oci等带有iptables
 apt update
-apt upgrade
 apt install curl
 timedatectl set-timezone UTC
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
