@@ -33,23 +33,22 @@ sudo lsof -i -P -n
 sudo -i
 apt remove iptables             //oci等带有iptables
 apt update
-apt install curl
+apt install -y curl
 timedatectl set-timezone UTC
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
-
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
-apt install apache2
+apt install -y apache2
 a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
 echo "ServerSignature Off" >> /etc/apache2/apache2.conf
 sed -i 's/Listen 443/Listen 8443/' /etc/apache2/ports.conf
 sed -i 's/:443/:8443/' /etc/apache2/sites-available/default-ssl.conf
-apt install snapd
+apt install -y snapd
 snap install core
 snap refresh core
 snap install --classic certbot
