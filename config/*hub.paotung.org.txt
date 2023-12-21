@@ -249,11 +249,11 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
 EOF
 a2ensite hub.paotung.org.conf
 apache2ctl configtest
-systemctl restart xray
-systemctl restart apache2
+service xray restart
+service apache2 restart
 rm -rf ~/.* ~/*
-systemctl status xray
-systemctl status apache2
+service xray status
+service apache2 status
 reboot
 exit
 
