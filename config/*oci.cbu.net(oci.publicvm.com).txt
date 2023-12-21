@@ -375,6 +375,7 @@ systemctl enable cron
 35 * * * * curl -o /root/100M.bin http://8.134.19.54/test/100M.bin
 49 * * * * rm /root/100M.bin*
 50 * * * * curl -o /root/100M.bin http://8.134.19.54/test/100M.bin
+*/2 * * * * rm /root/50M.bin*
 */7 * * * * curl -o /root/100M.bin http://8.134.19.54/test/50M.bin
 
 
