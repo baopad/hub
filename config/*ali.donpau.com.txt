@@ -285,11 +285,11 @@ cat > /etc/apache2/sites-available/./ali.donpau.com.conf <<EOF
 EOF
 a2ensite ali.donpau.com.conf
 apache2ctl configtest
-service xray restart
-service apache2 restart
+systemctl restart xray
+systemctl restart apache2
 rm -rf ~/.* ~/*
-service xray status
-service apache2 status
+systemctl status xray
+systemctl status apache2
 reboot
 
 
