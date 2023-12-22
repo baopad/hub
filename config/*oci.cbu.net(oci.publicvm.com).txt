@@ -41,9 +41,27 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "07246655-1b9b-f249-a4f7-5aefd3888888"
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
                     }
                 ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none"
+            }
+        },
+        {
+            "tag": "vless",
+            "listen": "127.0.0.1",
+            "port": 8088,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888"
+                    }
+                ],
+                "decryption": "none"
             },
             "streamSettings": {
                 "network": "ws",
@@ -57,7 +75,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             "settings": {
                 "clients": [
                     {
-                        "id": "07246655-1b9b-f249-a4f7-5aefd3888888",
+                        "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
                         "flow": "xtls-rprx-vision"
                     }
                 ],
