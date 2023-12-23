@@ -38,6 +38,7 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 基础配置：   /var/log/letsencrypt/letsencrypt.log
 systemctl restart apache2
 certbot certonly --apache -d hub.paotung.org --non-interactive --register-unsafely-without-email --agree-tos
+certbot renew --dry-run
 mkdir -p /var/www/hub.paotung.org
 chmod -R 755 /var/www/hub.paotung.org
 
