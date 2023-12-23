@@ -39,7 +39,7 @@ echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
 apt install -y apache2
 a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
