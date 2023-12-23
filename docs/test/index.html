@@ -1,44 +1,267 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <title>Download test</title>
+<style>
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	background: #fff;
+	direction: ltr;
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
+}
+div {
+	display: block;
+}
+.main {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	min-height: 640px;
+	min-height: 100vh;
+	position: relative;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: center;
+	pointer-events: auto;
+	margin: 0 auto;
+	max-width: 1024px;
+	min-width: 480px;
+	padding: 0 8px;
+}
+.listt {
+	margin: 0 8px;
+	padding: 0 8px;
+}
+.b {
+	font-size: 5em;
+	line-height: 1;
+	min-height: calc(1.2em - 0px);
+	height: 1.5em;
+	display: flex;
+	flex-direction: column;
+	flex-flow: nowrap;
+	white-space: nowrap;
+}
+table {
+	border-collapse: separate;
+	text-indent: initial;
+	border-spacing: 0px;
+}
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+td {
+	display: table-cell;
+	vertical-align: inherit;
+	border: 1px solid #a2a9b1;
+	padding: 0.2em 0.4em;
+}
+
+@media only screen and (max-width: 1280px) {
+.b {
+	font-size: 4.5em;
+}
+}
+
+@media only screen and (max-width: 960px) {
+.b {
+	font-size: 4em;
+}
+}
+
+@media only screen and (max-width: 720px) {
+.b {
+	font-size: 3.5em;
+}
+}
+
+@media only screen and (max-width: 640px) {
+.b {
+	font-size: 3em;
+}
+}
+
+@media only screen and (max-width: 480px) {
+.b {
+	font-size: 2.5em;
+}
+}
+.c {
+	font-size: 1.25em;
+	line-height: 1;
+	min-height: calc(1.2em - 0px);
+	height: 1.20em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+@media only screen and (max-width: 1280px) {
+.c {
+	font-size: 1.2em;
+}
+}
+
+@media only screen and (max-width: 960px) {
+.c {
+	font-size: 1.1em;
+}
+}
+
+@media only screen and (max-width: 720px) {
+.c {
+	font-size: 1.0em;
+}
+}
+
+@media only screen and (max-width: 640px) {
+.c {
+	font-size: 0.9em;
+}
+}
+
+@media only screen and (max-width: 480px) {
+.c {
+	font-size: 0.8em;/*flex-direction: column;*/
+}
+}
+.c div {
+	margin: 0 auto;
+	padding: 0 1em;
+	white-space: nowrap;
+}
+
+@media only screen and (max-width: 480px) {
+.c div {
+/*    margin: 0 auto;
+    padding: 2em 1em;*/
+}
+}
+</style>
 </head>
+
 <body>
-<p>Test</p>
-<p><a href="/test/1B.bin">1B.bin</a></p>
-<p><a href="/test/2B.bin">2B.bin</a></p>
-<p><a href="/test/5B.bin">5B.bin</a></p>
-<p><a href="/test/10B.bin">10B.bin</a></p>
-<p><a href="/test/20B.bin">20B.bin</a></p>
-<p><a href="/test/50B.bin">50B.bin</a></p>
-<p><a href="/test/100B.bin">100B.bin</a></p>
-<p><a href="/test/200B.bin">200B.bin</a></p>
-<p><a href="/test/500B.bin">500B.bin</a></p>
-<p><a href="/test/1000B.bin">1000B.bin</a></p>
-<p><a href="/test/1K.bin">1K.bin</a></p>
-<p><a href="/test/2K.bin">2K.bin</a></p>
-<p><a href="/test/5K.bin">5K.bin</a></p>
-<p><a href="/test/10K.bin">10K.bin</a></p>
-<p><a href="/test/20K.bin">20K.bin</a></p>
-<p><a href="/test/50K.bin">50K.bin</a></p>
-<p><a href="/test/100K.bin">100K.bin</a></p>
-<p><a href="/test/200K.bin">200K.bin</a></p>
-<p><a href="/test/500K.bin">500K.bin</a></p>
-<p><a href="/test/1000K.bin">1000K.bin</a></p>
-<p><a href="/test/1M.bin">1M.bin</a></p>
-<p><a href="/test/2M.bin">2M.bin</a></p>
-<p><a href="/test/5M.bin">5M.bin</a></p>
-<p><a href="/test/10M.bin">10M.bin</a></p>
-<p><a href="/test/20M.bin">20M.bin</a></p>
-<p><a href="/test/50M.bin">50M.bin</a></p>
-<p><a href="/test/100M.bin">100M.bin</a></p>
-<p><a href="/test/200M.bin">200M.bin</a></p>
-<p><a href="/test/500M.bin">500M.bin</a></p>
-<p><a href="/test/1000M.bin">1000M.bin</a></p>
-<p><a href="/test/1G.bin">1G.bin</a></p>
-<p><a href="/test/2G.bin">2G.bin</a></p>
-<p><a href="/test/5G.bin">5G.bin</a></p>
-<p><a href="/test/10G.bin">10G.bin</a></p>
+<div class="main">
+  <p>Test</p>
+  <table class="" style="text-align:center;">
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/test/1B.bin">1B.bin</a></td>
+        <td><a href="/test/2B.bin">2B.bin</a></td>
+        <td><a href="/test/5B.bin">5B.bin</a></td>
+        <td><a href="/test/10B.bin">10B.bin</a></td>
+        <td><a href="/test/20B.bin">20B.bin</a></td>
+        <td><a href="/test/50B.bin">50B.bin</a></td>
+        <td><a href="/test/100B.bin">100B.bin</a></td>
+        <td><a href="/test/200B.bin">200B.bin</a></td>
+        <td><a href="/test/500B.bin">500B.bin</a></td>
+      </tr>
+      <tr>
+        <td><a href="/test/1K.bin">1K.bin</a></td>
+        <td><a href="/test/2K.bin">2K.bin</a></td>
+        <td><a href="/test/5K.bin">5K.bin</a></td>
+        <td><a href="/test/10K.bin">10K.bin</a></td>
+        <td><a href="/test/20K.bin">20K.bin</a></td>
+        <td><a href="/test/50K.bin">50K.bin</a></td>
+        <td><a href="/test/100K.bin">100K.bin</a></td>
+        <td><a href="/test/200K.bin">200K.bin</a></td>
+        <td><a href="/test/500K.bin">500K.bin</a></td>
+      </tr>
+      <tr>
+        <td><a href="/test/1M.bin">1M.bin</a></td>
+        <td><a href="/test/2M.bin">2M.bin</a></td>
+        <td><a href="/test/5M.bin">5M.bin</a></td>
+        <td><a href="/test/10M.bin">10M.bin</a></td>
+        <td><a href="/test/20M.bin">20M.bin</a></td>
+        <td><a href="/test/50M.bin">50M.bin</a></td>
+        <td><a href="/test/100M.bin">100M.bin</a></td>
+        <td><a href="/test/200M.bin">200M.bin</a></td>
+        <td><a href="/test/500M.bin">500M.bin</a></td>
+      </tr>
+      <tr>
+        <td><a href="/test/1G.bin">1G.bin</a></td>
+        <td><a href="/test/2G.bin">2G.bin</a></td>
+        <td><a href="/test/5G.bin">5G.bin</a></td>
+        <td><a href="/test/10G.bin">10G.bin</a></td>
+        <td><a href="/test/20G.bin">20G.bin</a></td>
+        <td><a href="/test/50G.bin">50G.bin</a></td>
+        <td><a href="/test/100G.bin">100G.bin</a></td>
+        <td><a href="/test/200G.bin">200G.bin</a></td>
+        <td><a href="/test/500G.bin">500G.bin</a></td>
+      </tr>
+      <tr>
+        <td><a href="/test/1T.bin">1T.bin</a></td>
+        <td><a href="/test/2T.bin">2T.bin</a></td>
+        <td><a href="/test/5T.bin">5T.bin</a></td>
+        <td><a href="/test/10T.bin">10T.bin</a></td>
+        <td><a href="/test/20T.bin">20T.bin</a></td>
+        <td><a href="/test/50T.bin">50T.bin</a></td>
+        <td><a href="/test/100T.bin">100T.bin</a></td>
+        <td><a href="/test/200T.bin">200T.bin</a></td>
+        <td><a href="/test/500T.bin">500T.bin</a></td>
+      </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+  <p><a href="/test/1B.bin">1B.bin</a></p>
+  <p><a href="/test/2B.bin">2B.bin</a></p>
+  <p><a href="/test/5B.bin">5B.bin</a></p>
+  <p><a href="/test/10B.bin">10B.bin</a></p>
+  <p><a href="/test/20B.bin">20B.bin</a></p>
+  <p><a href="/test/50B.bin">50B.bin</a></p>
+  <p><a href="/test/100B.bin">100B.bin</a></p>
+  <p><a href="/test/200B.bin">200B.bin</a></p>
+  <p><a href="/test/500B.bin">500B.bin</a></p>
+  <p><a href="/test/1000B.bin">1000B.bin</a></p>
+  <p><a href="/test/1K.bin">1K.bin</a></p>
+  <p><a href="/test/2K.bin">2K.bin</a></p>
+  <p><a href="/test/5K.bin">5K.bin</a></p>
+  <p><a href="/test/10K.bin">10K.bin</a></p>
+  <p><a href="/test/20K.bin">20K.bin</a></p>
+  <p><a href="/test/50K.bin">50K.bin</a></p>
+  <p><a href="/test/100K.bin">100K.bin</a></p>
+  <p><a href="/test/200K.bin">200K.bin</a></p>
+  <p><a href="/test/500K.bin">500K.bin</a></p>
+  <p><a href="/test/1000K.bin">1000K.bin</a></p>
+  <p><a href="/test/1M.bin">1M.bin</a></p>
+  <p><a href="/test/2M.bin">2M.bin</a></p>
+  <p><a href="/test/5M.bin">5M.bin</a></p>
+  <p><a href="/test/10M.bin">10M.bin</a></p>
+  <p><a href="/test/20M.bin">20M.bin</a></p>
+  <p><a href="/test/50M.bin">50M.bin</a></p>
+  <p><a href="/test/100M.bin">100M.bin</a></p>
+  <p><a href="/test/200M.bin">200M.bin</a></p>
+  <p><a href="/test/500M.bin">500M.bin</a></p>
+  <p><a href="/test/1000M.bin">1000M.bin</a></p>
+  <p><a href="/test/1G.bin">1G.bin</a></p>
+  <p><a href="/test/2G.bin">2G.bin</a></p>
+  <p><a href="/test/5G.bin">5G.bin</a></p>
+  <p><a href="/test/10G.bin">10G.bin</a></p>
+</div>
 </body>
 </html>
