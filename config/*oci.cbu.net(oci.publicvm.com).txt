@@ -96,7 +96,35 @@ cat > /usr/local/etc/xray/./config.json <<EOF
     ],
     "outbounds": [
         {
-      "tag": "proxy",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "hub.paotung.org",
+                        "port": 444,
+                        "users": [
+                            {
+                                "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
+                                "alterId": 0,
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "reality",
+                "realitySettings": {
+                    "fingerprint": "chrome",
+                    "publicKey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
+                    "shortId": ""
+                }
+            }
+        },
+        {
+            "tag": "proxy",
             "protocol": "vless",
             "settings": {
                 "vnext": [
@@ -117,40 +145,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "tls"
             }
         },
-    {
 
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "hub.paotung.org",
-            "port": 444,
-            "users": [
-              {
-                "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
-                "alterId": 0,
-                "email": "t@t.tt",
-                "security": "auto",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "serverName": "",
-          "fingerprint": "chrome",
-          "show": false,
-          "publicKey": "JGBxyfUHKZYihtDUcZHHP9nYOnE-rGulm94Fag2tsmE",
-          "shortId": "",
-          "spiderX": ""
-        }
-      }
-    },
         {
             "tag": "direct",
             "protocol": "freedom",
