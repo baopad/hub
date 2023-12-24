@@ -222,7 +222,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     ServerName hubc.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
 </VirtualHost>
-<VirtualHost *:8443>
+<VirtualHost localhost:8443>
     ServerAdmin baopad@yahoo.com
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
@@ -248,7 +248,7 @@ cat > /etc/apache2/sites-available/./hub.paotung.org.conf <<EOF
     #Protocols h2 http/1.1
 </VirtualHost>
 Listen 8444
-<VirtualHost *:8444>
+<VirtualHost localhost:8444>
     ServerAdmin baopad@yahoo.com
     ServerName hub.paotung.org
     DocumentRoot "/var/www/hub.paotung.org"
