@@ -123,7 +123,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
             }
         },
         {
-            "tag": "proxy",
+            "tag": "443",
             "protocol": "vless",
             "settings": {
                 "vnext": [
@@ -144,7 +144,6 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "security": "tls"
             }
         },
-
         {
             "tag": "direct",
             "protocol": "freedom",
