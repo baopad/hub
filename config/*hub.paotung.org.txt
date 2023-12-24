@@ -96,7 +96,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         {
             "tag": "reality",
             "listen": "0.0.0.0",
-            "port": 444,
+            "port": 8888,
             "protocol": "vless",
             "settings": {
                 "clients": [
