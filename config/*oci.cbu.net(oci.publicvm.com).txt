@@ -101,7 +101,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
                 "vnext": [
                     {
                         "address": "hub.paotung.org",
-                        "port": 444,
+                        "port": 8888,
                         "users": [
                             {
                                 "id": "3a2cc75a-5fc1-4123-983b-7a1c86a10888",
