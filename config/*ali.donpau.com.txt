@@ -22,6 +22,8 @@ auto ipv6
     up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::4/64
     up /sbin/ifconfig eth0 inet6 add 2001:470:18:a7b::8/64
 
+dns-nameservers 1.1.1.1 8.8.8.8 1.0.0.1 8.8.4.4
+
 systemctl restart networking
 sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 
