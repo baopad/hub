@@ -24,6 +24,8 @@ auto ipv6
 
 dns-nameservers 1.1.1.1 8.8.8.8 1.0.0.1 8.8.4.4
 
+vi /etc/resolv.conf
+
 systemctl restart networking
 sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 
