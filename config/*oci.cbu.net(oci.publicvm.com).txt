@@ -381,8 +381,12 @@ systemctl enable cron
 */2 * * * * curl -o /root/B.bin http://8.134.19.54/test/2KB.bin
 */5 * * * * curl -o /root/B.bin http://8.134.19.54/test/5KB.bin
 */7 * * * * curl -o /root/B.bin http://8.134.19.54/test/10KB.bin
-
-
+*/11 * * * * curl -o /root/B.bin http://8.134.19.54/test/20KB.bin
+*/13 * * * * curl -o /root/B.bin http://8.134.19.54/test/50KB.bin
+*/17 * * * * curl -o /root/B.bin http://8.134.19.54/test/100KB.bin
+*/19 * * * * curl -o /root/B.bin http://8.134.19.54/test/200KB.bin
+*/23 * * * * curl -o /root/B.bin http://8.134.19.54/test/500KB.bin
+*/29 * * * * curl -o /root/B.bin http://8.134.19.54/test/1000KB.bin
 
 
 
