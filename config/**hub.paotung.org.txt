@@ -295,40 +295,40 @@ mv docs/* ../
 cd ../
 rm -r main.zip hub-main
 cd test
-dd if=/dev/zero of=1b.bin bs=1 count=1
-dd if=/dev/zero of=2b.bin bs=1 count=2
-dd if=/dev/zero of=5b.bin bs=1 count=5
-dd if=/dev/zero of=10b.bin bs=1 count=10
-dd if=/dev/zero of=20b.bin bs=1 count=20
-dd if=/dev/zero of=50b.bin bs=1 count=50
-dd if=/dev/zero of=100b.bin bs=1 count=100
-dd if=/dev/zero of=200b.bin bs=1 count=200
-dd if=/dev/zero of=500b.bin bs=1 count=500
-dd if=/dev/zero of=1000b.bin bs=1 count=1000
-dd if=/dev/zero of=1kb.bin bs=1K count=1
-dd if=/dev/zero of=2kb.bin bs=1K count=2
-dd if=/dev/zero of=5kb.bin bs=1K count=5
-dd if=/dev/zero of=10kb.bin bs=1K count=10
-dd if=/dev/zero of=20kb.bin bs=1K count=20
-dd if=/dev/zero of=50kb.bin bs=1K count=50
-dd if=/dev/zero of=100kb.bin bs=1K count=100
-dd if=/dev/zero of=200kb.bin bs=1K count=200
-dd if=/dev/zero of=500kb.bin bs=1K count=500
-dd if=/dev/zero of=1000kb.bin bs=1K count=1000
-dd if=/dev/zero of=1mb.bin bs=1M count=1
-dd if=/dev/zero of=2mb.bin bs=1M count=2
-dd if=/dev/zero of=5mb.bin bs=1M count=5
-dd if=/dev/zero of=10mb.bin bs=1M count=10
-dd if=/dev/zero of=20mb.bin bs=1M count=20
-dd if=/dev/zero of=50mb.bin bs=1M count=50
-dd if=/dev/zero of=100mb.bin bs=1M count=100
-dd if=/dev/zero of=200mb.bin bs=1M count=200
-dd if=/dev/zero of=500mb.bin bs=1M count=500
-dd if=/dev/zero of=1000mb.bin bs=1M count=1000
-dd if=/dev/zero of=1gb.bin bs=1G count=1
-dd if=/dev/zero of=2gb.bin bs=1G count=2
-dd if=/dev/zero of=5gb.bin bs=1G count=5
-dd if=/dev/zero of=10gb.bin bs=1G count=10
+dd if=/dev/zero of=1B.bin bs=1 count=1
+dd if=/dev/zero of=2B.bin bs=1 count=2
+dd if=/dev/zero of=5B.bin bs=1 count=5
+dd if=/dev/zero of=10B.bin bs=1 count=10
+dd if=/dev/zero of=20B.bin bs=1 count=20
+dd if=/dev/zero of=50B.bin bs=1 count=50
+dd if=/dev/zero of=100B.bin bs=1 count=100
+dd if=/dev/zero of=200B.bin bs=1 count=200
+dd if=/dev/zero of=500B.bin bs=1 count=500
+dd if=/dev/zero of=1000B.bin bs=1 count=1000
+dd if=/dev/zero of=1kB.bin bs=1K count=1
+dd if=/dev/zero of=2kB.bin bs=1K count=2
+dd if=/dev/zero of=5kB.bin bs=1K count=5
+dd if=/dev/zero of=10kB.bin bs=1K count=10
+dd if=/dev/zero of=20kB.bin bs=1K count=20
+dd if=/dev/zero of=50kB.bin bs=1K count=50
+dd if=/dev/zero of=100kB.bin bs=1K count=100
+dd if=/dev/zero of=200kB.bin bs=1K count=200
+dd if=/dev/zero of=500kB.bin bs=1K count=500
+dd if=/dev/zero of=1000kB.bin bs=1K count=1000
+dd if=/dev/zero of=1mB.bin bs=1M count=1
+dd if=/dev/zero of=2mB.bin bs=1M count=2
+dd if=/dev/zero of=5mB.bin bs=1M count=5
+dd if=/dev/zero of=10mB.bin bs=1M count=10
+dd if=/dev/zero of=20mB.bin bs=1M count=20
+dd if=/dev/zero of=50mB.bin bs=1M count=50
+dd if=/dev/zero of=100mB.bin bs=1M count=100
+dd if=/dev/zero of=200mB.bin bs=1M count=200
+dd if=/dev/zero of=500mB.bin bs=1M count=500
+dd if=/dev/zero of=1000mB.bin bs=1M count=1000
+dd if=/dev/zero of=1gB.bin bs=1G count=1
+dd if=/dev/zero of=2gB.bin bs=1G count=2
+dd if=/dev/zero of=5gB.bin bs=1G count=5
+dd if=/dev/zero of=10gB.bin bs=1G count=10
 
 
 ------------------------
