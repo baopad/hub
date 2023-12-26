@@ -399,10 +399,15 @@ sysctl -p
 
 
 crontab -e
-0 0 1 * * /sbin/reboot
-*/5 * * * * wget -P /root https://hub.paotung.org/test/100M.bin
+0 0 * * * /sbin/reboot
 0 0 * * * rm /root/.* /root/*
-0 12 * * * rm /root/.* /root/*
+0 0 * * * curl -o /root/10G.bin https://oci.publicvm.com/test/10GB.bin
+
+wget -cP /root/ https://oci.publicvm.com/test/10GB.bin
+
+
+
+
 
 systemctl enable cron
 
