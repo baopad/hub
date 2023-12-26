@@ -10,7 +10,7 @@ A record:           oci.publicvm.com     152.70.111.255
 AAAA record:        oci.publicvm.com     [2603:c021:8012:d500::4]
 AAAA record:        oci.publicvm.com     [2603:c021:8012:d500::8]
 
-
+hostnamectl set-hostname **
 sudo -i
 apt update
 apt upgrade
