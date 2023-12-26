@@ -274,41 +274,40 @@ mv docs/* ../
 cd ../
 rm -r main.zip hub-main
 cd test
-dd if=/dev/zero of=1B.bin bs=1 count=1
-dd if=/dev/zero of=2B.bin bs=1 count=2
-dd if=/dev/zero of=5B.bin bs=1 count=5
-dd if=/dev/zero of=10B.bin bs=1 count=10
-dd if=/dev/zero of=20B.bin bs=1 count=20
-dd if=/dev/zero of=50B.bin bs=1 count=50
-dd if=/dev/zero of=100B.bin bs=1 count=100
-dd if=/dev/zero of=200B.bin bs=1 count=200
-dd if=/dev/zero of=500B.bin bs=1 count=500
-dd if=/dev/zero of=1000B.bin bs=1 count=1000
-dd if=/dev/zero of=1K.bin bs=1K count=1
-dd if=/dev/zero of=2K.bin bs=1K count=2
-dd if=/dev/zero of=5K.bin bs=1K count=5
-dd if=/dev/zero of=10K.bin bs=1K count=10
-dd if=/dev/zero of=20K.bin bs=1K count=20
-dd if=/dev/zero of=50K.bin bs=1K count=50
-dd if=/dev/zero of=100K.bin bs=1K count=100
-dd if=/dev/zero of=200K.bin bs=1K count=200
-dd if=/dev/zero of=500K.bin bs=1K count=500
-dd if=/dev/zero of=1000K.bin bs=1K count=1000
-dd if=/dev/zero of=1M.bin bs=1M count=1
-dd if=/dev/zero of=2M.bin bs=1M count=2
-dd if=/dev/zero of=5M.bin bs=1M count=5
-dd if=/dev/zero of=10M.bin bs=1M count=10
-dd if=/dev/zero of=20M.bin bs=1M count=20
-dd if=/dev/zero of=50M.bin bs=1M count=50
-dd if=/dev/zero of=100M.bin bs=1M count=100
-dd if=/dev/zero of=200M.bin bs=1M count=200
-dd if=/dev/zero of=500M.bin bs=1M count=500
-dd if=/dev/zero of=1000M.bin bs=1M count=1000
-dd if=/dev/zero of=1G.bin bs=1G count=1
-dd if=/dev/zero of=2G.bin bs=1G count=2
-dd if=/dev/zero of=5G.bin bs=1G count=5
-dd if=/dev/zero of=10G.bin bs=1G count=10
-
+dd if=/dev/zero of=1b.bin bs=1 count=1
+dd if=/dev/zero of=2b.bin bs=1 count=2
+dd if=/dev/zero of=5b.bin bs=1 count=5
+dd if=/dev/zero of=10b.bin bs=1 count=10
+dd if=/dev/zero of=20b.bin bs=1 count=20
+dd if=/dev/zero of=50b.bin bs=1 count=50
+dd if=/dev/zero of=100b.bin bs=1 count=100
+dd if=/dev/zero of=200b.bin bs=1 count=200
+dd if=/dev/zero of=500b.bin bs=1 count=500
+dd if=/dev/zero of=1000b.bin bs=1 count=1000
+dd if=/dev/zero of=1kb.bin bs=1K count=1
+dd if=/dev/zero of=2kb.bin bs=1K count=2
+dd if=/dev/zero of=5kb.bin bs=1K count=5
+dd if=/dev/zero of=10kb.bin bs=1K count=10
+dd if=/dev/zero of=20kb.bin bs=1K count=20
+dd if=/dev/zero of=50kb.bin bs=1K count=50
+dd if=/dev/zero of=100kb.bin bs=1K count=100
+dd if=/dev/zero of=200kb.bin bs=1K count=200
+dd if=/dev/zero of=500kb.bin bs=1K count=500
+dd if=/dev/zero of=1000kb.bin bs=1K count=1000
+dd if=/dev/zero of=1mb.bin bs=1M count=1
+dd if=/dev/zero of=2mb.bin bs=1M count=2
+dd if=/dev/zero of=5mb.bin bs=1M count=5
+dd if=/dev/zero of=10mb.bin bs=1M count=10
+dd if=/dev/zero of=20mb.bin bs=1M count=20
+dd if=/dev/zero of=50mb.bin bs=1M count=50
+dd if=/dev/zero of=100mb.bin bs=1M count=100
+dd if=/dev/zero of=200mb.bin bs=1M count=200
+dd if=/dev/zero of=500mb.bin bs=1M count=500
+dd if=/dev/zero of=1000mb.bin bs=1M count=1000
+dd if=/dev/zero of=1gb.bin bs=1G count=1
+dd if=/dev/zero of=2gb.bin bs=1G count=2
+dd if=/dev/zero of=5gb.bin bs=1G count=5
+dd if=/dev/zero of=10gb.bin bs=1G count=10
 
 ------------------------
 优先IPv4网络    curl ip.sb 测试  curl ip.sb -4
