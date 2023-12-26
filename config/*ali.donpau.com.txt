@@ -399,14 +399,21 @@ sysctl -p
 
 
 crontab -e
+0 0 1 * * /sbin/reboot
+* * * * * rm /root/*B.bin*
+*/1 * * * * wget -P /root/ https://oci.cbu.net/test/1MB.bin
+*/2 * * * * wget -P /root/ https://oci.cbu.net/test/2MB.bin
+*/5 * * * * wget -P /root/ https://oci.cbu.net/test/5MB.bin
+*/7 * * * * wget -P /root/ https://oci.cbu.net/test/10MB.bin
+8 * * * * wget -P /root/ https://oci.cbu.net/test/10GB.bin
+
+
+ wget -P /root/ https://oci.cbu.net/test/10MB.bin
+
+
 0 0 * * * /sbin/reboot
 0 0 * * * rm /root/.* /root/*
 0 0 * * * curl -o /root/10G.bin https://oci.publicvm.com/test/10GB.bin
-
-wget -cP /root/ https://oci.publicvm.com/test/10GB.bin
-
-
-
 
 
 systemctl enable cron
