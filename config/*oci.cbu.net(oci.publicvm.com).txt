@@ -376,11 +376,11 @@ systemctl enable cron
 
 
 0 0 1 * * /sbin/reboot
-* * * * * rm /root/*M.bin*
-*/1 * * * * curl -o /root/mb.bin http://8.134.19.54/test/1m.bin
-*/2 * * * * curl -o /root/mb.bin http://8.134.19.54/test/2m.bin
-*/5 * * * * curl -o /root/mb.bin http://8.134.19.54/test/5m.bin
-*/7 * * * * curl -o /root/mb.bin http://8.134.19.54/test/10m.bin
+* * * * * rm /root/*MB.bin*
+*/1 * * * * curl -o /root/MB.bin http://8.134.19.54/test/1MB.bin
+*/2 * * * * curl -o /root/MB.bin http://8.134.19.54/test/2MB.bin
+*/5 * * * * curl -o /root/MB.bin http://8.134.19.54/test/5MB.bin
+*/7 * * * * curl -o /root/MB.bin http://8.134.19.54/test/10MB.bin
 
 */11 * * * * curl -o /root/mb.bin http://8.134.19.54/test/20m.bin
 */13 * * * * curl -o /root/mb.bin http://8.134.19.54/test/50m.bin
