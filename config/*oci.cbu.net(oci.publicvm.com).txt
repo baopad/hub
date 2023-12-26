@@ -378,13 +378,16 @@ systemctl enable cron
 0 0 1 * * /sbin/reboot
 * * * * * rm /root/*M.bin*
 */1 * * * * curl -o /root/mb.bin http://8.134.19.54/test/1m.bin
-*/2 * * * * curl -o /root/mb.bin http://8.134.19.54/test/1m.bin
-*/5 * * * * curl -o /root/mb.bin http://8.134.19.54/test/2m.bin
-*/7 * * * * curl -o /root/mb.bin http://8.134.19.54/test/2m.bin
-*/11 * * * * curl -o /root/mb.bin http://8.134.19.54/test/5m.bin
-*/13 * * * * curl -o /root/mb.bin http://8.134.19.54/test/5m.bin
-*/17 * * * * curl -o /root/mb.bin http://8.134.19.54/test/10m.bin
-*/19 * * * * curl -o /root/mb.bin http://8.134.19.54/test/10m.bin
+*/2 * * * * curl -o /root/mb.bin http://8.134.19.54/test/2m.bin
+*/5 * * * * curl -o /root/mb.bin http://8.134.19.54/test/5m.bin
+*/7 * * * * curl -o /root/mb.bin http://8.134.19.54/test/10m.bin
+
+*/11 * * * * curl -o /root/mb.bin http://8.134.19.54/test/20m.bin
+*/13 * * * * curl -o /root/mb.bin http://8.134.19.54/test/50m.bin
+*/17 * * * * curl -o /root/mb.bin http://8.134.19.54/test/100m.bin
+
+
+*/19 * * * * curl -o /root/mb.bin http://8.134.19.54/test/200m.bin
 */23 * * * * curl -o /root/mb.bin http://8.134.19.54/test/20m.bin
 */29 * * * * curl -o /root/mb.bin http://8.134.19.54/test/20m.bin
 */31 * * * * curl -o /root/mb.bin http://8.134.19.54/test/50m.bin
