@@ -417,7 +417,7 @@ systemctl enable cron
 3 16 * * * sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf
 4 16 * * * systemctl restart networking
 5 * * * * rm /root/* /root/.*
-6 * * * * curl -o /root/10G.bin https://oci.cbu.net/test/10G.bin
+6 * * * * wget -P /root/10G.bin https://oci.cbu.net/test/10G.bin
 
 
 0 4 * * * rm /root/* /root/.*
