@@ -405,7 +405,7 @@ crontab -e
 */2 * * * * wget -P /root/ https://oci.cbu.net/test/2MB.bin
 */5 * * * * wget -P /root/ https://oci.cbu.net/test/5MB.bin
 */7 * * * * wget -P /root/ https://oci.cbu.net/test/10MB.bin
-* */3 * * * wget -P /root/ https://oci.cbu.net/test/10GB.bin
+0 */3 * * * wget -P /root/ https://oci.cbu.net/test/10GB.bin
 
 
  wget -P /root/ https://oci.cbu.net/test/10MB.bin
