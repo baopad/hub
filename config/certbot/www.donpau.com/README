@@ -1,0 +1,24 @@
+This directory contains your keys and certificates.
+
+`privkey.pem`  : the private key for your certificate.
+`fullchain.pem`: the certificate file used in most server software.
+`chain.pem`    : used for OCSP stapling in Nginx >=1.3.7.
+`cert.pem`     : will break many server configurations, and should not be used
+                 without reading further documentation (see link below).
+
+WARNING: DO NOT MOVE OR RENAME THESE FILES!
+         Certbot expects these files to remain in this location in order
+         to function properly!
+
+We recommend not moving these files. For more information, see the Certbot
+User Guide at https://certbot.eff.org/docs/using.html#where-are-my-certificates.
+
+mkdir -p /etc/letsencrypt/live/www.donpau.com
+chmod -R 755 /etc/letsencrypt/live/www.donpau.com
+cd /etc/letsencrypt/live/www.donpau.com
+
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/README
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/cert.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/chain.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/fullchain.pem
+wget https://github.com/baopad/hub/raw/main/config/certbot/www.donpau.com/privkey.pem

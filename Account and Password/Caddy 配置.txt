@@ -1,0 +1,8 @@
+mydomain.me
+{
+  log ./caddy.log
+  proxy /ray localhost:10000 {
+    websocket
+    header_upstream -Origin
+  }
+}

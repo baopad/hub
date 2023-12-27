@@ -1,0 +1,139 @@
+{
+    "inbound": {
+        "port": 80, //此处TCP端口
+        "protocol": "vmess",
+        "settings": {
+            "clients": [
+                {
+                    "id": "17fe931a-648a-5173-3299-aa48b4f3c6a8", //此处TCP UUID标识
+                    "level": 1,
+                    "alterId": 64
+                }
+            ]
+        }
+    },
+    "outbound": {
+        "protocol": "freedom",
+        "settings": {}
+    },
+    "inboundDetour": [
+        {
+            "port": 8000, //此处KCP端口
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "e7271a09-cf2b-4d78-b14c-5fac42401558", //此处KCP UUID标识
+                        "level": 1,
+                        "alterId": 64
+                    }
+                ]
+            },
+			"streamSettings": {
+				"network": "mkcp",
+				"kcpSettings": {
+					"uplinkCapacity": 5,
+					"downlinkCapacity": 100,
+					"congestion": true,
+					"header": {
+						"type": "none"
+					}
+				}
+			}
+        },
+        {
+            "port": 8008, //此处WebSocket端口
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "4e9138d7-952d-ef94-06d6-8e7c0ebf4306", //此处WebSocket UUID标识
+                        "level": 1,
+                        "alterId": 64
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network":"ws"
+            }
+        },
+        {
+            "port": 8080,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "9ab0f607-8031-fa80-93cb-690ae3390229",
+                        "level": 1,
+                        "alterId": 64
+                    }
+                ]
+            }
+        },
+        {
+            "protocol": "shadowsocks",
+            "port": 443, //此处Shadowsocks端口
+            "settings": {
+                "method": "aes-256-cfb",
+                "password": "password",
+                "udp": true,
+                "level": 1
+            }
+        },
+        {
+            "protocol": "shadowsocks",
+            "port": 3269, //此处Shadowsocks端口
+            "settings": {
+                "method": "aes-256-cfb",
+                "password": "password",
+                "udp": true,
+                "level": 1
+            }
+        },
+        {
+            "protocol": "shadowsocks",
+            "port": 8443, //此处Shadowsocks端口
+            "settings": {
+                "method": "aes-256-cfb",
+                "password": "password",
+                "udp": true,
+                "level": 1
+            }
+        }
+    ],
+    "outboundDetour": [
+        {
+            "protocol": "blackhole",
+            "settings": {},
+            "tag": "blocked"
+        }
+    ],
+    "routing": {
+        "strategy": "rules",
+        "settings": {
+            "rules": [
+                {
+                    "type": "field",
+                    "ip": [
+                        "0.0.0.0/8",
+                        "10.0.0.0/8",
+                        "100.64.0.0/10",
+                        "127.0.0.0/8",
+                        "169.254.0.0/16",
+                        "172.16.0.0/12",
+                        "192.0.0.0/24",
+                        "192.0.2.0/24",
+                        "192.168.0.0/16",
+                        "198.18.0.0/15",
+                        "198.51.100.0/24",
+                        "203.0.113.0/24",
+                        "::1/128",
+                        "fc00::/7",
+                        "fe80::/10"
+                    ],
+                    "outboundTag": "blocked"
+                }
+            ]
+        }
+    }
+}
