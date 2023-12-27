@@ -80,7 +80,7 @@ dd if=/dev/zero of=1GB.bin bs=1G count=1
 dd if=/dev/zero of=2GB.bin bs=1G count=2
 dd if=/dev/zero of=5GB.bin bs=1G count=5
 dd if=/dev/zero of=10GB.bin bs=1G count=10
-
+cd ~
 
 
 
