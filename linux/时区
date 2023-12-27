@@ -1,5 +1,0 @@
-date -R
-timedatectl
-
-设置UTC时间
-timedatectl set-timezone UTC
