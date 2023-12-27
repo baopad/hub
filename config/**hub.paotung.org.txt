@@ -81,6 +81,9 @@ dd if=/dev/zero of=2GB.bin bs=1G count=2
 dd if=/dev/zero of=5GB.bin bs=1G count=5
 dd if=/dev/zero of=10GB.bin bs=1G count=10
 
+
+
+
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
