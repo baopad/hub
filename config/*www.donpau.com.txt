@@ -33,7 +33,7 @@ sudo -i
 apt autoremove iptables -y &&
 apt update &&
 apt install curl -y &&
-timedatectl set-timezone UTC &&
+timedatectl set-timezone UTC
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
@@ -239,7 +239,7 @@ a2ensite www.donpau.com.conf
 apache2ctl configtest
 cd /var/www/www.donpau.com
 rm -r /var/www/www.donpau.com/*
-wget -cP /var/www/www.donpau.com https://github.com/baopad/hub/archive/refs/heads/main.zip &&
+wget -cP /var/www/www.donpau.com https://github.com/baopad/hub/archive/refs/heads/main.zip
 unzip -o main.zip
 cd *main
 mv docs/* ../
