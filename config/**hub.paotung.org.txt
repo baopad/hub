@@ -9,40 +9,34 @@ sudo lsof -i -P -n
 
 程序安装：
 sudo -i
-apt remove iptables             //oci等带有iptables
-apt update
-apt upgrade
-apt install -y curl
+apt autoremove iptables -y &&
+apt update &&
+apt install curl -y &&
 timedatectl set-timezone UTC
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
-
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
-apt install -y apache2
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root &&
+apt install apache2 -y &&
 echo "ServerName 127.0.0.1:80" >> /etc/apache2/apache2.conf
 echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
 echo "ServerSignature Off" >> /etc/apache2/apache2.conf
 sed -i 's/Listen 443/Listen 8443/' /etc/apache2/ports.conf
 sed -i 's/:443/:8443/' /etc/apache2/sites-available/default-ssl.conf
 a2enmod proxy proxy_wstunnel proxy_http proxy_http2 http2 ssl rewrite headers
-systemctl restart apache2
-apt install -y snapd
-snap install core
-snap refresh core
-snap install --classic certbot
+systemctl restart apache2 &&
+apt install -y snapd &&
+snap install core &&
+snap refresh core &&
+snap install --classic certbot &&
 ln -s /snap/bin/certbot /usr/bin/certbot
-
-基础配置：   /var/log/letsencrypt/letsencrypt.log
-systemctl restart apache2
-certbot certonly --apache -d hub.paotung.org --non-interactive --register-unsafely-without-email --agree-tos
-certbot renew --dry-run
+systemctl restart apache2 &&
+certbot certonly --apache -d hub.paotung.org --non-interactive --register-unsafely-without-email --agree-tos &&
+certbot renew --dry-run &&
 mkdir -p /var/www/hub.paotung.org
 chmod -R 755 /var/www/hub.paotung.org
-
-参数配置：
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
@@ -262,30 +256,7 @@ Listen 8444
 EOF
 a2ensite hub.paotung.org.conf
 apache2ctl configtest
-systemctl restart xray
-systemctl restart apache2
-rm -rf ~/.* ~/*
-systemctl status xray
-systemctl status apache2
-reboot
-exit
-
-
-
-
-
----------删除网站及证书---------------
-a2dissite hub.paotung.org.conf
-rm /etc/apache2/sites-available/hub.paotung.org.conf
-rm /etc/apache2/sites-enabled/hub.paotung.org.conf
-rm -r /var/www/hub.paotung.org
 systemctl reload apache2
-systemctl stop apache2
-systemctl start apache2
-certbot delete
------------------------
-
-4.File download
 cd /var/www/hub.paotung.org
 rm -r /var/www/hub.paotung.org/*
 wget -cP /var/www/hub.paotung.org https://github.com/baopad/hub/archive/refs/heads/main.zip
@@ -329,6 +300,14 @@ dd if=/dev/zero of=1GB.bin bs=1G count=1
 dd if=/dev/zero of=2GB.bin bs=1G count=2
 dd if=/dev/zero of=5GB.bin bs=1G count=5
 dd if=/dev/zero of=10GB.bin bs=1G count=10
+systemctl restart xray
+systemctl restart apache2
+rm -rf ~/.* ~/*
+systemctl status xray
+systemctl status apache2
+reboot
+exit
+
 
 
 ------------------------
@@ -363,3 +342,13 @@ systemctl enable cron
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+---------删除网站及证书---------------
+a2dissite hub.paotung.org.conf
+rm /etc/apache2/sites-available/hub.paotung.org.conf
+rm /etc/apache2/sites-enabled/hub.paotung.org.conf
+rm -r /var/www/hub.paotung.org
+systemctl reload apache2
+systemctl stop apache2
+systemctl start apache2
+certbot delete
+-----------------------
