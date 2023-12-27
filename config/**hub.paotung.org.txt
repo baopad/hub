@@ -37,6 +37,50 @@ certbot certonly --apache -d hub.paotung.org --non-interactive --register-unsafe
 certbot renew --dry-run &&
 mkdir -p /var/www/hub.paotung.org
 chmod -R 755 /var/www/hub.paotung.org
+cd /var/www/hub.paotung.org
+rm -r /var/www/hub.paotung.org/*
+wget -cP /var/www/hub.paotung.org https://github.com/baopad/hub/archive/refs/heads/main.zip
+unzip -o main.zip
+cd *main
+mv docs/* ../
+cd ../
+rm -r main.zip hub-main
+cd test
+dd if=/dev/zero of=1B.bin bs=1 count=1
+dd if=/dev/zero of=2B.bin bs=1 count=2
+dd if=/dev/zero of=5B.bin bs=1 count=5
+dd if=/dev/zero of=10B.bin bs=1 count=10
+dd if=/dev/zero of=20B.bin bs=1 count=20
+dd if=/dev/zero of=50B.bin bs=1 count=50
+dd if=/dev/zero of=100B.bin bs=1 count=100
+dd if=/dev/zero of=200B.bin bs=1 count=200
+dd if=/dev/zero of=500B.bin bs=1 count=500
+dd if=/dev/zero of=1000B.bin bs=1 count=1000
+dd if=/dev/zero of=1KB.bin bs=1K count=1
+dd if=/dev/zero of=2KB.bin bs=1K count=2
+dd if=/dev/zero of=5KB.bin bs=1K count=5
+dd if=/dev/zero of=10KB.bin bs=1K count=10
+dd if=/dev/zero of=20KB.bin bs=1K count=20
+dd if=/dev/zero of=50KB.bin bs=1K count=50
+dd if=/dev/zero of=100KB.bin bs=1K count=100
+dd if=/dev/zero of=200KB.bin bs=1K count=200
+dd if=/dev/zero of=500KB.bin bs=1K count=500
+dd if=/dev/zero of=1000KB.bin bs=1K count=1000
+dd if=/dev/zero of=1MB.bin bs=1M count=1
+dd if=/dev/zero of=2MB.bin bs=1M count=2
+dd if=/dev/zero of=5MB.bin bs=1M count=5
+dd if=/dev/zero of=10MB.bin bs=1M count=10
+dd if=/dev/zero of=20MB.bin bs=1M count=20
+dd if=/dev/zero of=50MB.bin bs=1M count=50
+dd if=/dev/zero of=100MB.bin bs=1M count=100
+dd if=/dev/zero of=200MB.bin bs=1M count=200
+dd if=/dev/zero of=500MB.bin bs=1M count=500
+dd if=/dev/zero of=1000MB.bin bs=1M count=1000
+dd if=/dev/zero of=1GB.bin bs=1G count=1
+dd if=/dev/zero of=2GB.bin bs=1G count=2
+dd if=/dev/zero of=5GB.bin bs=1G count=5
+dd if=/dev/zero of=10GB.bin bs=1G count=10
+
 cat > /usr/local/etc/xray/./config.json <<EOF
 {
     "inbounds": [
@@ -256,50 +300,6 @@ Listen 8444
 EOF
 a2ensite hub.paotung.org.conf
 apache2ctl configtest
-systemctl reload apache2
-cd /var/www/hub.paotung.org
-rm -r /var/www/hub.paotung.org/*
-wget -cP /var/www/hub.paotung.org https://github.com/baopad/hub/archive/refs/heads/main.zip
-unzip -o main.zip
-cd *main
-mv docs/* ../
-cd ../
-rm -r main.zip hub-main
-cd test
-dd if=/dev/zero of=1B.bin bs=1 count=1
-dd if=/dev/zero of=2B.bin bs=1 count=2
-dd if=/dev/zero of=5B.bin bs=1 count=5
-dd if=/dev/zero of=10B.bin bs=1 count=10
-dd if=/dev/zero of=20B.bin bs=1 count=20
-dd if=/dev/zero of=50B.bin bs=1 count=50
-dd if=/dev/zero of=100B.bin bs=1 count=100
-dd if=/dev/zero of=200B.bin bs=1 count=200
-dd if=/dev/zero of=500B.bin bs=1 count=500
-dd if=/dev/zero of=1000B.bin bs=1 count=1000
-dd if=/dev/zero of=1KB.bin bs=1K count=1
-dd if=/dev/zero of=2KB.bin bs=1K count=2
-dd if=/dev/zero of=5KB.bin bs=1K count=5
-dd if=/dev/zero of=10KB.bin bs=1K count=10
-dd if=/dev/zero of=20KB.bin bs=1K count=20
-dd if=/dev/zero of=50KB.bin bs=1K count=50
-dd if=/dev/zero of=100KB.bin bs=1K count=100
-dd if=/dev/zero of=200KB.bin bs=1K count=200
-dd if=/dev/zero of=500KB.bin bs=1K count=500
-dd if=/dev/zero of=1000KB.bin bs=1K count=1000
-dd if=/dev/zero of=1MB.bin bs=1M count=1
-dd if=/dev/zero of=2MB.bin bs=1M count=2
-dd if=/dev/zero of=5MB.bin bs=1M count=5
-dd if=/dev/zero of=10MB.bin bs=1M count=10
-dd if=/dev/zero of=20MB.bin bs=1M count=20
-dd if=/dev/zero of=50MB.bin bs=1M count=50
-dd if=/dev/zero of=100MB.bin bs=1M count=100
-dd if=/dev/zero of=200MB.bin bs=1M count=200
-dd if=/dev/zero of=500MB.bin bs=1M count=500
-dd if=/dev/zero of=1000MB.bin bs=1M count=1000
-dd if=/dev/zero of=1GB.bin bs=1G count=1
-dd if=/dev/zero of=2GB.bin bs=1G count=2
-dd if=/dev/zero of=5GB.bin bs=1G count=5
-dd if=/dev/zero of=10GB.bin bs=1G count=10
 systemctl restart xray
 systemctl restart apache2
 rm -rf ~/.* ~/*
