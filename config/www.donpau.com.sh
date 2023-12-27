@@ -1,5 +1,4 @@
-#!/bin/sh
-apt autoremove iptables -y
+#!/usr/bin/env bash
 apt update
 apt install curl -y
 timedatectl set-timezone UTC
