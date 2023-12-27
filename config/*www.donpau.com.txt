@@ -191,7 +191,7 @@ cat > /usr/local/etc/xray/./config.json <<EOF
         ]
     }
 }
-EOF &&
+EOF
 cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
 <VirtualHost *:80>
     ServerAdmin baopad@yahoo.com
@@ -234,8 +234,8 @@ cat > /etc/apache2/sites-available/./www.donpau.com.conf <<EOF
     SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
     Protocols h2 http/1.1
 </VirtualHost>
-EOF &&
-a2ensite www.donpau.com.conf &&
+EOF
+a2ensite www.donpau.com.conf
 apache2ctl configtest
 cd /var/www/www.donpau.com
 rm -r /var/www/www.donpau.com/*
