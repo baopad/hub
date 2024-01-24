@@ -145,15 +145,15 @@ div {
 </head>
 <body>
 <div class="a">
-  <div class="b">hour</div>
+  <div class="">hour</div>
   <pre>
     <?php echo system("vnstat -h"); ?>
   </pre>
-  <div class="b">day</div>
+  <div class="">day</div>
   <pre>
     <?php echo system("vnstat -d"); ?>
   </pre>
-  <div class="b">month</div>
+  <div class="">month</div>
   <pre>
     <?php echo system("vnstat -m"); ?>
   </pre>
