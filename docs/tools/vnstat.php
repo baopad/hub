@@ -149,7 +149,7 @@ div {
   <pre>
     <?php echo system("vnstat -h"); ?>
   </pre>
-  <div class=""><h3></h3>day</h3></div>
+  <div class=""><h3>day</h3></div>
   <pre>
     <?php echo system("vnstat -d"); ?>
   </pre>
