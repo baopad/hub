@@ -1,2 +1,2 @@
 <?php 
-  echo system("vnstat -h");
+  echo system("reboot");
