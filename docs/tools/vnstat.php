@@ -146,11 +146,17 @@ div {
 <body>
 <div class="a">
   <div class="b">hour</div>
-  <?php echo system("vnstat -h"); ?>
+  <pre>
+    <?php echo system("vnstat -h"); ?>
+  </pre>
   <div class="b">day</div>
-  <?php echo system("vnstat -d"); ?>
+  <pre>
+    <?php echo system("vnstat -d"); ?>
+  </pre>
   <div class="b">month</div>
-  <?php echo system("vnstat -m"); ?>
+  <pre>
+    <?php echo system("vnstat -m"); ?>
+  </pre>
 </div>
 </body>
 </html>
