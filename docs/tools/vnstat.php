@@ -145,6 +145,10 @@ div {
 </head>
 <body>
 <div class="a">
+  <div class=""><h3>5min</h3></div>
+  <pre>
+    <?php echo system("vnstat -5"); ?>
+  </pre>
   <div class=""><h3>hour</h3></div>
   <pre>
     <?php echo system("vnstat -h"); ?>
